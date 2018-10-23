@@ -38,15 +38,15 @@ Do I need the provided DroneBridge image for my Raspberry Pi?
 
 ## How to connect to Raspberry Pi?
 
-You can connect your phone to the raspberry pi via USB-Tethering or Wifi. In urban areas or if you are using the 2.4Ghz band for the long range radio link it is recommended to use USB-Tethering.
+You can connect your phone to the raspberry pi via USB-Tethering or WiFi. In urban areas or if you are using the 2.4 GHz band for the long range radio link it is recommended to use USB-Tethering.
 
 ### Set up USB-Tethering
 
-Power up the groundstation running the latest DroneBridge release. Wait about eight seconds or till you see your wifi adapter blinking. Then connect your phone to the Pi using a USB cable. **Do not connect before or right after power up. This might cause WifiBroadcast to detect it as a USB Stick. The boot sequence may be aborted!** Go to your android wifi settings and find the setting to activate USB-Tethering. Launch the DroneBridge App.
+Power up the ground ``station running the latest DroneBridge release. Wait about eight seconds or till you see your WiFi adapter blinking. Then connect your phone to the Pi using a USB cable. **Do not connect before or right after power up. This might cause EZ-WifiBroadcast to detect it as a USB Stick. The boot sequence may be aborted!** Go to your android WiFi settings and find the setting to activate USB-Tethering. Launch the DroneBridge App.
 
-### Set up Wifi
+### Set up wifi
 
-To connect via wifi you need to activate the wifi hotspot on the Raspberry Pi. If your Pi does not have a built in wifi module you will need a extra wifi adapter. Only Raspberry Pi 3 and Pi Zero W have built in wifi. By default the underlying WifiBroadcast will use the built in wifi chip.
+To connect via wifi you need to activate the wifi hotspot on the Raspberry Pi. If your Pi does not have a built in wifi module you will need a extra wifi adapter. Only Raspberry Pi 3 and Pi Zero W have built in wifi. By default the underlying EZ-WifiBroadcast will use the built in wifi chip.
 
 SSID: `DroneBridge`
 
@@ -66,9 +66,9 @@ Insert the SD card into your computer and edit the `wifibroadcast-1.txt` file. S
 
 ## The UI
 
-![ui elements with explanation](https://github.com/seeul8er/DroneBridge/blob/master/wiki/ui_explain.png) 
+![App UI with description](https://raw.githubusercontent.com/seeul8er/DroneBridge/master/wiki/ui_explain.png)
 
-![dronebridge settings](https://github.com/seeul8er/DroneBridge/blob/master/wiki/dronebridge_settings.png)
+![](https://raw.githubusercontent.com/seeul8er/DroneBridge/master/wiki/dronebridge_settings.png)
 
 ## Displaying video with the standard EZ-WifiBroadcast image
 

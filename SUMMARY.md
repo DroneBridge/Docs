@@ -16,7 +16,7 @@
 
 ## DroneBridge for ESP32
 
-* [Untitled](dronebridge-for-esp32/untitled.md)
+* [Setup](dronebridge-for-esp32/untitled.md)
 
 ## DroneBridge Desktop
 
