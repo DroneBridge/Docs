@@ -48,6 +48,21 @@ Experimental support added in v0.6+. Not much tested, no power patches, might ex
 * Rosewill RNX-N600UBE \(2.4/5Ghz, Diversity, RT5572 chipset, txpower unknown currently, RT5572 chipset\)
 * AW-NU138 \(2.3/2.4Ghz, Atheros AR9271 chipset\)
 
+### Recommended combinations
+
+A single high power card may be on the UAS. On the ground you can decide for yourself. A high power card is not required since the set data rate is much lower. More than one card/antenna is recommended on the ground station.
+
+**For 2.3/2.4/2.6 GHz**
+
+* TP-Link TL-WN722N V1.x
+* ALFA AWUS036NHA
+* Ubiquiti Wifistation \(EXT\)
+
+**For dual band \(2.4/5 GHz\)**
+
+* ALFA AWUS1900 - good ground station
+* ALFA AWUS036ACH
+
 ### Notes
 
 TX-Power as reported by some users & the internet.
