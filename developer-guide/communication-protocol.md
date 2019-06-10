@@ -199,7 +199,7 @@ Universal acknowledgement message. May be returned by any kind of request/change
       <td style="text-align:left">
         <ul>
           <li><code>1</code>: ground station only</li>
-          <li><code>2</code>: ground station & UAV</li>
+          <li><code>2</code>: ground station &amp; UAV</li>
           <li><code>3</code>: GoPro</li>
           <li><code>4</code>: App/GCS</li>
           <li><code>5</code>: UAV only</li>
