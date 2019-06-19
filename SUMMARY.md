@@ -26,6 +26,7 @@
 
 ## Developer Guide
 
+* [Downloading & Compiling](developer-guide/downloading-and-compiling.md)
 * [System Architecture](developer-guide/system-architecture.md)
 * [Raw protocol](developer-guide/raw-protocol.md)
 * [Communication protocol](developer-guide/communication-protocol.md)
