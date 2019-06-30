@@ -32,6 +32,7 @@
 * [Communication protocol](developer-guide/communication-protocol.md)
 * [Status messages](developer-guide/status-messages.md)
 * [RC message/packet](developer-guide/rc-message-packet.md)
+* [USB message](developer-guide/usb-message.md)
 * [Plugins](developer-guide/plugins.md)
 * [Image Build](developer-guide/image-build.md)
 
