@@ -1,10 +1,18 @@
+---
+description: Specification of the DroneBridge raw protocol
+---
+
 # Raw protocol
 
 This protocol is used for long range communication in monitor mode. The basic idea is the same as with WifiBroadcast. The protocol allows simple plug & fly as no configuration is needed. Changing the `comm id` is required if multiple pilots want to use the same frequency.
 
+{% hint style="info" %}
+While it is optimized for use in UAS applications it is designed to carry any kind of payload
+{% endhint %}
+
 ## Protocol structure
 
-| **Radiotap header** | **custom header** | **payload** |
+| Radiotap header | DroneBridge custom header | payload |
 | :---: | :---: | :---: |
 
 
@@ -14,7 +22,7 @@ Use any that works. You can set the transmission bit rate here \(works with Rali
 
 ## Raw Protocol v2 header
 
-10 bytes in length compared to 24 bytes of v1. That means v2 header is 58% smaller than v1 causing less collisions and faster transfers without sacrificing features. Note that direction bytes and endianness have changed compared to v1! 
+Total length of the header is 10 bytes. Allows frames to be injected by most/all drivers supporting injection & monitor mode
 
 <table>
   <thead>
@@ -79,7 +87,7 @@ Use any that works. You can set the transmission bit rate here \(works with Rali
       <td style="text-align:center"><b>payload length</b>
       </td>
       <td style="text-align:center">
-        <p>unsigned int 16bit</p>
+        <p>unsigned int 16 bit</p>
         <p>little endian</p>
       </td>
     </tr>
@@ -92,106 +100,13 @@ Use any that works. You can set the transmission bit rate here \(works with Rali
       </td>
     </tr>
   </tbody>
-</table>## Raw protocol v1 header \(deprecated - use v2!\)
+</table>{% hint style="info" %}
+If **DroneBridge compatibility mode** is enabled the **DB raw header gets extended by 10 bytes** of random data. These bytes are likely to overwritten on reception by un-patched WiFi drivers. The 10 byte padding makes sure no payload data is overwritten. Compatibility mode should be used in case a receiver with un-patched drivers is used \(e.g. default Ubuntu etc.\)
 
-It is a IEEE 802.11 data/beacon frame format with different meaning of the bytes. DroneBridge raw v1 uses 802.11 data frames with Ralink cards and beacon frames with Atheros cards to communicate.
+**Compatibility mode can automatically be detected** on reception if the **length of the received frame is bigger than the sum of: Radiotap header length, DB header length & payload length**
+{% endhint %}
 
-| FCF | odd | direction | comm id | src. mac | version | port | direction | payload length | crc | Seq. num |
-| :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
-| 4 bytes | 1 byte | 1 byte | 4 bytes | 6 bytes | 1 byte | 1 byte | 1 byte | 2 bytes | 1 byte | 2 bytes |
-
-<table>
-  <thead>
-    <tr>
-      <th style="text-align:center">field</th>
-      <th style="text-align:center">description</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td style="text-align:center"><b>FCF</b>
-      </td>
-      <td style="text-align:center">
-        <p>Data frame: <code>0x08 0x00 0x00 0x00</code>
-        </p>
-        <p>Beacon frame: <code>0x80 0x00 0x00 0x00</code>
-        </p>
-      </td>
-    </tr>
-    <tr>
-      <td style="text-align:center"><b>odd</b>
-      </td>
-      <td style="text-align:center">First byte has to be <code>0x01</code>
-      </td>
-    </tr>
-    <tr>
-      <td style="text-align:center"><b>direction</b>
-      </td>
-      <td style="text-align:center">see further down. For compatibility reasons with libpcap (this is part
-        of dest mac address)</td>
-    </tr>
-    <tr>
-      <td style="text-align:center"><b>comm id</b>
-      </td>
-      <td style="text-align:center">Has to be the same on drone and ground station. To determine for whom
-        the packet is</td>
-    </tr>
-    <tr>
-      <td style="text-align:center"><b>src. mac</b>
-      </td>
-      <td style="text-align:center">use the mac of sending interface. Nowhere used yet</td>
-    </tr>
-    <tr>
-      <td style="text-align:center"><b>version</b>
-      </td>
-      <td style="text-align:center"><code>0x01</code>
-      </td>
-    </tr>
-    <tr>
-      <td style="text-align:center"><b>port</b>
-      </td>
-      <td style="text-align:center">
-        <p>DB-control: <code>0x01</code>
-        </p>
-        <p>DB-telemetry: <code>0x02</code>
-        </p>
-        <p>DB-video: <code>0x03</code>
-        </p>
-        <p>DB-communication: <code>0x04</code>
-        </p>
-        <p>DB-status: <code>0x05</code>
-        </p>
-        <p>DB-proxy: <code>0x06</code>
-        </p>
-      </td>
-    </tr>
-    <tr>
-      <td style="text-align:center"><b>direction</b>
-      </td>
-      <td style="text-align:center"><code>0x01</code> if packet is for drone <code>0x02</code> if packet is for
-        ground station</td>
-    </tr>
-    <tr>
-      <td style="text-align:center"><b>payload length</b>
-      </td>
-      <td style="text-align:center">
-        <p>unsigned int 16bit</p>
-        <p>little endian</p>
-      </td>
-    </tr>
-    <tr>
-      <td style="text-align:center"><b>crc</b>
-      </td>
-      <td style="text-align:center">crc8 of <code>[version][port][direction][payload-length]</code> NOT USED
-        YET</td>
-    </tr>
-    <tr>
-      <td style="text-align:center"><b>sequ. num</b>
-      </td>
-      <td style="text-align:center">is overwritten anyway</td>
-    </tr>
-  </tbody>
-</table>## Payload
+## Payload
 
 Can be anything. Just make sure the transmission bit rate is set appropriate. In the case of DroneBridge the payload can be on of the following things:
 
@@ -199,4 +114,43 @@ Can be anything. Just make sure the transmission bit rate is set appropriate. In
 * MSP \(Multiwii Serial Protocol\)
 * H264 in MPEG-TS container in case of GoPro video transmission using DroneBridge video module
 * LTM \(Light Telemetry Protocol\)
+
+## Encrypted Payload
+
+The specification for encrypted messages is as follows:
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align:left">field</th>
+      <th style="text-align:left">length</th>
+      <th style="text-align:left">description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align:left"><b>Nonce</b>
+      </td>
+      <td style="text-align:left">16 bytes</td>
+      <td style="text-align:left">
+        <p>Nonce as part of the encryption. Must not be reused for any other</p>
+        <p>message with same key</p>
+      </td>
+    </tr>
+    <tr>
+      <td style="text-align:left"><b>MAC</b>
+      </td>
+      <td style="text-align:left">16 bytes</td>
+      <td style="text-align:left">MAC or TAG to verify the integrity of the message &amp; authenticate the
+        sender</td>
+    </tr>
+    <tr>
+      <td style="text-align:left"><b>Payload</b>
+      </td>
+      <td style="text-align:left">0 - 1458 bytes</td>
+      <td style="text-align:left">Encrypted data. Length must not exceed 1458 bytes since the <a href="https://de.wikipedia.org/wiki/Maximum_Transmission_Unit">MTU </a>in
+        most WiFi drivers is ~1500 bytes</td>
+    </tr>
+  </tbody>
+</table>The encrypted payload lies inside the DroneBridge raw protocol payload field. DroneBridge libraries support AES encryption with 128, 192, 256 bit key length. Authentication is done using [EAX](https://en.wikipedia.org/wiki/EAX_mode). The Python library uses the [PyCryptodomex ](https://pycryptodome.readthedocs.io/en/latest/)implementation. That way DroneBridge allows for end to end encryption of all messages. It is not recommended to enable it on latency sensitive applications like real-time video & audio streams.
 
