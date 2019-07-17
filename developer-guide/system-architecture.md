@@ -14,4 +14,7 @@ description: >-
   * pyric
   * netifaces
   * sysv\_ipc
+  * pycryptodomex
+
+![DroneBridge module block diagram showing used message types and protocols](../.gitbook/assets/modules.svg)
 
