@@ -22,6 +22,7 @@
 
 ## DroneBridge Desktop
 
+* [Enabling monitor mode](dronebridge-desktop/enabling-monitor-mode.md)
 * [Video stream playback](dronebridge-desktop/untitled.md)
 
 ## Developer Guide
