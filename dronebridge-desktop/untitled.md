@@ -18,7 +18,7 @@ The video stream type needs to set to `raw` inside `DroneBridgeConfig.ini` or th
 Use on of the following commands to play back the live stream. Adjust the IP address if necessary. The computer must be connected to the ground station
 
 ```bash
-gst-launch-1.0 fdsrc fd=0 ! h264parse ! rtph264pay pt=96 config-interval=5 ! udpsink port=5001 host=127.0.0.1 > /dev/null
+gst-launch-1.0 udpsrc port=5000 ! h264parse ! avdec_h264 ! autovideosink sync=false
 ```
 
 ```bash
