@@ -25,7 +25,7 @@ sudo /etc/init.d/start_db [status|start|stop]
 or:
 
 ```bash
-service start_db status
+service start_db [status|start|stop]
 ```
 
 ## Logs
