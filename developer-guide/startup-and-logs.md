@@ -30,7 +30,11 @@ service start_db [status|start|stop]
 
 ## Logs
 
-Since it is a service, all logs will be written to the journal. The logs can be viewed using:
+Since it is a service, all logs will be written to the journal. The logs can be viewed using one of the following commands:
+
+```bash
+journalctl -u start_db.service
+```
 
 ```bash
 systemctl | grep start_db | less
