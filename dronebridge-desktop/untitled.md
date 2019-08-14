@@ -6,11 +6,6 @@ description: >-
 
 # Video stream playback
 
-{% hint style="warning" %}
-At the moment none of the presented commands produces video playback with latency &lt; 1.5s  
-Feel free to submit improvements.
-{% endhint %}
-
 {% hint style="info" %}
 The video stream type needs to set to `raw` inside `DroneBridgeConfig.ini` or the receiver \(`video_gnd` module\) must run on the local computer sending the UDP data to `localhost`
 {% endhint %}
