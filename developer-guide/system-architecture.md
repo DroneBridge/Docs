@@ -6,15 +6,5 @@ description: >-
 
 # System Architecture
 
-## Requirements
-
-* python3.6+
-* python3 packages
-  * evdev
-  * pyric
-  * netifaces
-  * sysv\_ipc
-  * pycryptodomex
-
 ![DroneBridge module block diagram showing used message types and protocols](../.gitbook/assets/modules.svg)
 

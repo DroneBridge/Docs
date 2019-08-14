@@ -21,3 +21,9 @@ The DroneBridge USB protocol is used to transfer data between an android device 
 | 3 bytes | 1 byte | 2 bytes | &lt;3072 bytes |
 | bit 0-23 | bit 24-31 | bit 32-47 | bit 48+ |
 
+{% hint style="info" %}
+For payloads bigger than the max size allowed by the USB controller the payload can be split into multiple transmissions. In this case the header is only written once in the first transmission. The following transmissions for the payload must not have a DB-USB-MSG header.
+
+Multiple payloads/headers per USB transmission are not allowed!
+{% endhint %}
+

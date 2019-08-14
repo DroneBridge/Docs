@@ -12,11 +12,11 @@ Use plugins if you need features that only you or a small group of people will b
 
 ## Installation
 
-To install a plugin just download the corresponding `*.zip` file and extract its contents to your `/boot/plugins/` directory. If you are using Windows you can find the folder in the root folder of the mounted DroneBridge patition. It is the one that appears in the explorer when you insert your SD card into the computer.
+To install a plugin just download the corresponding `*.zip` file and extract its contents to your `/DroneBridge/plugins/` directory. If you are using Windows you can find the folder in the root folder of the mounted DroneBridge partition. It is the one that appears in the explorer when you insert your SD card into the computer.
 
 ## Develop your own plugins
 
-It is very easy to develop and include your own scripts/modules/programms for DroneBridge. Just follow the steps below.
+It is very easy to develop and include your own scripts/modules/programs for DroneBridge. Just follow the steps below.
 
 ### Structure
 
