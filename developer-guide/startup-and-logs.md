@@ -30,13 +30,50 @@ service start_db [status|start|stop]
 
 ## Logs
 
+### Local logs when connected via ssh
+
 Since it is a service, all logs will be written to the journal. The logs can be viewed using one of the following commands:
 
 ```bash
-journalctl -u start_db.service
+journalctl -u start_db.service [-f for real-time]
 ```
 
 ```bash
 systemctl | grep start_db | less
+```
+
+### Local logs when access via SD-card
+
+All DroneBridge modules log to syslog. In `/DroneBridge/log/db_modules.log` are all relevant log entries.
+
+### Remote real-time logging
+
+Connect via TCP to the Raspberry Pi on port `1605` and you will receive realtime syslog logs. Forward the messages to your favourite log viewer like [Syslog Watcher](https://syslogwatcher.com/). Or use the provided Python 3 script below to output directly to console.
+
+```python
+import socket
+from time import sleep
+
+UDP_PORT_SYSLOG_SERVER = 1605
+# Raspberry Pi IP when connected to GND station via WiFi: 192.168.2.1
+
+if __name__ == '__main__':
+    sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+    reconnect = True
+    while reconnect:
+        try:
+            sock.connect(('IP-OF-RPi', UDP_PORT_SYSLOG_SERVER))
+            reconnect = False
+        except ConnectionRefusedError:
+            print("Retrying")
+            sleep(1)
+
+    while True:
+        try:
+            data = sock.recv(1024)
+            print(data.decode("utf-8"))
+        except KeyboardInterrupt:
+            break
+    socket.socket.close(sock)
 ```
 
