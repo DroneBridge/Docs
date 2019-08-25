@@ -12,7 +12,7 @@
 The basic setup is exactly the same as with EZ-WifiBroadcast. [**Read the Wiki to find out more**](https://github.com/seeul8er/DroneBridge/wiki/Supported-Hardware) You need:
 
 * **Two Raspberry Pis \(Pi Zero W should work but Pi 2 or 3 are recommended\)**
-* **Two SD cards with min. 4GB storage**
+* **Two SD cards with min. 8GB storage**
 * **A Pi camera \(v1 or v2\)**
 * **Two WiFi sticks \(**[**Supported WiFi adapters**](https://github.com/seeul8er/DroneBridge/wiki/Supported-Hardware#wifi-adapters)**\)**
 
@@ -140,15 +140,16 @@ _Add the line_
 
 ## Connecting an RC transmitter
 
-You can use DroneBridge to control your UAV. Currently the FrSky i6S and all OpenTX based RCs are supported.
+You can use DroneBridge to control your UAV. Currently the FrSky i6S and all OpenTX based RCs are supported. Custom hardware can easily be integrated with just a few lines of code. Please take the OpenTX implementation as a reference.
 
-Steps: 1. Connect the RC via USB to the ground station 2. If possible: Disable the built-in transmitter of the RC to reduce rf noise \(better video\)
+1. Connect the RC via USB to the ground station
+2. If possible: Disable the built-in transmitter of the RC to reduce rf noise
 
 RC commands are sent to the UAV using lower bit rates then the video stream. This means that your RC range should be significantly higher than your video range. That way you are/should be able to control the UAV even when your video feed is already down. As of release v0.5 the RC implementation is not much tested. Please use with caution!
 
-Known bugs:
-
-* If you decide to switch the current RC hardware \(hot swap\) you need to reboot the ground station. Connecting and then disconnecting hardware \#1 followed by connecting hardware \#2 is not possible without reboot. If both RCs run on the same firmware a hot swap is possible without reboot.
+{% hint style="warning" %}
+If you decide to switch the current RC hardware \(hot swap\) you need to reboot the ground station. Connecting and then disconnecting hardware \#1 followed by connecting hardware \#2 is not possible without reboot. If both RCs run on the same firmware a hot swap is possible without reboot.
+{% endhint %}
 
 Advantages of RC via DroneBridge over the transmitter built into the RC:
 
@@ -160,13 +161,13 @@ If you need more than the one UART that the Raspberry Pi offers you can also con
 
 ## Using multiple wifi cards
 
-DroneBridge just as WifiBroadcast allows the use of more than one wifi adapter. Check out the EZ-WifiBroadcast Project for further information.
+{% hint style="info" %}
+As of release v0.6 DroneBridge supports diversity transmission on all built in modules
+{% endhint %}
 
-**Beware: This feature is untested.**
+By default all connected WiFi adapters will be used for transmission. They are set to the same frequency.
 
 In the DroneBridge configuration files you can specify `interface_selection`. Set it to `auto` and one wifi adapter is automatically selected for all modules.
 
-Set `interface_selection` to `manual` and you can specify an interface for every module. So you can e.g. use one wifi stick for video and telemetry and the other one for RC. You can even set them to different frequencies to avoid packet loss and bad video. To change the interface for the control module e.g. set `interface_control=18a6f716a511` where `18a6f716a511` is the MAC address of the interface to be used. To change the frequency you need to edit the wifibroadcast settings. Visit [WifiBroadcast config options](https://github.com/bortek/EZ-WifiBroadcast/wiki/Configuration-options)
-
-PLEASE NOTE: As of release v0.5 DroneBridge modules do not support diversity reception!
+Set `interface_selection` to `manual` and you can specify an interface for every module. So you can e.g. use one wifi stick for video and telemetry and the other one for RC. You can even set them to different frequencies to avoid packet loss and bad video. To change the interface for the control module e.g. set `interface_control=18a6f716a511` where `18a6f716a511` is the MAC address of the interface to be used. To change the frequency you need to edit the settings.
 
