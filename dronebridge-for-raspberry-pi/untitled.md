@@ -15,7 +15,7 @@ As for now: A Linux operating system is very much recommended.
 * Download and install [mwptools](https://github.com/stronnag/mwptools)
 * Run by typing `mwp`
 * Go to Edit --&gt; Preferences
-* Add `udp://192.168.2.1:1607` to `Device List`. Make sure you separate it with a comma!
+* Add `192.168.2.1:1607` to `Device List`. Make sure you separate it with a comma!
 * Save
 * In the upper right corner select the added entry and connect
 
