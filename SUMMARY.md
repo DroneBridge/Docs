@@ -14,7 +14,6 @@
 ## DroneBridge for Android
 
 * [DroneBridge for Android](dronebridge-for-android/dronebridge-for-android.md)
-* [Untitled](dronebridge-for-android/untitled.md)
 
 ## DroneBridge for ESP32
 

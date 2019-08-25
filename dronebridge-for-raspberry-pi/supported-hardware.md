@@ -13,9 +13,16 @@ NOTE: **The ground station must be at least a Pi2. A Pi3 is recommended for the 
 * Pi2B
 * Pi3B
 * Pi3B+ \(experimental with Beta v0.6\)
+* Pi4B \(experimental with Beta v0.6\)
 * Pi Zero
 * Pi Zero W
 * Odroid-W \(Not much tested\)
+
+**Other untestet hardware that should work just fine**
+
+* Odriod-W
+* NVIDIA Jetson \(Nano\) \(works with RPi Camera v2 out of the box\)
+* [Lychee](https://dronee.aero/pages/lychee)
 
 ## Cameras
 
