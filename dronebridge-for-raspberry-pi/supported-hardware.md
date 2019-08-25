@@ -16,13 +16,16 @@ NOTE: **The ground station must be at least a Pi2. A Pi3 is recommended for the 
 * Pi4B \(experimental with Beta v0.6\)
 * Pi Zero
 * Pi Zero W
-* Odroid-W \(Not much tested\)
 
 **Other untestet hardware that should work just fine**
 
-* Odriod-W
-* NVIDIA Jetson \(Nano\) \(works with RPi Camera v2 out of the box\)
+* Odriod-W \(\*\)
+* NVIDIA Jetson \(Nano\) \(works with RPi Camera v2 out of the box\) \(\*\)
 * [Lychee](https://dronee.aero/pages/lychee)
+
+{% hint style="warning" %}
+\(\*\) For this hardware no ready made DroneBridge images are available. You must compile & setup the system by yourself. To get more outout power and to access all features it is necessary to patch the Kernel. See image build chapter.
+{% endhint %}
 
 ## Cameras
 
@@ -30,6 +33,8 @@ A wide angle lens is recommended. There are some V1 models with that.
 
 * Pi camera module V1
 * Pi camera module V2+
+
+Any other camera supported by linux should work as well. However you need to change the start scripts manually to feed the video to the video air module stdin.
 
 ## Wifi Adapters
 
@@ -39,7 +44,7 @@ Following chipsets should work:
 * Ralink RT2070, RT2770, RT2870, RT3070, RT3071, RT3072, RT3370, RT3572, RT5370, RT5372, RT3573, RT5572
 * MediaTek MT7601
 
-Experimental support added in v0.6+. Not much tested, no power patches, might experience a lot of packet loss
+**Experimental support added in v0.6+. Not much tested, no power patches, might experience a lot of packet loss**
 
 * Realtek 8812au \(RTL8812au\)
 
@@ -57,6 +62,8 @@ Experimental support added in v0.6+. Not much tested, no power patches, might ex
 
 ### Recommended combinations
 
+It is a good idea to try and match chipsets on the UAV & GND station.
+
 A single high power card may be on the UAS. On the ground you can decide for yourself. A high power card is not required since the set data rate is much lower. More than one card/antenna is recommended on the ground station.
 
 **For 2.3/2.4/2.6 GHz**
@@ -70,7 +77,13 @@ A single high power card may be on the UAS. On the ground you can decide for you
 * ALFA AWUS1900 - good ground station
 * ALFA AWUS036ACH
 
+For higher output power & range a high quality low noise amplifier \(LNA\) may be added to the antenna output of the cards. This may or may not improve the systems performance. Make sure you stay within the local regulations \(EIRP\).
+
 ### Notes
+
+{% hint style="info" %}
+### This sections needs some work
+{% endhint %}
 
 TX-Power as reported by some users & the internet.
 
