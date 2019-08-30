@@ -18,7 +18,7 @@ With the following steps you should be able to produce a working image yourself.
 4. Create a new patition named "DroneBridge"  & format it with exFAT. Add the new patition to fstab
 5. Adjust the resize scripts inside /etc/init.d/
 6. Add `/lib/udev/rules.d/51-android.rules`to enable USBBridge
-7. Install the following python packages: `apt install python3.7 python3-pip ntp python3-psutil python3-serial python3-sysv-ipc python3-netifaces python3-rpi.gpio python3-evdev joystick`
+7. Install the following python packages: `apt install python3.7 python3-pip ntp python3-psutil python3-serial python3-sysv-ipc python3-netifaces python3-rpi.gpio python3-evdev joystick hostapd`
 8. `sudo pip3 install pyric pycryptodomex`
 9. Install the following packages/libs: `cmake wiringPi udhcpd`[`openvg`](https://github.com/ajstarks/openvg)`libusb-1.0-0.dev libpcap-dev exfat-fuse exfat-utils dos2unix pump`  
 10. Compile Raspberry Pi media libs  
