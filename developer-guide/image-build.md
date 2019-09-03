@@ -30,9 +30,10 @@ With the following steps you should be able to produce a working image yourself.
     ```
 
 11. Deactivate the cron service and all other services that you do not need
-12. Clone the DroneBridge for Raspberry Pi git to `/home/pi`
-13. Compile the DroneBridge modules using `cmake . && make`
-14. Copy the `start_db` file to `/etc/init.d/`
+12. Add following lines to `/etc/dhcpcd.conf`to make the hotpot work. For the hotspot we use udhcpd `interface wifihotspot0     nohook wpa_supplicant`
+13. Clone the DroneBridge for Raspberry Pi git to `/home/pi`
+14. Compile the DroneBridge modules using `cmake . && make`
+15. Copy the `start_db` file to `/etc/init.d/`
 
     ```bash
     sudo cp /home/pi/DroneBridge/start_db /etc/init.d/start_db
@@ -40,13 +41,13 @@ With the following steps you should be able to produce a working image yourself.
     sudo update-rc.d start_db defaults
     ```
 
-15. Add the DroneBridge syslog server to `/etc/init.d/rsyslog` script or replace the file with the provided `rsyslog` service file
-16. Edit logrotation to manage `DroneBridge/log/db_modules.log`
-17. Copy the `DroneBridgeConfig.ini`, `osdconfig.txt`, `apconfig.txt` and plugins folder to `/DroneBridge`
-18. Create a folder named `/DroneBridge/osdfonts` and place the fonts you want to use for osd inside it. Do not forget about the `osdicons.ttf`
-19. Create a symbolic link from `/DroneBridge/osdconfig.txt` to `/home/pi/DroneBridge/osd/osdconfig.h`
-20. Add a line to `init.d/raspbi-config` to start the DroneBridge splash screen `/home/pi/dronebridge/splash`
-21. Connect the WiFi adapters and check the EIRP of your system.
+16. Add the DroneBridge syslog server to `/etc/init.d/rsyslog` script or replace the file with the provided `rsyslog` service file
+17. Edit logrotation to manage `DroneBridge/log/db_modules.log`
+18. Copy the `DroneBridgeConfig.ini`, `osdconfig.txt`, `apconfig.txt` and plugins folder to `/DroneBridge`
+19. Create a folder named `/DroneBridge/osdfonts` and place the fonts you want to use for osd inside it. Do not forget about the `osdicons.ttf`
+20. Create a symbolic link from `/DroneBridge/osdconfig.txt` to `/home/pi/DroneBridge/osd/osdconfig.h`
+21. Add a line to `init.d/raspbi-config` to start the DroneBridge splash screen `/home/pi/dronebridge/splash`
+22. Connect the WiFi adapters and check the EIRP of your system.
 
 
 
