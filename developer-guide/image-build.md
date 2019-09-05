@@ -30,7 +30,7 @@ With the following steps you should be able to produce a working image yourself.
     ```
 
 11. Deactivate the cron service and all other services that you do not need
-12. Add following lines to `/etc/dhcpcd.conf`to make the hotpot work. For the hotspot we use udhcpd `interface wifihotspot0     nohook wpa_supplicant`
+12. Add following lines to `/etc/dhcpcd.conf`to make the hotpot work. For the hotspot we use udhcpd `denyinterfaces wifihotspot0 denyinterfaces wlan0`
 13. Clone the DroneBridge for Raspberry Pi git to `/home/pi`
 14. Compile the DroneBridge modules using `cmake . && make`
 15. Copy the `start_db` file to `/etc/init.d/`
