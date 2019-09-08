@@ -36,4 +36,5 @@
 * [USB message](developer-guide/usb-message.md)
 * [Plugins](developer-guide/plugins.md)
 * [Image Build](developer-guide/image-build.md)
+* [DroneBridge lib example usage](developer-guide/dronebridge-lib-example-usage.md)
 
