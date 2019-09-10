@@ -40,7 +40,6 @@ Total length of the header is 10 bytes. Allows frames to be injected by most/all
       <td style="text-align:center">
         <p>RTS frame: <code>0xb4 0x00 0x00 0x00</code>
         </p>
-        <p>or</p>
         <p>Data frame: <code>0x08 0x00 0x00 0x00</code>
         </p>
       </td>
@@ -107,6 +106,14 @@ If **DroneBridge compatibility mode** is enabled the **DB raw header gets extend
 {% endhint %}
 
 ## Payload
+
+{% hint style="danger" %}
+Minimal payload length depends on used frame type \(tested with AR9271\):
+
+* Data frame: minimal payload length: **14 bytes**
+* RTS frame: minimal payload length: **6 bytes**
+* Beacon frame: minimal payload length: **14 bytes**
+{% endhint %}
 
 Can be anything. Just make sure the transmission bit rate is set appropriate. In the case of DroneBridge the payload can be on of the following things:
 
