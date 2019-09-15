@@ -15,6 +15,7 @@ description: Milestones for past and upcoming releases
 
 * **Added USBBridge: Send data directly via USB using Android Open Accessory \(AOA\) protocol**
 * **Move to TCP connection on GND to GCS except for video \(removed IP checker\)**
+* **Professional Log & Trace support of all modules using syslog and TCP log msg. forwarder**
 * **Plugin system so users can easily add their own scripts and modules to DroneBridge. Plugins can be easily installed on every new release so users do not need to modify the newly released image to get their personal code running again.**
 * **Compete rewrite of all startup code. New startup system based on service**
 * **All modules including video use DroneBridge libraries and support diversity**
@@ -23,13 +24,15 @@ description: Milestones for past and upcoming releases
 * **Support for 12 channel MAVLink output via DroneBridge RC.** Or 14ch MAVLink when not using DroneBridge RC \(not recommended\)
 * **Control module on UAV side write received RC channel values to shared memory so that plugins can access the channel values**
 * **Control module reports CPU usage and temp of AirPi to ground station** in the same message as the RC RSSI.
+* Log telemetry to file on GND station
+* New folder structure
 * Support for new DroneBridge for Android release
 * Upgrade to latest Kernel and publish source on [RPiKernel repository](https://github.com/DroneBridge/RPiKernel)
 * Allow for RC overrides on DroneBridge control module. Override messages are received by status module and written to corresponding shared memory. Can be used for head tracking etc.
 * \(**WIP**\) Add support for RTL8812au cards
 * Support for Raspberry Pi 3B+
 * Support for Raspberry Pi 4 \(untested\)
-* Remove all telemetry/MSP/MAVLink related stuff from the image that comes with WBC
+* Remove almost all WBC legacy code
 
 ## Beta v0.5 \(released\)
 
