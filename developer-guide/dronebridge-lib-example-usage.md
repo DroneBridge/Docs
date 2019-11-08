@@ -18,8 +18,8 @@ Link to the DroneBridge class. All examples can also be found inside the git rep
 
 #### Sending
 
-{% code-tabs %}
-{% code-tabs-item title="example\_sender.py" %}
+{% tabs %}
+{% tab title="example\_sender.py" %}
 ```python
 #
 #   This file is part of DroneBridge: https://github.com/seeul8er/DroneBridge
@@ -68,13 +68,13 @@ for i in range(10000):
 
 print("\nDone sending!")
 ```
-{% endcode-tabs-item %}
-{% endcode-tabs %}
+{% endtab %}
+{% endtabs %}
 
 #### Receiving
 
-{% code-tabs %}
-{% code-tabs-item title="example\_receiver.py" %}
+{% tabs %}
+{% tab title="example\_receiver.py" %}
 ```python
 #
 #   This file is part of DroneBridge: https://github.com/seeul8er/DroneBridge
@@ -119,15 +119,15 @@ for i in range(100):
         print("Received: " + received_payload.decode())
 
 ```
-{% endcode-tabs-item %}
-{% endcode-tabs %}
+{% endtab %}
+{% endtabs %}
 
 ### C/C++
 
 The common library must be linked during compilation. An example `CMakeLists.txt` is given blow. Place the file inside a folder of the root directory of the DroneBridge git project and it should compile right away.
 
-{% code-tabs %}
-{% code-tabs-item title="CMakeLists.txt" %}
+{% tabs %}
+{% tab title="CMakeLists.txt" %}
 ```c
 cmake_minimum_required(VERSION 3.5)
 project(example)
@@ -144,13 +144,13 @@ target_link_libraries(send db_common)
 add_executable(receive ${SRC_FILES_RECV})
 target_link_libraries(receive db_common)
 ```
-{% endcode-tabs-item %}
-{% endcode-tabs %}
+{% endtab %}
+{% endtabs %}
 
 #### Sending
 
-{% code-tabs %}
-{% code-tabs-item title="send\_main.c" %}
+{% tabs %}
+{% tab title="send\_main.c" %}
 ```c
 /*
  *   This file is part of DroneBridge: https://github.com/seeul8er/DroneBridge
@@ -217,13 +217,13 @@ int main(int argc, char *argv[]) {
     printf("Terminated");
 }
 ```
-{% endcode-tabs-item %}
-{% endcode-tabs %}
+{% endtab %}
+{% endtabs %}
 
 #### Receiving
 
-{% code-tabs %}
-{% code-tabs-item title="receive\_main.c" %}
+{% tabs %}
+{% tab title="receive\_main.c" %}
 ```c
 /*
  *   This file is part of DroneBridge: https://github.com/seeul8er/DroneBridge
@@ -305,6 +305,6 @@ int main(int argc, char *argv[]) {
 }
 
 ```
-{% endcode-tabs-item %}
-{% endcode-tabs %}
+{% endtab %}
+{% endtabs %}
 
