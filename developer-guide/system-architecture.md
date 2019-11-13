@@ -4,6 +4,12 @@ description: Description of the different modules and how they communicate with 
 
 # System Architecture
 
+### Startup Sequence
+
+All DroneBridge applications are started by the `start_db.service`. Most of the startup scripts are located inside the `startup` folder. Like any service it can be started, stopped & re-started. During stopping or restarting there might still be some bugs. 
+
+![Startup Sequence of DroneBridge for Raspberry Pi](../.gitbook/assets/db_concept-start-up.svg)
+
 ### Release v0.6
 
 Following Block Diagram shows how the different DroneBridge modules communicate with each other on the network & long range link. Some modules that do not have complex communication paths are not displayed \(SysLogServer, OSD\). Same goes for communication via shared memory.
