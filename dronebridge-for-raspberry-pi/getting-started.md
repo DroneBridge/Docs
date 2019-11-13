@@ -1,3 +1,7 @@
+---
+description: Guide on setting up the DroneBridge system
+---
+
 # Getting started
 
 ## Content
@@ -7,143 +11,75 @@
 * [MAVLink based flight controller](https://github.com/seeul8er/DroneBridge/wiki/Setup-Guide/#setup-mavlink-based-flight-controller)
 * [Connecting an RC transmitter](https://github.com/seeul8er/DroneBridge/wiki/Setup-Guide/#connecting-a-rc-transmitter)
 
-## Basic hardware & setup
+## Basic hardware & Installation
 
-The basic setup is exactly the same as with EZ-WifiBroadcast. [**Read the Wiki to find out more**](https://github.com/seeul8er/DroneBridge/wiki/Supported-Hardware) You need:
+Hardware to GND & AIR side:
 
 * **Two Raspberry Pis \(Pi Zero W should work but Pi 2 or 3 are recommended\)**
-* **Two SD cards with min. 8GB storage**
-* **A Pi camera \(v1 or v2\)**
+* **Two SD cards with min. 4GB storage**
+* **A Pi camera module \(v1 or v2\)**
 * **Two WiFi sticks \(**[**Supported WiFi adapters**](https://github.com/seeul8er/DroneBridge/wiki/Supported-Hardware#wifi-adapters)**\)**
+* &gt;2A 5V power supply/BEC
 
-Just write the image onto the SD cards using e.g. [Win32 Disk Imager \(Windows\)](https://sourceforge.net/projects/win32diskimager/) or your favourite Linux tool \(e.g. dd or [some GUI tools](https://www.fossmint.com/3-best-gui-enabled-usb-image-writer-tools-on-linux/)\) Connect the Pi camera module to the raspberry pi that will be on the drone. Make sure your power supply for both Pis provides min. 2A current and stable 5V!
+Write the image onto the SD cards using e.g. [Win32 Disk Imager \(Windows\)](https://sourceforge.net/projects/win32diskimager/) or your favourite Linux tool \(e.g. dd or [some GUI tools](https://www.fossmint.com/3-best-gui-enabled-usb-image-writer-tools-on-linux/)\). Connect the Pi camera module to the raspberry pi that will be on the UAV. Make sure your power supply for both Pis provides min. 2A current and stable 5V!
 
-**For further details please read the instructions given here:** [**WifiBroadcast setup and installation guide**](https://github.com/bortek/EZ-WifiBroadcast/wiki#installation--setup)
+## Wiring 
 
-### Setup: MultiWii based flight controller
+First the FCs UART must be wired to the AirPis UART. **The UART of the Raspberry Pi is 3.3V only!** In case your FC uses 5V on the UART you will need a logic level converter.
 
-**Supported flight controllers run iNAV \(recommended\) or MAVLink based systems** **The default setup is for iNAV which uses MSPv2**
+The Raspberry Pis UART is on GPIO 14 \(TX\) & 15 \(RX\). Connect the TX to RX and vise versa. There are many tutorials on how to connect a UART.
 
-With MultiWii based flight controllers you should use the multi port configuration of DroneBridge. This means that you have two serial connections between flight controller and AirPi. One is for LTM telemetry & the other one for MSP messages \(missions, RC etc.\). You can also use only one serial connection with LTM if you only need telemetry.
+{% hint style="info" %}
+If you want to use RC over DroneBridge it is recommended to connect the Pi to the FC with an additional UART connection. This connection will transmit the SUMD RC messages to the FC. To get a second UART on the Pi you will need a FTDI adapter connected via USB on the AirPi.
+{% endhint %}
 
-#### Hardware setup
+## Configuration
 
-* The Raspberry Pi has only one **3.3V UART** port. You connect this one to an UART on your FC **which also runs on 3.3V**. Otherwise use a regulator. _\(serial connection \#1 for telemetry\)_
-* Most F3/F4/F7 flight controllers come with a micro USB connector which is by default configured as a MSP port to change settings via the configurator. Connect the FC to your Pi via a micro USB cable. _\(serial connection \#2 for MSP\)_
-* **The FC usually gets powered by USB so do not connect any other power source to the FC.**
+DroneBridge is pre-configured to work out of the box with MAVLink based systems like the Pixhawk or Ardupilot. Then configuration options must be matched. This can be done via DroneBridge for Android or by manually editing the configuration files.
 
-**Example setup using a Raspberry Pi 3 on the drone side**
+In this guide we will focus on the configuration files since not all functions are accessible via the DroneBridge for Android app. 
 
-Connect AirPi UART, which is _Pin 06_ \(Ground\), _Pin08_ \(GPIO14\), _Pin 10_ \(GPIO15\)\) to FC UART **\(has to be 3.3V or use regulator\)** Connect TX to RX, RX to TX and Ground to Ground. Setup telemetry over this UART on FC.
+The configuration files are located on the SD card at `/DroneBridge/DroneBridgeConfig.ini` All settings in the `COMMON` section must match on AIR & GND!
 
-![pi 3 header](https://images.computerfrage.net/media/fragen/bilder/raspberry-pi-model-b-vergleichbare-pins/0_original.jpg?v=1408441560000)
+{% hint style="info" %}
+Configuration files for the OSD are located at `/DroneBridge/osdconfig.txt`
+{% endhint %}
 
-#### DroneBridge configuration
+### MAVLink based flight controller
 
-By default the configuration of DroneBridge should work with iNAV.
+MAVLink messages are read by the control module on the AirPi and sent to the proxy module on the GndPi. Following settings must be set inside the configuration files:
 
-**DroneBridgeGround.ini**
+On the GndPi inside the OSD configuration file:
 
-```text
-en_control=Y  
-en_comm=Y
-```
-
-**DroneBridgeAir.ini**
-
-```text
-en_tel=Y  
-en_comm=Y  
-en_control=Y
-# serial interface for LTM & telemetry module
-serial_int_tel=/dev/serial0
-# auto|ltm|mavlink
-tel_proto=auto
-# serial interface for MSP & control module
-serial_int_cont=/dev/serial1
-# baud rate set on MSP interface
-baud_control=115200
-# 2 = MSPv2
-serial_prot=2
-# optional SUMD RC output
-enable_sumd_rc=N  
-serial_int_sumd=/dev/ttyUSB0
-```
-
-**osdconfig.txt**
-
-_Remove the line \(if it exists - somewhere near the top\)_
-
-```text
+```c
 #define MAVLINK
 ```
 
-_Add the line_
+On the AirPi inside the`[AIR]` section:
 
-```text
-#define LTM
-```
-
-### Setup: MAVLink based flight controller
-
-Since DroneBridge Beta v0.3 the MAVLink protocol is supported by all modules \(control, telemetry, app\)
-
-#### Hardware setup
-
-* Connect your Raspberry Pi 3,3V UART to the `TELEM1` or `TELEM2` port of your flight controller.
-* **You do not need to connect the red wire \(5V\) if you power your Pixhawk through some other device!**
-
-![connection pi pixhawk](https://discuss.ardupilot.org/uploads/default/original/2X/f/f837b6b1116ec02c3490e34035c2f09da5a62936.jpg)
-
-#### DroneBridge configuration
-
-With MAVLink based flight controllers it is recommended that you use the single port config of DroneBridge with a transparent pass through. This means that only one serial connection exists between FC and AirPi. All data over this serial port is handled by the control module on the AirPi. The control module will send packets of 128 bytes each to the telemetry module on the GroundPi. Do not use this option if you do not have a constant stream of data!
-
-**DroneBridgeGround.ini**
-
-```text
+```bash
+[AIR]
 en_control=Y
-en_comm=Y
+serial_int_cont=/dev/serial1  # serial port connected to FC
+baud_control=115200 # baud rate of UART/serial port
+serial_prot=5  # for MAVLink transparent
+pass_through_packet_size=64
 ```
 
-**DronebridgeAir.ini**
+### iNAV
 
-```text
-# disable telemetry module (single port config)
-en_tel=N
-en_comm=Y
-en_control=Y
-# Serial interface of AirPi-UART connected to FC
-serial_int_cont=/dev/serial0
-# The baud rate the FC set on TELEM1
-baud_control=115200
-# Serial protocol 5 = transparent pass through
-serial_prot=5
-# Set to Y if you have a FTDI adapter connected and want to use RC over DroneBridge
-enable_sumd_rc=N  
-serial_int_sumd=/dev/ttyUSB0
-```
+{% hint style="danger" %}
+Support for MultiWii flight controllers is discontinued by the base project. DroneBridge will continue to support bi-directional MSPv1 & MSPv2 as part of a legacy support.
+{% endhint %}
 
-**osdconfig.txt**
 
-_Remove the line \(if it exists - somewhere near the top\)_
 
-```text
-#define LTM
-```
-
-_Add the line_
-
-```text
-#define MAVLINK
-```
-
-## Connecting an RC transmitter
+### Connecting an RC transmitter
 
 You can use DroneBridge to control your UAV. Currently the FrSky i6S and all OpenTX based RCs are supported. Custom hardware can easily be integrated with just a few lines of code. Please take the OpenTX implementation as a reference.
 
 1. Connect the RC via USB to the ground station
-2. If possible: Disable the built-in transmitter of the RC to reduce rf noise
+2. If possible: Disable the built-in transmitter of the RC to reduce RF noise
 
 RC commands are sent to the UAV using lower bit rates then the video stream. This means that your RC range should be significantly higher than your video range. That way you are/should be able to control the UAV even when your video feed is already down. As of release v0.5 the RC implementation is not much tested. Please use with caution!
 

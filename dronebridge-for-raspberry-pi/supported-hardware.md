@@ -82,7 +82,7 @@ For higher output power & range a high quality low noise amplifier \(LNA\) may b
 ### Notes
 
 {% hint style="info" %}
-### This sections needs some work
+This sections needs some work
 {% endhint %}
 
 TX-Power as reported by some users & the internet.
