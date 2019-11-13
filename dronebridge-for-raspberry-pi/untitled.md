@@ -1,3 +1,7 @@
+---
+description: GCS for iNAV systems
+---
+
 # mwptools
 
 ## What is mwptools?
@@ -6,9 +10,7 @@ With mwptools one can create and upload missions to INAV based flight controller
 
 ## How to use it with DroneBridge?
 
-Future releases will have mwptools integrated into the DroneBridge image.
-
-As for now: A Linux operating system is very much recommended.
+A Linux operating system required
 
 * Connect to the DroneBridge WiFi access point \(make sure no other devices are connected at the same time\)
 * Make sure to read the [documentation](https://github.com/stronnag/mwptools/tree/master/docs) `mwptools.pdf` `ubuntu-dps.txt`

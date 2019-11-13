@@ -37,4 +37,5 @@
 * [Plugins](developer-guide/plugins.md)
 * [Image Build](developer-guide/image-build.md)
 * [DroneBridge lib example usage](developer-guide/dronebridge-lib-example-usage.md)
+* [Notes About Injection](developer-guide/notes-about-injection.md)
 
