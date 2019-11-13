@@ -69,10 +69,26 @@ pass_through_packet_size=64
 ### iNAV
 
 {% hint style="danger" %}
-Support for MultiWii flight controllers is discontinued by the base project. DroneBridge will continue to support bi-directional MSPv1 & MSPv2 as part of a legacy support.
+Support for MultiWii based flight controllers is discontinued by the base project. DroneBridge will continue to support bi-directional MSPv1 & MSPv2 as part of a legacy support.
 {% endhint %}
 
+On the GndPi inside the OSD configuration file:
 
+```c
+#define LTM
+```
+
+On the AirPi inside the`[AIR]` section:
+
+```bash
+[AIR]
+en_control=Y
+serial_int_cont=/dev/serial1  # serial port connected to FC
+baud_control=115200 # baud rate of UART/serial port
+serial_prot=5  # for MSP & LTM transparent at the same time
+# serial_prot=2 for MSP only (parsed, no OSD telemetry)
+pass_through_packet_size=32
+```
 
 ### Connecting an RC transmitter
 
