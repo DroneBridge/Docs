@@ -4,13 +4,21 @@ description: Description of the different modules and how they communicate with 
 
 # System Architecture
 
+### DroneBridge Common Library
+
+The common library provides core functions for all DroneBridge modules. This shared code base implements the DroneBridge raw protocol and therefor handles the setup of the required sockets based on user input. The library provides convenience functions for sending & receiving data using the raw protocol, can encrypt payloads \(AES + EAX, Python only for now\), and defines structures to be used for inter-process communication between major modules.
+
+![DroneBridge common library concept](../.gitbook/assets/db_concept-db-library.svg)
+
+Information on how to use the library can be found in the [examples chapter](dronebridge-lib-example-usage.md).
+
 ### Startup Sequence
 
 All DroneBridge applications are started by the `start_db.service`. Most of the startup scripts are located inside the `startup` folder. Like any service it can be started, stopped & re-started. During stopping or restarting there might still be some bugs. 
 
 ![Startup Sequence of DroneBridge for Raspberry Pi](../.gitbook/assets/db_concept-start-up.svg)
 
-### Release v0.6
+### Module architecture of release v0.6
 
 Following Block Diagram shows how the different DroneBridge modules communicate with each other on the network & long range link. Some modules that do not have complex communication paths are not displayed \(SysLogServer, OSD\). Same goes for communication via shared memory.
 

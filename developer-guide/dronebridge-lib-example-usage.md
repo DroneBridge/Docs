@@ -18,8 +18,7 @@ Link to the DroneBridge class. All examples can also be found inside the git rep
 
 #### Sending
 
-{% tabs %}
-{% tab title="example\_sender.py" %}
+{% code title="example\_sender.py" %}
 ```python
 #
 #   This file is part of DroneBridge: https://github.com/seeul8er/DroneBridge
@@ -68,13 +67,11 @@ for i in range(10000):
 
 print("\nDone sending!")
 ```
-{% endtab %}
-{% endtabs %}
+{% endcode %}
 
 #### Receiving
 
-{% tabs %}
-{% tab title="example\_receiver.py" %}
+{% code title="example\_receiver.py" %}
 ```python
 #
 #   This file is part of DroneBridge: https://github.com/seeul8er/DroneBridge
@@ -119,15 +116,13 @@ for i in range(100):
         print("Received: " + received_payload.decode())
 
 ```
-{% endtab %}
-{% endtabs %}
+{% endcode %}
 
 ### C/C++
 
 The common library must be linked during compilation. An example `CMakeLists.txt` is given blow. Place the file inside a folder of the root directory of the DroneBridge git project and it should compile right away.
 
-{% tabs %}
-{% tab title="CMakeLists.txt" %}
+{% code title="CMakeLists.txt" %}
 ```c
 cmake_minimum_required(VERSION 3.5)
 project(example)
@@ -144,13 +139,11 @@ target_link_libraries(send db_common)
 add_executable(receive ${SRC_FILES_RECV})
 target_link_libraries(receive db_common)
 ```
-{% endtab %}
-{% endtabs %}
+{% endcode %}
 
 #### Sending
 
-{% tabs %}
-{% tab title="send\_main.c" %}
+{% code title="send\_main.c" %}
 ```c
 /*
  *   This file is part of DroneBridge: https://github.com/seeul8er/DroneBridge
@@ -217,13 +210,11 @@ int main(int argc, char *argv[]) {
     printf("Terminated");
 }
 ```
-{% endtab %}
-{% endtabs %}
+{% endcode %}
 
 #### Receiving
 
-{% tabs %}
-{% tab title="receive\_main.c" %}
+{% code title="receive\_main.c" %}
 ```c
 /*
  *   This file is part of DroneBridge: https://github.com/seeul8er/DroneBridge
@@ -305,6 +296,5 @@ int main(int argc, char *argv[]) {
 }
 
 ```
-{% endtab %}
-{% endtabs %}
+{% endcode %}
 

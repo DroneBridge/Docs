@@ -11,8 +11,7 @@ A great chip with open source drivers & **firmware**. However it got some very s
 
 _The final data rate used by the system for sending is not visible in Wireshark on the sending interface_. This means that the firmware decides about the final data rate. To verify the transmission rate a second adapter is required. Rates can be set using following script:
 
-{% tabs %}
-{% tab title="enable\_monitor" %}
+{% code title="enable\_monitor" %}
 ```bash
 #!/bin/bash
 declare -a wifi_adps=("wlx00c0ca973410" "wlxfgdfgd513d1fg51")
@@ -36,8 +35,7 @@ done
 
 iwconfigc
 ```
-{% endtab %}
-{% endtabs %}
+{% endcode %}
 
 
 

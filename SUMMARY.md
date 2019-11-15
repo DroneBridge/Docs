@@ -7,6 +7,7 @@
 * [Release Notes](dronebridge-for-raspberry-pi/release-notes.md)
 * [Getting started](dronebridge-for-raspberry-pi/getting-started.md)
 * [Supported hardware](dronebridge-for-raspberry-pi/supported-hardware.md)
+* [Standard Modules](dronebridge-for-raspberry-pi/standard-modules.md)
 * [Milestones](dronebridge-for-raspberry-pi/milestones.md)
 * [mwptools](dronebridge-for-raspberry-pi/untitled.md)
 * [Adjusting TX Power & EIRP](dronebridge-for-raspberry-pi/adjusting-tx-power-and-eirp.md)

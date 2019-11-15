@@ -45,8 +45,7 @@ The `settings.ini` contains the following information:
 
 **Example file:**
 
-{% tabs %}
-{% tab title="settings.ini" %}
+{% code title="settings.ini" %}
 ```elixir
 [About]
 name="ExamplePlugin"
@@ -60,8 +59,7 @@ startup_comm="python3 your_script.py -ground"
 [uav]
 startup_comm="python3 your_script.py -uav"
 ```
-{% endtab %}
-{% endtabs %}
+{% endcode %}
 
 **Variable types** All values must be Strings except the version. Version must be an Integer.
 
