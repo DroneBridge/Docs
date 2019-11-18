@@ -1,6 +1,7 @@
 # Table of contents
 
 * [Introduction](README.md)
+* [Comparison](comparison.md)
 
 ## DroneBridge for Raspberry Pi
 
