@@ -25,7 +25,48 @@ This protocol is based on JSON which can be transported using the DroneBridge Ra
 
 ## Defined Messages
 
-### Settings request
+### Parameter Request
+
+Request all possible settings parameters that can be changed via a settings request. This does not request the parameter values.
+
+```javascript
+{ "destination": 1, 
+  "type": "settingsparamreq",
+  "request": "db",
+  "id": 1234,
+  "parameters": [ "COMMON", "GROUND", "AIR" ]
+}
+```
+
+### Parameter Response
+
+Return all settings parameters within the requested sections.
+
+```javascript
+
+{ "destination": 4,
+  "type": "settingsparamres",
+  "response": "db",
+  "origin": "drone",
+  "id": 1234,
+  "parameters": {
+    "COMMON": [
+      "parameter_name1",
+      "parameter_name2"
+    ],
+    "GROUND": [
+      "parameter_name1",
+      "parameter_name2"]
+      ,
+    "AIR": [
+      "parameter_name1",
+      "parameter_name2"
+    ]
+  }
+}
+```
+
+### Settings Request
 
  Request of specific sections and keys of the config file. Destination can be `1, 2, 5`
 
@@ -42,7 +83,7 @@ This protocol is based on JSON which can be transported using the DroneBridge Ra
 }
 ```
 
-### Settings response
+### Settings Response
 
 ```javascript
 {
@@ -68,7 +109,7 @@ This protocol is based on JSON which can be transported using the DroneBridge Ra
 }
 ```
 
-### Settings change request
+### Settings Change Request
 
  Change specific settings of the specified sections. Destination can be `1, 2 or 5`
 
@@ -95,7 +136,7 @@ This protocol is based on JSON which can be transported using the DroneBridge Ra
 }
 ```
 
-### Settings change success message
+### Settings Change Success Message
 
 On successful settings change.
 
@@ -107,7 +148,7 @@ On successful settings change.
 }
 ```
 
-### System identification request
+### System Identification Request
 
 ```javascript
 { "destination": 1, 
@@ -116,7 +157,7 @@ On successful settings change.
 }
 ```
 
-### System identification response
+### System Identification Response
 
 ```javascript
 { "destination": 4,
@@ -140,7 +181,7 @@ This is no real calibration. "jscal" is told to use the full range for each axis
 }
 ```
 
-### Ping request
+### Ping Request
 
 ```javascript
 { "destination": 2, 
@@ -149,7 +190,7 @@ This is no real calibration. "jscal" is told to use the full range for each axis
 }
 ```
 
-### Ping response
+### Ping Response
 
 ```javascript
 { "destination": 4, 
@@ -159,7 +200,7 @@ This is no real calibration. "jscal" is told to use the full range for each axis
 }
 ```
 
-### Error response
+### Error Response
 
 ```javascript
 { "destination": 4, 
@@ -170,7 +211,7 @@ This is no real calibration. "jscal" is told to use the full range for each axis
 }
 ```
 
-### ACK response
+### ACK Response
 
 Universal acknowledgement message. May be returned by any kind of request/change message.
 

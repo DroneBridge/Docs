@@ -152,6 +152,7 @@ Runs on the ground station computer.
    option multiple times (-n inter1 -n inter2 -n interx)
 -c [communication id] Choose a number from 0-255. Same on ground station and UAV!
 -o [Y|N] Write telemetry to /root/telemetryfifo1 FIFO (default: Y)
+-l Path to store the telemetry log files. Default /DroneBridge/log/
 -b bit rate in Mbps [1|2|5|6|9|11|12|18|24|36|48|54]
    (bitrate option only supported with Ralink chipsets)
 -t [1|2] DroneBridge v2 raw protocol packet/frame type: 
