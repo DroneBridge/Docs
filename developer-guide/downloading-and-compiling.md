@@ -34,7 +34,9 @@ To compile enter the root directory \(DroneBridge/\) and run:
 ```bash
 cmake .
 make
+cd communication/DroneBridgeLib
+sudo pip install .
 ```
 
-
+This will compile all C modules and install the DroneBridge Python Common library
 
