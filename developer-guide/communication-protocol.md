@@ -164,7 +164,7 @@ On successful settings change.
   "type": "system_ident_rsp",
   "origin": "groundstation",
   "HID": 0,
-  "FID": 101,
+  "FID": "1.6.1",
   "id": 4321
 }
 ```
@@ -313,7 +313,7 @@ Universal acknowledgement message. May be returned by any kind of request/change
       <td style="text-align:left"> <b>FID</b>
       </td>
       <td style="text-align:left">Firmware version</td>
-      <td style="text-align:left">divided by 100 to get exact formatting (101 = firmware version v1.10)</td>
+      <td style="text-align:left">Software version number of the release</td>
     </tr>
   </tbody>
 </table>## CRC32
