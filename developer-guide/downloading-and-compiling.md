@@ -17,6 +17,11 @@ description: How to setup and compile DroneBridge modules
 [https://github.com/paeryn/openvg/tree/screenshot](https://github.com/paeryn/openvg/tree/screenshot)  
 OSD is only supported on Raspberry Pi platform
 
+## Default SSH login data: 
+
+User: **pi**  
+Password: **raspberry**
+
 ## Download and compile from git
 
 Open the shell and type:
