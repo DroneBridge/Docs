@@ -29,3 +29,17 @@ Because the EZ-WifiBroadcast was missing a clear project structure, was more or 
 
 Because of some disagreements regarding the future and technical development of the project, parts of the EZ-WifiBroadcast community forked OpenHD. OpenHD is built around an automated image builder.
 
+## What to choose?
+
+{% hint style="warning" %}
+In short: The answer will be DroneBridge for almost all cases \(You are inside the DroneBridge Wiki. What did you expect!? :D\). In the special case that you only need a basic \(continuous\) data stream from one device to another and that requires FEC, it is best to choose svpcom WifiBroadcast. It is fast to setup and will get the job done just fine.
+{% endhint %}
+
+**Why DroneBridge then?** 
+
+Compared to the other projects it was developed with a system design approach in mind from the very first moment on. There is a common software library that implements all core functions like sending & receiving data. This makes is very convenient and easy to develop the system. 
+
+DroneBridge also enables users to write their own plugins. Plugins are standalone programs that get started right after boot. They can be just as powerful and performant as the core modules. You can write your own plugin in less than 10 minutes making full use of the DroneBridge common library. DroneBridge modules and the code base are very well documented. It is free of experimental scripts and follows the directive to be a general communication link. Implementations for custom hardware options \(camera switcher, GPIO in/output etc.\) can be implemented via the plugins. This means the base image is easy to understand and does not confuse new users with lots of badly documented extras that only a few people really use. 
+
+Besides that DroneBridge also offers professional logging support, support for wired connections to all android devices \(No USB tethering, no SIM required\) and many more things. In fact it was the first project to introduce a custom app that integrated convenient setting changes, telemetry and low latency video display.
+
