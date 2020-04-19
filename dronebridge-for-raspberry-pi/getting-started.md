@@ -16,7 +16,7 @@ description: Guide on setting up the DroneBridge system
 Hardware to GND & AIR side:
 
 * **Two Raspberry Pis \(Pi Zero W should work but Pi 2 or 3 are recommended\)**
-* **Two SD cards with min. 4GB storage**
+* **Two SD cards with min. 16GB storage**
 * **A Pi camera module \(v1 or v2\)**
 * **Two WiFi sticks \(**[**Supported WiFi adapters**](https://github.com/seeul8er/DroneBridge/wiki/Supported-Hardware#wifi-adapters)**\)**
 * &gt;2A 5V power supply/BEC
