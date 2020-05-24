@@ -11,7 +11,7 @@ description: >-
 All modules can be started manually but it is preferred to use `start_db_modules.py` script. On DroneBridge for Raspberry Pi the startup of modules is done by the `start_db` service. The source code sits inside the root directory of the repository. The service can be updated/registered using:
 
 ```bash
-cp /home/pi/DroneBridge/start_db /etc/init.d/start_db
+sudo cp /home/pi/DroneBridge/start_db /etc/init.d/start_db
 sudo update-rc.d -f start_db remove
 sudo update-rc.d start_db defaults
 ```
