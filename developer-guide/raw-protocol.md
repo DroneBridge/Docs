@@ -99,7 +99,9 @@ Total length of the header is 10 bytes. Allows frames to be injected by most/all
       </td>
     </tr>
   </tbody>
-</table>{% hint style="info" %}
+</table>
+
+{% hint style="info" %}
 If **DroneBridge compatibility mode** is enabled the **DB raw header gets extended by 10 bytes** of random data. These bytes are likely to overwritten on reception by un-patched WiFi drivers. The 10 byte padding makes sure no payload data is overwritten. Compatibility mode should be used in case a receiver with un-patched drivers is used \(e.g. default Ubuntu etc.\)
 
 **Compatibility mode can automatically be detected** on reception if the **length of the received frame is bigger than the sum of: Radiotap header length, DB header length & payload length**
@@ -159,5 +161,7 @@ The specification for encrypted messages is as follows:
         most WiFi drivers is ~1500 bytes</td>
     </tr>
   </tbody>
-</table>The encrypted payload lies inside the DroneBridge raw protocol payload field. DroneBridge libraries support AES encryption with 128, 192, 256 bit key length. Authentication is done using [EAX](https://en.wikipedia.org/wiki/EAX_mode). The Python library uses the [PyCryptodomex ](https://pycryptodome.readthedocs.io/en/latest/)implementation. That way DroneBridge allows for end to end encryption of all messages. It is not recommended to enable it on latency sensitive applications like real-time video & audio streams.
+</table>
+
+The encrypted payload lies inside the DroneBridge raw protocol payload field. DroneBridge libraries support AES encryption with 128, 192, 256 bit key length. Authentication is done using [EAX](https://en.wikipedia.org/wiki/EAX_mode). The Python library uses the [PyCryptodomex ](https://pycryptodome.readthedocs.io/en/latest/)implementation. That way DroneBridge allows for end to end encryption of all messages. It is not recommended to enable it on latency sensitive applications like real-time video & audio streams.
 

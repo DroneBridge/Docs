@@ -6,20 +6,28 @@ description: A list for all the supported hardware options you have with DroneBr
 
 ## SOCs
 
-{% hint style="warning" %}
-The ground station must be at least a Pi2. **A Raspberry Pi 3 is recommended for GND & AIR**
+{% hint style="danger" %}
+With the v0.6 build there is no OSD support on the Pi4
+
+The Raspberry Pi Zero suffers from startup stability issues. Its resources are very limited. Only use the Pi Zero if you do not have enough space or money. The Pi3A+ recommended instead.
 {% endhint %}
 
-With a Pi3 you get more USB ports \(diversity, serial ports via FTDI etc.\) and more compute power \(more config options - FEC rate, less latency - ARMv7 instructions for packet encoding/decoding in the future\). Only use the Pi Zero if you do not have enough space or money.
+{% hint style="warning" %}
+**Recommended hardware:**   
+Ground-Station: Raspberry Pi3B\(+\)  
+Air-Unit: Raspberry Pi3A+
+{% endhint %}
+
+With a Pi3\(+\) you get more USB ports \(diversity, serial ports via FTDI etc.\) and more compute power \(more config options - FEC rate, less latency - ARMv7 instructions for packet encoding/decoding in the future\). 
 
 * PiA+
 * Pi1B+
 * Pi2B
 * Pi3B
 * Pi3B+
-* Pi4B
-* Pi Zero
-* Pi Zero W
+* Pi4B          \(no OSD support in GND station mode\)
+* Pi Zero      \(not recommended anymore\)
+* Pi Zero W \(not recommended anymore\)
 
 **Other untestet hardware that should work just fine**
 

@@ -316,7 +316,9 @@ Universal acknowledgement message. May be returned by any kind of request/change
       <td style="text-align:left">Software version number of the release</td>
     </tr>
   </tbody>
-</table>## CRC32
+</table>
+
+## CRC32
 
  CRC32 of the entire JSON as implemented by the Python package `binascii`
 
