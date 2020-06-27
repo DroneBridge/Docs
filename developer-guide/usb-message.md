@@ -14,49 +14,12 @@ The DroneBridge USB protocol is used to transfer data between an android device 
 
 ## Message format
 
-<table>
-  <thead>
-    <tr>
-      <th style="text-align:left">Identifier</th>
-      <th style="text-align:left">Port</th>
-      <th style="text-align:left">Payload length</th>
-      <th style="text-align:left">Payload</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td style="text-align:left">Sequence of bytes to identify the start of a new message and its protocol
-        version.</td>
-      <td style="text-align:left">Virtual destination port of the data. Same values as for DroneBridge raw
-        protocol</td>
-      <td style="text-align:left">Length of the payload</td>
-      <td style="text-align:left">Payload/User data</td>
-    </tr>
-    <tr>
-      <td style="text-align:left"><code>0x44, 0x42, 0x01</code> (DB1)</td>
-      <td style="text-align:left"><code>0x01, 0x02, 0x03, 0x04...</code>
-      </td>
-      <td style="text-align:left">unsigned 16bit
-        <br />little endian</td>
-      <td style="text-align:left">sequence of bytes</td>
-    </tr>
-    <tr>
-      <td style="text-align:left">3 bytes</td>
-      <td style="text-align:left">1 byte</td>
-      <td style="text-align:left">2 bytes</td>
-      <td style="text-align:left">
-        <p>&lt;=2048 bytes</p>
-        <p>&lt;1500 recommended if packets go over raw link</p>
-      </td>
-    </tr>
-    <tr>
-      <td style="text-align:left">bit 0-23</td>
-      <td style="text-align:left">bit 24-31</td>
-      <td style="text-align:left">bit 32-47</td>
-      <td style="text-align:left">bit 48+</td>
-    </tr>
-  </tbody>
-</table>
+| Identifier | Port | Payload length | Payload |
+| :--- | :--- | :--- | :--- |
+| Sequence of bytes to identify the start of a new message and its protocol version. | Virtual destination port of the data. Same values as for DroneBridge raw protocol | Length of the payload | Payload/User data |
+| `0x44, 0x42, 0x01` \(DB1\) | `0x01, 0x02, 0x03, 0x04...` | unsigned 16bit  little endian | sequence of bytes |
+| 3 bytes | 1 byte | 2 bytes | &lt;=1536 length for DB applications |
+| bit 0-23 | bit 24-31 | bit 32-47 | bit 48+ |
 
 {% hint style="info" %}
 For payloads bigger than the max size allowed by the USB controller the payload can be split into multiple transmissions. In this case the header is only written once in the first transmission. The following transmissions for the payload must not have a DB-USB-MSG header.
