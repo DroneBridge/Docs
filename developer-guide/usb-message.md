@@ -18,7 +18,7 @@ The DroneBridge USB protocol is used to transfer data between an android device 
 | :--- | :--- | :--- | :--- |
 | Sequence of bytes to identify the start of a new message and its protocol version. | Virtual destination port of the data. Same values as for DroneBridge raw protocol | Length of the payload | Payload/User data |
 | `0x44, 0x42, 0x01` \(DB1\) | `0x01, 0x02, 0x03, 0x04...` | unsigned 16bit  little endian | sequence of bytes |
-| 3 bytes | 1 byte | 2 bytes | &lt;=1536 length for DB applications |
+| 3 bytes | 1 byte | 2 bytes | &lt;=1530 length for DB applications |
 | bit 0-23 | bit 24-31 | bit 32-47 | bit 48+ |
 
 {% hint style="info" %}
