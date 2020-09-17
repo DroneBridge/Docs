@@ -43,3 +43,7 @@ DroneBridge also enables users to write their own plugins. Plugins are standalon
 
 Besides that DroneBridge also offers professional logging support, support for wired connections to all android devices \(No USB tethering, no SIM required\) and many more things. In fact it was the first project to introduce a custom app that integrated convenient setting changes, telemetry and low latency video display.
 
+## Stay tuned for more
+
+
+

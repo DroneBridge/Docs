@@ -38,6 +38,7 @@
 * [USB message](developer-guide/usb-message.md)
 * [Plugins](developer-guide/plugins.md)
 * [Image Build](developer-guide/image-build.md)
+* [System Integration Test Specification](developer-guide/system-integration-test-specification.md)
 * [DroneBridge lib example usage](developer-guide/dronebridge-lib-example-usage.md)
 * [Notes About Injection](developer-guide/notes-about-injection.md)
 
