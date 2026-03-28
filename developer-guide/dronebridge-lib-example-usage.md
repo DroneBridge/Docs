@@ -18,7 +18,7 @@ Link to the DroneBridge class. All examples can also be found inside the git rep
 
 #### Sending
 
-{% code title="example\_sender.py" %}
+{% code title="example_sender.py" %}
 ```python
 #
 #   This file is part of DroneBridge: https://github.com/seeul8er/DroneBridge
@@ -71,7 +71,7 @@ print("\nDone sending!")
 
 #### Receiving
 
-{% code title="example\_receiver.py" %}
+{% code title="example_receiver.py" %}
 ```python
 #
 #   This file is part of DroneBridge: https://github.com/seeul8er/DroneBridge
@@ -143,7 +143,7 @@ target_link_libraries(receive db_common)
 
 #### Sending
 
-{% code title="send\_main.c" %}
+{% code title="send_main.c" %}
 ```c
 /*
  *   This file is part of DroneBridge: https://github.com/seeul8er/DroneBridge
@@ -214,7 +214,7 @@ int main(int argc, char *argv[]) {
 
 #### Receiving
 
-{% code title="receive\_main.c" %}
+{% code title="receive_main.c" %}
 ```c
 /*
  *   This file is part of DroneBridge: https://github.com/seeul8er/DroneBridge
@@ -297,4 +297,3 @@ int main(int argc, char *argv[]) {
 
 ```
 {% endcode %}
-

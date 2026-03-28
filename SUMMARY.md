@@ -3,6 +3,39 @@
 * [Introduction](README.md)
 * [Comparison](comparison.md)
 
+## DroneBridge for ESP32
+
+* [Overview](dronebridge-for-esp32/untitled.md)
+* [Hardware & Wiring](dronebridge-for-esp32/hardware-and-wiring.md)
+* [Installation](dronebridge-for-esp32/installation.md)
+* [Configuration](dronebridge-for-esp32/configuration.md)
+* [Safety & Integration](dronebridge-for-esp32/safety-and-integration.md)
+* [Hardware Setup Examples](dronebridge-for-esp32/hardware-setup-examples.md)
+* [Troubleshooting/Help](dronebridge-for-esp32/troubleshooting-help.md)
+* [Logging & Debugging](dronebridge-for-esp32/logging-and-debugging.md)
+* [Developer & API Documentation](dronebridge-for-esp32/developer-and-api-documentation.md)
+
+## DroneBridge for ESP32 Drone Light Show Edition
+
+* [Overview Drone Light Show Edition](dronebridge-for-esp32-drone-light-show-edition/overview-drone-light-show-edition.md)
+* [Safety & Integration Guideline](dronebridge-for-esp32-drone-light-show-edition/safety-and-integration-guideline.md)
+* [Hardware & Wiring](dronebridge-for-esp32-drone-light-show-edition/hardware-and-wiring.md)
+* [Installation](dronebridge-for-esp32-drone-light-show-edition/installation.md)
+* [License](dronebridge-for-esp32-drone-light-show-edition/license.md)
+* [Configuration](dronebridge-for-esp32-drone-light-show-edition/configuration.md)
+* [Developers - DLSE API Definition](dronebridge-for-esp32-drone-light-show-edition/developers-dlse-api-definition/README.md)
+  * ```yaml
+    type: builtin:openapi
+    props:
+      models: true
+      downloadLink: true
+    dependencies:
+      spec:
+        ref:
+          kind: openapi
+          spec: dronebridge-api
+    ```
+
 ## DroneBridge for Raspberry Pi
 
 * [Release Notes](dronebridge-for-raspberry-pi/release-notes.md)
@@ -15,18 +48,14 @@
 
 ## DroneBridge for Android
 
-* [DroneBridge for Android](dronebridge-for-android/dronebridge-for-android.md)
-
-## DroneBridge for ESP32
-
-* [Overview & Installation Guide](dronebridge-for-esp32/untitled.md)
+* [DroneBridge for Android (deprecated)](dronebridge-for-android/dronebridge-for-android.md)
 
 ## DroneBridge Desktop
 
 * [Enabling monitor mode](dronebridge-desktop/enabling-monitor-mode.md)
 * [Video stream playback](dronebridge-desktop/untitled.md)
 
-## Developer Guide
+## Developer Guide DroneBridge for Raspberry Pi <a href="#developer-guide" id="developer-guide"></a>
 
 * [Downloading & Compiling](developer-guide/downloading-and-compiling.md)
 * [System Architecture](developer-guide/system-architecture.md)
@@ -41,4 +70,3 @@
 * [System Integration Test Specification](developer-guide/system-integration-test-specification.md)
 * [DroneBridge lib example usage](developer-guide/dronebridge-lib-example-usage.md)
 * [Notes About Injection](developer-guide/notes-about-injection.md)
-

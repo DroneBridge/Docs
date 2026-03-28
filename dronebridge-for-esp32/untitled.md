@@ -1,109 +1,72 @@
-# Overview & Installation Guide
+# Overview
 
 ![](https://raw.githubusercontent.com/DroneBridge/ESP32/master/wiki/DroneBridgeLogo_text.png)
 
+{% hint style="warning" %}
+## Looking for the Drone Light Show Edition?
+
+[Check the dedicated Wiki section on the Drone Light Show Edition!](../dronebridge-for-esp32-drone-light-show-edition/overview-drone-light-show-edition.md)
+{% endhint %}
+
 ## DroneBridge for ESP32
 
-DroneBridge enabled firmware for the popular ESP32 modules from Espressif Systems. Probably the cheapest way to communicate with your drone, UAV, UAS, ground based vehicle or whatever you may call them.
+DroneBridge enabled firmware for the popular ESP32 modules from Espressif Systems. It's probably the cheapest way to communicate with your drone, UAV, UAS, ground-based vehicle or whatever you might call them.
 
-Also allows for a fully transparent serial to wifi pass through with variable packet size \(Continuous stream of data required\).
+It also allows for a fully transparent serial to wifi pass-through with variable packet size.
 
 ![DroneBridge for ESP32 concept](https://raw.githubusercontent.com/DroneBridge/ESP32/master/wiki/db_ESP32_setup.png)
 
-### Features
+{% hint style="info" %}
+DroneBridge for ESP32 differs from the DroneBridge for Raspberry Pi Project.\
+DroneBridge for ESP32 is easier to use and set up, more robust and polished. The output power is limited to 20 dBm by the hardware. This means it is legal to use in most countries since it follows the Wi-Fi standard.\
+\
+However, it currently does not support video or radio control! \
+The range is also limited to \~1km using ESP-NOW.
+{% endhint %}
 
-* Bi-directional link: MAVLink, MSP & LTM
-* Affordable: ~7€
-* Up to 150m range
-* Weight: &lt;10 g
-* Supported by: DroneBridge for Android \(app\), mwptools, QGroundControl, impload etc.
+## Official Project Page
+
+{% hint style="info" %}
+**Visit the official Project Page for more up-to-date information!**
+
+[https://drone-bridge.com](https://drone-bridge.com)
+{% endhint %}
+
+## Features
+
+* Bidirectional:&#x20;
+  * serial-to-WiFi
+  * serial-to-ESP-NOW link
+  * serial-to-BLE (Bluetooth Low Energy) in release v2.2+
+* Support for **MAVLink**, **MSP**, **LTM** or **any other payload** using the transparent option
+* Affordable
+* Up to **150m+ range** using standard WiFi
+* Up to **1km of range** using ESP-NOW or Wi-Fi LR Mode - sender & receiver must be ESP32 with LR-Mode enabled
+* **Fully encrypted** in all modes, including ESP-NOW broadcasts secured using AES-GCM 256-bit!
+* Weight: <8 g
+* Supported by: QGroundControl, Mission Planner, mwptools, impload etc.
 * Easy to set up: Power connection + UART connection to flight controller
-* Fully configurable through easy to use web interface
-* Parsing of LTM & MSPv2 for more reliable connection and less packet loss
-* Fully transparent telemetry downlink option for continuous streams like MAVLink or and other protocol
-* Reliable, low latency, light weight
-* Upload mission etc.
+* Fully configurable through an easy-to-use web interface
+* Parsing of LTM & MSPv2 for a more reliable connection and less packet loss
+* Parsing of MAVLink with the injection of Radio Status packets for the display of RSSI in the GCS
+* Fully transparent telemetry downlink option for continuous streams
+* Reliable, low-latency
 
-![ESP32 module with VCP](https://upload.wikimedia.org/wikipedia/commons/thumb/2/20/ESP32_Espressif_ESP-WROOM-32_Dev_Board.jpg/313px-ESP32_Espressif_ESP-WROOM-32_Dev_Board.jpg)
-
-Tested with: DOIT ESP32 module
+<div data-full-width="true"><figure><img src="../.gitbook/assets/MainESP32C3DroneBridge_s.png" alt="" width="375"><figcaption><p>Official DroneBridge for ESP32 board featuring an ESP32C3</p></figcaption></figure></div>
 
 ![DroneBridge for ESP32 block diagram blackbox](https://raw.githubusercontent.com/DroneBridge/ESP32/master/wiki/DroneBridgeForESP32Blackbox.png)
 
-Blackbox concept. UDP & TCP connections possible. Automatic UDP uni-cast of messages to port 14550 to all connected devices/stations. Allows additional clients to register for UDP. Client must send a packet with length &gt; 0 to UDP port of ESP32.
+Blackbox concept. UDP & TCP connections are possible. Automatic UDP unicast of messages to port 14550 to all connected devices/stations. Allows additional clients to register for UDP. The client must send a packet with a length > 0 to the UDP port of ESP32.
 
-### Installation/Flashing using precompiled binaries
+<figure><img src="../.gitbook/assets/dbesp32_webinterface (1).png" alt=""><figcaption><p>DroneBridge for ESP32 Web-Interface as of v2.0RC3</p></figcaption></figure>
 
-First download the latest release from this repository. [You can find them here](https://github.com/DroneBridge/ESP32/releases).
+## Official DroneBridge for ESP32 Groundstation Hardware
 
-For flashing there are many ways of doing this. To easy ones are shown below.
+Here are some real-life examples using the official board with a 3D-printed case. The cases are only available for the ESP32-C3 variant of the official board.
 
-**All platforms: Use Espressif firmware flashing tool**
+<figure><img src="../.gitbook/assets/GNDStations.jpg" alt="" width="375"><figcaption><p>Different options for DroneBridge for ESP32 ground stations using external antennas and the official hardware.</p></figcaption></figure>
 
-**recommended**
+<div><figure><img src="../.gitbook/assets/Render_GND_Small_Closed2.png" alt="" width="375"><figcaption><p>Small version of the ground station using an external RP-SMA antenna.</p></figcaption></figure> <figure><img src="../.gitbook/assets/Render_GND_Small_Closed.png" alt="" width="375"><figcaption><p>Case with the Reset and Settings Reset button</p></figcaption></figure></div>
 
-1. `pip install esptool`
-2. Connect via USB/Serial. Find out the serial port via `dmesg` on linux or device manager on windows.
 
-   In this example the serial connection to the ESP32 is on COM4 \(in Linux e.g. `/dev/ttyUSB0`\).
-
-3. `esptool.py -p COM4 -b 460800 --after hard_reset write_flash 0x1000 bootloader.bin 0x8000 partition-table.bin 0x10000 db_esp32.bin`. You might need to press the boot button on your ESP to start the upload/flash process. On Windows `esptool [...]` \(with out `.py`\) seems to work
-
-[Look here for more detailed information](https://github.com/espressif/esptool)
-
-**Windows only: Use flash download tools**
-
-1. [Get it here](https://www.espressif.com/en/support/download/other-tools)
-2. Select the firmware, bootloader & partition table and set everything as below
-
-   ![ESP download tool configuration](https://raw.githubusercontent.com/DroneBridge/ESP32/master/wiki/ESP32Flasher.PNG)
-
-3. Hit Start and power cycle your ESP32 after flashing
-
-#### Wiring
-
-1. Connect UART of ESP32 to a 3.3V UART of your flight controller.
-2. Set the flight controller port to the desired protocol.
-
-\(Power the ESP32 module with a stable 5-12V power source\) **Check out manufacturer datasheet! Only some modules can take more than 3.3V/5V on VIN PIN**
-
-Defaults: UART2 \(RX2, TX2 on GPIO 16, 17\)
-
-#### Configuration
-
-1. Connect to the wifi `DroneBridge ESP32` with password `dronebridge`
-2. In your browser type: `dronebridge.local` \(Chrome: `http://dronebridge.local`\) or `192.168.2.1` into the address bar.
-
-   **You might need to disable the cellular connection to force the browser to use the wifi connection**
-
-3. Configure as you please and hit `save`
-
-![DroneBridge for ESP32 web interface](https://raw.githubusercontent.com/DroneBridge/ESP32/master/wiki/DroneBridge_for_ESP32_web_interface.png)
-
-**Configuration Options:**
-
-* `Wifi password`: Up to 64 character long
-* `UART baud rate`: Same as you configured on your flight controller
-* `GPIO TX PIN Number` & `GPIO RX PIN Number`: The pins you want to use for TX & RX \(UART\). See pin out of manufacturer of your ESP32 device **Flight controller UART must be 3.3V or use an inverter.**
-* `UART serial protocol`: MultiWii based or MAVLink based - configures the parser
-* `Transparent packet size`: Only used with 'serial protocol' set to transparent. Length of UDP packets
-* `LTM frames per packet`: Buffer the specified number of packets and send them at once in one packet
-
-Most options require a restart/reset of ESP32 module
-
-### Use with DroneBridge for Android or QGroundControl
-
-![DroneBridge for Android app screenshot](https://raw.githubusercontent.com/DroneBridge/ESP32/master/wiki/dp_app-map-2017-10-29-kleiner.png)
-
-* Use the Android app to display live telemetry data. Mission planning capabilities for MAVLink will follow.
-* The ESP will auto broadcast messages to all connected devices via UDP to port 14550. QGroundControl should auto connect
-* Connect via **TCP on port 5760** or **UDP on port 14550** to the ESP32 to send & receive data with a GCS of your choice. **In case of a UDP connection the GCS must send at least one packet \(e.g. MAVLink heart beat etc.\) to the UDP port of the ESP32 to register as an end point.**
-
-### Compile yourself \(developers\)
-
-You will need the Espressif SDK: esp-idf + toolchain \(compile it yourself\). Check out their website for more info and on how to set it up. The code is written in pure C using the esp-idf \(no arduino libs\).
-
-**This project uses the v4.0 branch of ESP-IDF**
-
-Compile and flash by running: `idf.py build`, `idf.py flash`
 
