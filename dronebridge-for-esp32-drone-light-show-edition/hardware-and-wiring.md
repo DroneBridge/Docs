@@ -29,9 +29,7 @@ ESP32 chips come on many different ready-made modules. For drone use, you want s
 ### Module Options
 
 {% tab title="Propel Labs ESP32C5" %}
-{% endtab %}
 
-{% tab title="Propel Labs ESP32C5" %}
 * Small footprint
 * ESP32-C5 chip: Wi-Fi 6, 2.4 GHz & 5GHz support
 * Onboard USB-C for flashing (connected to the USB-JTAG interface - to be confirmed)
@@ -41,12 +39,8 @@ ESP32 chips come on many different ready-made modules. For drone use, you want s
 Contact User Propel Labs: [1470527829903933654](https://discord.com/users/1470527829903933654) via Discord for more details.    
 [Manufacturers Website](https://www.propellabs.co.uk/)
 {% endtab %}
-{% endtabs %}
 
-**Do you have hardware you want to offer for DLSE? Contact DroneBridge to get added to the list of recommended boards!**
-
-### Other Compatible Modules
-
+{% tab title="Other Modules" %}
 Any ESP32 development board featuring the C3, C5, or C6 chip will work, provided it has at least 4 MB of flash. Common alternatives include:
 
 * Any custom or third-party module based on these chips
@@ -56,6 +50,14 @@ Any ESP32 development board featuring the C3, C5, or C6 chip will work, provided
 {% hint style="info" %}
 The ESP32-C5 is a newer chip and dedicated modules in small drone-friendly form factors are still becoming available. Check Espressif's official devkits (ESP32-C5-DevKitC-1) and module catalogues from distributors such as Mouser or Digi-Key for current options.
 {% endhint %}
+
+{% endtab %}
+
+{% endtabs %}
+
+**Do you have hardware you want to offer for DLSE? Contact DroneBridge to get added to the list of recommended boards!**
+
+### 
 
 {% hint style="warning" %}
 **Antenna matters.** For reliable telemetry across a show site, always use a module with a U.FL or SMA connector for an **external antenna**. Onboard PCB antennas have significantly shorter range and are sensitive to placement near metal and carbon fiber structures on the drone.
