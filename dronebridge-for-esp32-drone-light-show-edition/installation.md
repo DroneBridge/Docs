@@ -39,7 +39,7 @@ Plug the ESP32 into your computer via USB. If this is the first time connecting,
 #### Select the firmware
 
 Click **Connect**, allow the browser to access the serial port, and select your device from the list.\
-The flasher will auto-detect the chip and present the available DLSE firmware releases. Select the latest stable release.
+The flasher will auto-detect the chip and present the available DLSE firmware releases. Select the desired DLSE release.
 {% endstep %}
 
 {% step %}
