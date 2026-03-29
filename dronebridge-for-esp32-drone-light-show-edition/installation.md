@@ -14,7 +14,7 @@ The DLSE firmware is distributed as a set of binary files — one set per suppor
 
 By default, a freshly flashed ESP32 starts in **TRIAL** license mode, which cuts the MAVLink connection after 10 minutes. This is sufficient for initial setup and bench testing, but you will need to obtain a proper license before using the device in a show. See [License](license.md).
 
----
+***
 
 ## Flashing Methods
 
@@ -24,26 +24,26 @@ The online flasher runs in your browser and requires no software installation. I
 
 {% stepper %}
 {% step %}
-### Open the flasher
+#### Open the flasher
 
 Go to [https://drone-bridge.com/flasher/](https://drone-bridge.com/flasher/) in a **Chrome or Edge** browser (Web Serial API required — Firefox is not supported).
 {% endstep %}
 
 {% step %}
-### Connect your ESP32
+#### Connect your ESP32
 
 Plug the ESP32 into your computer via USB. If this is the first time connecting, your OS may need to install a USB-to-Serial driver (usually happens automatically on Windows; may require `cp210x` or `ch340` driver depending on your module).
 {% endstep %}
 
 {% step %}
-### Select the firmware
+#### Select the firmware
 
 Click **Connect**, allow the browser to access the serial port, and select your device from the list.\
 The flasher will auto-detect the chip and present the available DLSE firmware releases. Select the latest stable release.
 {% endstep %}
 
 {% step %}
-### Flash
+#### Flash
 
 Click **Flash** and wait for the process to complete. Do not disconnect the ESP32 during flashing.\
 Once done, unplug and re-plug the ESP32 to reboot into the new firmware.
@@ -56,7 +56,7 @@ Use this method if the online flasher is unavailable or if you need to automate 
 
 {% stepper %}
 {% step %}
-### Install Python and esptool
+#### Install Python and esptool
 
 You need Python 3.10 or newer.
 
@@ -73,17 +73,18 @@ esptool.py version
 {% endstep %}
 
 {% step %}
-### Download the firmware
+#### Download the firmware
 
 Download the latest DLSE beta release from [https://drone-bridge.com/dlse/](https://drone-bridge.com/dlse/).
 
 Extract the archive. Inside you will find:
+
 * Firmware binary files (one set per chip)
 * A `flashing_instructions.txt` file with the exact `esptool` command for your chip
 {% endstep %}
 
 {% step %}
-### Connect your ESP32
+#### Connect your ESP32
 
 Plug the ESP32 into your computer via USB. Identify the serial port:
 
@@ -92,7 +93,7 @@ Plug the ESP32 into your computer via USB. Identify the serial port:
 {% endstep %}
 
 {% step %}
-### Flash the firmware
+#### Flash the firmware
 
 Open `flashing_instructions.txt` and copy the command for your chip. It will look similar to this (your command may differ — always use the one from the instructions file):
 
@@ -108,15 +109,28 @@ Replace `/dev/ttyUSB0` with your actual serial port. Run the command and wait fo
 {% endstep %}
 
 {% step %}
-### Reboot
+#### Reboot
 
 Once flashing is complete, unplug and re-plug the ESP32. It will boot into the DLSE firmware.
 {% endstep %}
 {% endstepper %}
 {% endtab %}
+
+{% tab title="Flashing a Fleet" %}
+For deploying DLSE across many drones, use the open-source **Commercial Support Suite**:
+
+[DroneBridge DLSE Commercial Support Suite on GitHub](https://github.com/DroneBridge/DLSECommercialSupportSuite)
+
+The suite provides Python scripts for:
+
+* Bulk flashing, activation & configuration over USB
+* Bulk  Over-The-Air Updates
+* Automated configuration via the REST API
+* License activation for multiple ESP32 devices
+{% endtab %}
 {% endtabs %}
 
----
+***
 
 ## Verifying the Installation
 
@@ -124,42 +138,27 @@ After rebooting, the DLSE firmware starts a Wi-Fi Access Point (AP) by default. 
 
 {% stepper %}
 {% step %}
-### Connect to the ESP32 Wi-Fi AP
+#### Connect to the ESP32 Wi-Fi AP
 
 On your laptop or phone, scan for Wi-Fi networks. You should see a new network named **`DroneBridgeESP32`** (or similar, depending on the configured SSID). Connect to it using the default password `dronebridge`.
 {% endstep %}
 
 {% step %}
-### Open the web interface
+#### Open the web interface
 
 Open a browser and navigate to **`http://192.168.2.1`**.\
 You should see the DLSE configuration web interface. If you see it, the firmware is running correctly.
 {% endstep %}
 
 {% step %}
-### Check the license status
+#### Check the license status
 
 In the web interface, find the **License** section. It should show **TRIAL** as the current license type. This confirms the firmware is active.
 {% endstep %}
 {% endstepper %}
 
----
-
-## Flashing a Fleet
-
-For deploying DLSE across many drones, use the open-source **Commercial Support Suite**:
-
-[DroneBridge DLSE Commercial Support Suite on GitHub](https://github.com/DroneBridge/DLSECommercialSupportSuite)
-
-The suite provides Python scripts for:
-* Bulk flashing over USB
-* Automated configuration via the REST API
-* License activation for multiple ESP32 devices
-
----
+***
 
 ## Next Steps
 
-<a href="safety-and-integration-guideline.md" class="button secondary">Read Safety & Integration Guideline</a>
-<a href="hardware-and-wiring.md" class="button secondary">Wire to Flight Controller</a>
-<a href="configuration.md" class="button primary">Configure the Firmware →</a>
+<a href="safety-and-integration-guideline.md" class="button secondary">Read Safety &#x26; Integration Guideline</a> <a href="hardware-and-wiring.md" class="button secondary">Wire to Flight Controller</a> <a href="configuration.md" class="button primary">Configure the Firmware →</a>
