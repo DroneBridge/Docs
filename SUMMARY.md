@@ -25,10 +25,10 @@
 * [Configuration](dronebridge-for-esp32-drone-light-show-edition/configuration.md)
 * [Developers - DLSE API Definition](dronebridge-for-esp32-drone-light-show-edition/developers-dlse-api-definition/README.md)
   * ```yaml
-    type: builtin:openapi
     props:
       models: true
       downloadLink: true
+    type: builtin:openapi
     dependencies:
       spec:
         ref:
