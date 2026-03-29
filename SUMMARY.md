@@ -23,6 +23,7 @@
 * [Installation](dronebridge-for-esp32-drone-light-show-edition/installation.md)
 * [License](dronebridge-for-esp32-drone-light-show-edition/license.md)
 * [Configuration](dronebridge-for-esp32-drone-light-show-edition/configuration.md)
+* [Support Suite](dronebridge-for-esp32-drone-light-show-edition/dlse-commercial-support-suite.md)
 * [Developers - DLSE API Definition](dronebridge-for-esp32-drone-light-show-edition/developers-dlse-api-definition/README.md)
   * ```yaml
     props:
