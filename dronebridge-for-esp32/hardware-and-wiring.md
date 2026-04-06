@@ -4,53 +4,39 @@ description: List of supported Hardware and the wiring instructions
 
 # Hardware & Wiring
 
-{% hint style="info" %}
-**The voltage level of the ESP32 UART is 3.3V!**\
-Make sure your flight controller also uses 3.3V UART logic level. You can still power the ESP32 via the 5V line.\
-Pixhawk flight controllers do have a 3.3V UART by default and a 5V power supply line. Most ArduPilot flight controllers do as well.\
-These flight controllers will not cause any issues.
-{% endhint %}
-
 ## Officially Supported Boards
 
+{% hint style="info" %}
+The official boards are currently not publicly available for purchase. I am updating the shop.
+
+You can still request a quote via [drone-bridge.com](https://drone-bridge.com) or, in case you are based in Japan, order from [japandrones.com](https://japandrones.com/shopdetail/000000000203/).
+{% endhint %}
+
 The following boards are officially supported; only these boards will receive support from the main developer. \
-These boards are very low in price, have everything you need and are very small. They are perfect for use on any drone. They support all possible modes and setup out of the box and are your fastest way to a working setup.\
+These boards are very low-cost, have everything you need, and are very small. They are perfect for use on any drone. They support all possible modes and setup out of the box and are your fastest way to a working setup.\
 **Please consider supporting the project and doing yourself a favour by buying ready-to-use hardware!**
 
-<table data-full-width="false"><thead><tr><th>Official Board Option</th><th>Support for External Antenna</th><th>Ships with External Antenna</th><th>Ideal for</th></tr></thead><tbody><tr><td>Official HW v1.x <strong>ESP32C3</strong><br><a href="https://www.ebay.com/itm/116647288610">Order Here</a></td><td>✅</td><td>✅</td><td>range, signal quality</td></tr><tr><td>Official HW v1.x <strong>ESP32C6</strong><br><a href="https://www.ebay.com/itm/116868578517">Order Here</a></td><td>✅</td><td>no (onboard antenna)</td><td>compact builds, Wi-Fi autopilot configuration interface</td></tr><tr><td>DIY Hardware Builds<br><a href="https://buymeacoffee.com/seeul8er/extras">Get files here</a></td><td>✅</td><td>depends on the choice of ESP32 - see the two options above</td><td>people living in places where there is no shipping option available.</td></tr></tbody></table>
-
-### **ESP32 C3 - external antenna**
-
-Germany: [Official board for DroneBridge for ESP32 with external antenna](https://www.ebay.de/itm/116647288610)\
-EU/International: [Official board for DroneBridge for ESP32 with external antenna](https://www.ebay.com/itm/116647288610)
-
-### **ESP32 C6 - onboard antenna**
-
-Germany: [Official board for DroneBridge for ESP32 with onboard antenna](https://www.ebay.de/itm/116868578517)\
-EU/International: [Official board for DroneBridge for ESP32 with onboard antenna](https://www.ebay.com/itm/116868578517)\
-\
-The third batch of pre-installed and ready-for-use hardware boards is shipping from Germany to the EU (EEA) and other selected countries (inkl. USA, CAN, JPN). Contact the seller for more non-EU shipping destinations or express shipping. \
-For non-EEA shipments, the receiver must handle all customs-related activity (incl. tax, fees etc.). The package will be declared as best as possible.
+<table data-full-width="false"><thead><tr><th>Official Board Option</th><th>Support for External Antenna</th><th>Ships with External Antenna</th><th>Ideal for</th></tr></thead><tbody><tr><td><del>Official HW v1.x <strong>ESP32C3</strong></del><br>(Discontinued - Use C6 with an external antenna)</td><td>✅</td><td>✅</td><td></td></tr><tr><td><a href="https://japandrones.com/shopdetail/000000000203/">Official Hardware from JapanDrones</a></td><td>✅</td><td>Depends on what you order</td><td>Long Range, ESP-NOW configuration</td></tr><tr><td>Official HW v1.x <strong>ESP32C6</strong><br><em>New shop launching soon. Use contact form on</em> <a href="https://drone-bridge.com"><em>drone-bridge.com</em></a> <em>for now.</em></td><td>✅</td><td>no (onboard antenna)</td><td>compact builds, Wi-Fi autopilot configuration interface. Optional external antenna.</td></tr><tr><td>DIY Hardware Builds<br></td><td>✅</td><td>depends on the choice of ESP32 - see the two options above</td><td>people living in places where there is no shipping option available.</td></tr></tbody></table>
 
 ### Do It Yourself Build
 
-**SMD Version:**\
-[**Order the PCB yourself using the KiCAD PCB Project & Production files with private and commercial options!**](https://buymeacoffee.com/seeul8er/e/301194)
+<div><figure><img src="../.gitbook/assets/HW_v1_2_3.jpg" alt="" width="563"><figcaption><p>Official Hardware for DroneBridge for ESP32 featuring the <strong>ESP32C6</strong> with an onboard antenna and the connector for an optional external antenna</p></figcaption></figure> <figure><img src="../.gitbook/assets/s-l1600.jpg" alt=""><figcaption><p>Official board dimensions</p></figcaption></figure></div>
 
-<div><figure><img src="../.gitbook/assets/HW_v1_2_2.jpg" alt="" width="563"><figcaption><p>Official Hardware for DroneBridge for ESP32 featuring the <strong>ESP32C3</strong></p></figcaption></figure> <figure><img src="../.gitbook/assets/HW_v1_2_3.jpg" alt="" width="563"><figcaption><p>Official Hardware for DroneBridge for ESP32 featuring the <strong>ESP32C6</strong> with an onboard antenna and the connector for an optional external antenna</p></figcaption></figure> <figure><img src="../.gitbook/assets/s-l1600.jpg" alt=""><figcaption><p>Official board dimensions</p></figcaption></figure></div>
+**Easy-Solder DIY Version. No need to deal with SMD parts.**
 
-**Easy-Solder DIY Version. No need to deal with SMD parts.** \
-[**Order the \[Easy Solder\] PCB yourself using the KiCAD PCB Project and Production files (e.g. via JLCPCB) with private and commercial options!**](https://buymeacoffee.com/seeul8er/e/370820)
+{% hint style="info" %}
+**I am updating the shop. You can request a quote for the design files via** [**drone-bridge.com**](https://drone-bridge.com)
+{% endhint %}
 
-This design is overall easier and more affordable to build compared to the SMD version. The downside is that it is a little bigger and does not feature the official Pixhawk standard connector making it less reliable overall. \
-The design features big solder pads for connections to the flight controller and simple through-hole mounts for the ESP32 chip. The ideal solution for hobbyists who want a fully supported board and ordering the official ready-made board is no option.
+This design is overall easier and more affordable to build compared to the SMD version. The downside is that it is a little bigger and does not feature the official Pixhawk standard connector, making it less reliable overall. \
+The design features big solder pads for connections to the flight controller and simple through-hole mounts for the ESP32 chip. The ideal solution for hobbyists who want a fully supported board, and ordering the official ready-made board is not an option.
 
 <div><figure><img src="../.gitbook/assets/HW_v1_2_0.jpg" alt=""><figcaption><p>Backside of EasySolder PCB when ordered from PCB manufacturer.</p></figcaption></figure> <figure><img src="../.gitbook/assets/HW_v1_2_1.jpg" alt=""><figcaption><p>Top of EasySolder PCB when ordered from PCB manufacturer.</p></figcaption></figure> <figure><img src="../.gitbook/assets/HW_v1_2_8.jpg" alt=""><figcaption><p>EasySolder PCB wired up with optional RTS/CTS connections for UART flow control.</p></figcaption></figure> <figure><img src="../.gitbook/assets/HW_v1_2_9.jpg" alt=""><figcaption><p>EasySolder PCB wired up with optional RTS/CTS connections for UART flow control.</p></figcaption></figure> <figure><img src="../.gitbook/assets/HW_v1_2_10.jpg" alt=""><figcaption><p>EasySolder version with an ESP32C6 attached using simple through holes.</p></figcaption></figure></div>
 
 ## Other Boards
 
 {% hint style="info" %}
-These boards might also work but are not tested and will not receive support from the main project.
+These boards might also work, but are not tested and will not receive support from the main project.
 {% endhint %}
 
 Other boards that will likely work:
@@ -71,7 +57,7 @@ The following ESP32 chips are supported:
 * ESP32S2
 * ESP32S3
 * ESP32C3
-* ESP32C6
+* ESP32C6 - recommended
 
 Almost any board featuring one of these chips should work. See the wiring and flashing instructions on how to use the unofficially supported options
 
@@ -84,10 +70,17 @@ GND, 5V, TX & RX connections are mandatory! \
 RTS & CTS connections are optional. Do not configure RTS & CTS pins in the web interface if you did not connect them to the flight controller. In that case, leave them both to set to 0 to disable UART flow control.
 {% endhint %}
 
+{% hint style="info" %}
+**The voltage level of the ESP32 UART is 3.3V!**\
+Make sure your flight controller also uses 3.3V UART logic level. You can still power the ESP32 via the 5V line.\
+Pixhawk flight controllers do have a 3.3V UART by default and a 5V power supply line. Most ArduPilot flight controllers do as well.\
+These flight controllers will not cause any issues.
+{% endhint %}
+
 #### Official DroneBridge for ESP32C3/C6 Board
 
 Easy! Just connect the board to your flight controller using the provided cable.\
-In case you are not using the standard Pixhawk telemetry connector see the reference for the output here:
+In case you are not using the standard Pixhawk telemetry connector, see the reference for the output here:
 
 <figure><img src="https://raw.githubusercontent.com/DroneBridge/ESP32/master/wiki/drwdb_esp32c3_hw_11_pinout.png" alt="DroneBridge for ESP32 official board pinout"><figcaption><p>Pinout of the Official DroneBridge for ESP32 Hardware board featuring the ESP32C3</p></figcaption></figure>
 
