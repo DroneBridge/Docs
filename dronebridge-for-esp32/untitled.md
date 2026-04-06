@@ -59,14 +59,3 @@ The range is also limited to \~1km using ESP-NOW.
 Blackbox concept. UDP & TCP connections are possible. Automatic UDP unicast of messages to port 14550 to all connected devices/stations. Allows additional clients to register for UDP. The client must send a packet with a length > 0 to the UDP port of ESP32.
 
 <figure><img src="../.gitbook/assets/dbesp32_webinterface (1).png" alt=""><figcaption><p>DroneBridge for ESP32 Web-Interface as of v2.0RC3</p></figcaption></figure>
-
-## Official DroneBridge for ESP32 Groundstation Hardware
-
-Here are some real-life examples using the official board with a 3D-printed case. The cases are only available for the ESP32-C3 variant of the official board.
-
-<figure><img src="../.gitbook/assets/GNDStations.jpg" alt="" width="375"><figcaption><p>Different options for DroneBridge for ESP32 ground stations using external antennas and the official hardware.</p></figcaption></figure>
-
-<div><figure><img src="../.gitbook/assets/Render_GND_Small_Closed2.png" alt="" width="375"><figcaption><p>Small version of the ground station using an external RP-SMA antenna.</p></figcaption></figure> <figure><img src="../.gitbook/assets/Render_GND_Small_Closed.png" alt="" width="375"><figcaption><p>Case with the Reset and Settings Reset button</p></figcaption></figure></div>
-
-
-
