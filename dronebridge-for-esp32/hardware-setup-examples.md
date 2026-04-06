@@ -8,6 +8,10 @@ description: >-
 
 The AIR-Unit is the ESP32 that connects to the flight controller, while the GND-Unit is connected to a  GCS-PC or phone. The GND-Unit is only required in setups using WiFi-LR or ESP-NOW modes.
 
+{% hint style="info" %}
+Also check [https://japandrones.com/](https://japandrones.com/) for their official AIR and GND units!
+{% endhint %}
+
 ## AIR-Unit Examples
 
 All AIR-Units run the standard DroneBridge for ESP32 firmware.
@@ -33,7 +37,7 @@ This setup requires you to flash the regular firmware.
 
 <div align="center" data-full-width="false"><figure><img src="../.gitbook/assets/HWv1_0_externalSerialtoUSB.jpg" alt="GND receiver unit for ESP-NOW Mode: Official DroneBridge HWv1.0 board with external antenna and the CJMCU CP2102 USB-to-Serial adapter to interface to a PC or Smartphone."><figcaption><p>GND receiver unit for ESP-NOW Mode: Official DroneBridge HWv1.0 board with external antenna and the CJMCU CP2102 USB-to-Serial adapter to interface to a PC or Smartphone. Only 5V, GND, TX &#x26; RX are connected.</p></figcaption></figure></div>
 
-This method always works and can be used with all boards. A recommended Serial-to-USB adapter is for example the CJMCU CP2102 with USB-C. It supports 5V power output and 3.3V UART signal level at the same time, making it 100% compatible with the Pixhawk standard.\
+This method always works and can be used with all boards. A recommended Serial-to-USB adapter is for example, the CJMCU CP2102 with USB-C. It supports 5V power output and 3.3V UART signal level at the same time, making it 100% compatible with the Pixhawk standard.\
 Connect the adapter using any available pins (see [Hardware & Wiring instructions](hardware-and-wiring.md) for exceptions). \
 In general, it is not recommended to enable flow-control (only wire GND, VDD, TX & RX) since it may lead to unexpected issues and is usually not needed on the GND side.
 
