@@ -34,7 +34,7 @@ A typical drone light show system using DLSE looks like this:
          │
          │  UART
          ▼
-[ Flight Controller (Skybrush / Lightbrush firmware) ]
+[ Flight Controller (Skybrush firmware) ]
 ```
 
 The ESP32 is wired directly to one of the flight controller's UART telemetry ports. Depending on your drone design, additional hardware such as a power management board may also be connected to the ESP32 to enable remote power control of the drone.
