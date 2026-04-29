@@ -32,5 +32,4 @@ Readers may have very different levels of technical experience, but they all hav
 
 ## GitBook
 
-This project uses GitBook. Check the skill file for GitBook syntax and best practices here:
-https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2F98DviOHe8vonzDstAxFA%2Fskill.md?alt=media&token=0a2d5fa2-ee75-4096-8309-22d66f337388
+This project uses GitBook. Check the skill file for GitBook syntax and best practices from the local file `gitbook-skill.md`.
