@@ -3,7 +3,7 @@
 ![](https://raw.githubusercontent.com/DroneBridge/ESP32/master/wiki/DroneBridgeLogo_text.png)
 
 {% hint style="warning" %}
-## Looking for the Drone Light Show Edition?
+### Looking for the Drone Light Show Edition?
 
 [Check the dedicated Wiki section on the Drone Light Show Edition!](../dronebridge-for-esp32-drone-light-show-edition/overview-drone-light-show-edition.md)
 {% endhint %}
@@ -20,7 +20,7 @@ It also allows for a fully transparent serial to wifi pass-through with variable
 DroneBridge for ESP32 differs from the DroneBridge for Raspberry Pi Project.\
 DroneBridge for ESP32 is easier to use and set up, more robust and polished. The output power is limited to 20 dBm by the hardware. This means it is legal to use in most countries since it follows the Wi-Fi standard.\
 \
-However, it currently does not support video or radio control! \
+However, it currently does not support video or radio control!\
 The range is also limited to \~1km using ESP-NOW.
 {% endhint %}
 
@@ -34,7 +34,7 @@ The range is also limited to \~1km using ESP-NOW.
 
 ## Features
 
-* Bidirectional:&#x20;
+* Bidirectional:
   * serial-to-WiFi
   * serial-to-ESP-NOW link
   * serial-to-BLE (Bluetooth Low Energy) in release v2.2+

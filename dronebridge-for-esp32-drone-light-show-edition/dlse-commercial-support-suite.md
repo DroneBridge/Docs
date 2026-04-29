@@ -1,30 +1,24 @@
 ---
-description: Open-source Python tooling for bulk flashing, configuration, licensing, and OTA updates across your entire drone fleet.
+description: >-
+  Open-source Python tooling for bulk flashing, configuration, licensing, and
+  OTA updates across your entire drone fleet.
 ---
 
-# Commercial Support Suite
+# Support Suite
+
+<figure><img src="../.gitbook/assets/Gemini_Generated_Image_scabxascabxascab.png" alt="Hero showing an AI generated image of a flashing and activation process of the Drone Light Show Edition"><figcaption></figcaption></figure>
 
 The **DLSE Commercial Support Suite** is an open-source Python library and set of ready-to-use scripts that automate the most time-consuming parts of managing a large fleet of ESP32s. Instead of configuring, flashing, and licensing each drone one by one, you set up one reference device, export its configuration, and let the suite handle the rest.
 
 <a href="https://github.com/DroneBridge/DLSECommercialSupportSuite" class="button primary" data-icon="github">View on GitHub</a>
 
----
+***
 
 ## What It Can Do
 
-<table data-full-width="false"><thead><tr><th>Capability</th><th>How</th><th>Use When</th></tr></thead><tbody>
-<tr><td><strong>Batch serial flash + configure + activate</strong></td><td><code>batch_install_dlse_allinone.py</code></td><td>Initial setup of a new fleet — plug in ESP32s one by one</td></tr>
-<tr><td><strong>Batch OTA firmware update</strong></td><td><code>batch_ota_update_allinone.py</code></td><td>Upgrading all drones in the field over Wi-Fi</td></tr>
-<tr><td><strong>Batch OTA license activation</strong></td><td><code>batch_ota_license_activation.py</code></td><td>Licensing a fleet of ESP32s over Wi-Fi in one pass</td></tr>
-<tr><td>Scan network for DLSE devices</td><td>Library function</td><td>Discovery, health checks</td></tr>
-<tr><td>Upload / download licenses</td><td>Library function</td><td>Re-licensing, backup</td></tr>
-<tr><td>Get activation key from device</td><td>Library function</td><td>Programmatic licensing workflows</td></tr>
-<tr><td>Remote reset of ESP32</td><td>Library function</td><td>Automated test pipelines</td></tr>
-<tr><td>Change settings over Wi-Fi</td><td>Library function</td><td>Dynamic reconfiguration without USB</td></tr>
-<tr><td>Download flight logs via the ESP32 bridge</td><td>Library function</td><td>Post-show data collection</td></tr>
-</tbody></table>
+<table data-full-width="false"><thead><tr><th>Capability</th><th>How</th><th>Use When</th></tr></thead><tbody><tr><td><strong>Batch serial flash + configure + activate</strong></td><td><code>batch_install_dlse_allinone.py</code></td><td>Initial setup of a new fleet — plug in ESP32s one by one</td></tr><tr><td><strong>Batch OTA firmware update</strong></td><td><code>batch_ota_update_allinone.py</code></td><td>Upgrading all drones in the field over Wi-Fi</td></tr><tr><td><strong>Batch OTA license activation</strong></td><td><code>batch_ota_license_activation.py</code></td><td>Licensing a fleet of ESP32s over Wi-Fi in one pass</td></tr><tr><td>Scan network for DLSE devices</td><td>Library function</td><td>Discovery, health checks</td></tr><tr><td>Upload / download licenses</td><td>Library function</td><td>Re-licensing, backup</td></tr><tr><td>Get activation key from device</td><td>Library function</td><td>Programmatic licensing workflows</td></tr><tr><td>Remote reset of ESP32</td><td>Library function</td><td>Automated test pipelines</td></tr><tr><td>Change settings over Wi-Fi</td><td>Library function</td><td>Dynamic reconfiguration without USB</td></tr><tr><td>Download flight logs via the ESP32 bridge</td><td>Library function</td><td>Post-show data collection</td></tr></tbody></table>
 
----
+***
 
 ## Prerequisites
 
@@ -32,7 +26,7 @@ The **DLSE Commercial Support Suite** is an open-source Python library and set o
 * A DroneBridge account and **secret token** (obtained from [drone-bridge.com/dlse](https://drone-bridge.com/dlse) dashboard) for licensing features
 * The [latest DLSE release binaries](https://drone-bridge.com/dlse/) downloaded and extracted locally
 
----
+***
 
 ## Installation
 
@@ -44,7 +38,7 @@ pip install .
 
 Each script contains configuration variables near the top (such as `MY_SECRET_TOKEN`, `ESP_SERIAL_PORT`, or subnet addresses). Open the script you intend to use and update these before running.
 
----
+***
 
 ## Batch Serial Flash, Configure & Activate
 
@@ -66,7 +60,7 @@ Each script contains configuration variables near the top (such as `MY_SECRET_TO
 
 {% stepper %}
 {% step %}
-### Configure one reference ESP32
+#### Configure one reference ESP32
 
 Set up a single ESP32 exactly as you want all drones in your fleet to be configured.
 
@@ -79,13 +73,13 @@ Set up a single ESP32 exactly as you want all drones in your fleet to be configu
 {% endstep %}
 
 {% step %}
-### Prepare the suite
+#### Prepare the suite
 
 Download the latest DLSE release binaries from [drone-bridge.com/dlse](https://drone-bridge.com/dlse/) and extract them **into the `DLSECommercialSupportSuite` folder**. The folder name (e.g., `DroneBridge_ESP32DLSE_BETA3`) is used as the `--release-folder` argument.
 {% endstep %}
 
 {% step %}
-### Run the batch script
+#### Run the batch script
 
 ```bash
 python batch_install_dlse_allinone.py \
@@ -97,18 +91,18 @@ python batch_install_dlse_allinone.py \
 
 **Arguments:**
 
-| Argument | Description |
-|---|---|
-| `--token` | Your secret token from the drone-bridge.com dashboard |
-| `--release-folder` | Folder containing the DLSE firmware binaries |
-| `--settings-file` | The `.csv` settings file exported from your reference ESP32 |
-| `--start-index` | Starting index for per-drone unique values (AP SSID suffix, hostname, static IP suffix) |
+| Argument           | Description                                                                             |
+| ------------------ | --------------------------------------------------------------------------------------- |
+| `--token`          | Your secret token from the drone-bridge.com dashboard                                   |
+| `--release-folder` | Folder containing the DLSE firmware binaries                                            |
+| `--settings-file`  | The `.csv` settings file exported from your reference ESP32                             |
+| `--start-index`    | Starting index for per-drone unique values (AP SSID suffix, hostname, static IP suffix) |
 
 The `--start-index` parameter allows automatic per-device differentiation. With `--start-index 55`, the first ESP32 you plug in will get a hostname of `<your_hostname>55`, an AP SSID of `<your_ssid>55`, and a static IP suffix of `55`. The index increments automatically for each subsequent device.
 {% endstep %}
 
 {% step %}
-### Plug in ESP32s one by one
+#### Plug in ESP32s one by one
 
 With the script running, simply connect your ESP32 modules to the computer via USB one at a time. The script detects each new device, flashes it, configures it, and activates it — then waits for the next one. The whole process per device takes under a minute.
 
@@ -120,7 +114,7 @@ All actions are logged to the `/logs` folder for your records.
 **Offline activation is also supported.** If the license server is unavailable, the script checks the `/received_licenses` folder for a previously downloaded license file matching the device's activation key, and applies it locally.
 {% endhint %}
 
----
+***
 
 ## Batch OTA Firmware Update
 
@@ -153,10 +147,10 @@ python batch_ota_update_allinone.py \
 
 **Arguments:**
 
-| Argument | Description |
-|---|---|
-| `--release-folder` | Path to the folder with DLSE firmware binaries |
-| `--subnetmask` | IP range to scan, e.g. `192.168.1.0/24` |
+| Argument           | Description                                                                                           |
+| ------------------ | ----------------------------------------------------------------------------------------------------- |
+| `--release-folder` | Path to the folder with DLSE firmware binaries                                                        |
+| `--subnetmask`     | IP range to scan, e.g. `192.168.1.0/24`                                                               |
 | `--target-version` | _(Optional)_ Only update ESP32s running this specific version. Devices on other versions are skipped. |
 
 ### What Happens
@@ -164,6 +158,7 @@ python batch_ota_update_allinone.py \
 The script scans the subnet, lists all discovered DLSE devices with their current firmware versions, and asks for confirmation before proceeding. It then pushes the firmware binary matching each device's chip type (C3, C5, or C6) and reports success or failure per device.
 
 <details>
+
 <summary>Example console output</summary>
 
 ```
@@ -184,7 +179,7 @@ OTA update finished. 1 updated successfully. 0 failed.
 
 </details>
 
----
+***
 
 ## Batch OTA License Activation
 
@@ -208,16 +203,17 @@ python batch_ota_license_activation.py \
 
 **Arguments:**
 
-| Argument | Description |
-|---|---|
-| `--token` | Your secret token from the drone-bridge.com dashboard |
-| `--subnetmask` | IP range to scan |
-| `--esp32localbrcstport` | Must match `udp_local_port` in each ESP32's configuration |
+| Argument                 | Description                                                |
+| ------------------------ | ---------------------------------------------------------- |
+| `--token`                | Your secret token from the drone-bridge.com dashboard      |
+| `--subnetmask`           | IP range to scan                                           |
+| `--esp32localbrcstport`  | Must match `udp_local_port` in each ESP32's configuration  |
 | `--esp32remotebrcstport` | Must match `wifi_brcst_port` in each ESP32's configuration |
 
 The script scans on a loop. As drones are powered on and appear on the network, they are discovered, their activation key is read, a license is requested from the DroneBridge license server, and the license is installed on the device. All licenses are also saved locally to `/received_licenses` as a backup.
 
 <details>
+
 <summary>Example console output</summary>
 
 ```
@@ -234,21 +230,21 @@ The script scans on a loop. As drones are powered on and appear on the network, 
 
 </details>
 
----
+***
 
 ## Library Functions & Individual Examples
 
 Beyond the batch scripts, the suite exposes a Python library (`DroneBridgeCommercialSupportSuite.py`) for building your own automation tools. Individual example scripts are provided for each function:
 
-| Script | What It Demonstrates |
-|---|---|
-| `example_esp32_get_license.py` | Request a license file using an activation key |
-| `example_params_update_flash.py` | Update configuration parameters in the CSV and flash them |
-| `example_esp32_ota_update.py` | OTA firmware update for all detected devices |
-| `example_esp32_download_log.py` | Download flight controller logs via the ESP32 bridge |
-| `example_esp32_download_log_MAVSDK.py` | Same, using MAVSDK |
+| Script                                 | What It Demonstrates                                      |
+| -------------------------------------- | --------------------------------------------------------- |
+| `example_esp32_get_license.py`         | Request a license file using an activation key            |
+| `example_params_update_flash.py`       | Update configuration parameters in the CSV and flash them |
+| `example_esp32_ota_update.py`          | OTA firmware update for all detected devices              |
+| `example_esp32_download_log.py`        | Download flight controller logs via the ESP32 bridge      |
+| `example_esp32_download_log_MAVSDK.py` | Same, using MAVSDK                                        |
 
----
+***
 
 ## OpenAPI Definition
 

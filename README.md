@@ -7,9 +7,7 @@ description: >-
 
 # Introduction
 
-![DroneBridge logo](.gitbook/assets/DroneBridgeLogo_text.png)
-
-
+![DroneBridge logo](.gitbook/assets/dronebridgelogo_text.png)
 
 {% hint style="info" %}
 This documentation focuses mainly on the **DroneBridge for Raspberry Pi** Project! DroneBridge for Raspberry Pi is functional, however it is currently not maintained.\
