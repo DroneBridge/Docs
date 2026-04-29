@@ -19,9 +19,9 @@ This protocol is based on JSON which can be transported using the DroneBridge Ra
 
 ## Structure
 
-|  JSON  | CRC32   |
-| ------ | ------- |
-|  UTF-8 | 4 bytes |
+| JSON  | CRC32   |
+| ----- | ------- |
+| UTF-8 | 4 bytes |
 
 ## Defined Messages
 
@@ -68,7 +68,7 @@ Return all settings parameters within the requested sections.
 
 ### Settings Request
 
-&#x20;Request of specific sections and keys of the config file. Destination can be `1, 2, 5`
+Request of specific sections and keys of the config file. Destination can be `1, 2, 5`
 
 ```javascript
 { "destination": 1, 
@@ -111,7 +111,7 @@ Return all settings parameters within the requested sections.
 
 ### Settings Change Request
 
-&#x20;Change specific settings of the specified sections. Destination can be `1, 2 or 5`
+Change specific settings of the specified sections. Destination can be `1, 2 or 5`
 
 ```javascript
 {
@@ -224,35 +224,35 @@ Universal acknowledgement message. May be returned by any kind of request/change
 
 ## Fields
 
-| JSON Key         | Description                                                           | Possible values                                                                                                                                                                                        |
-| ---------------- | --------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-|  **destination** | What device is supposed to process the message                        | <ul><li><code>1</code>: ground station only</li><li><code>2</code>: ground station &#x26; UAV</li><li><code>3</code>: GoPro</li><li><code>4</code>: App/GCS</li><li><code>5</code>: UAV only</li></ul> |
-|  **request**     |  What application settings are requested?                             | `db`: DroneBridge                                                                                                                                                                                      |
-|  **response**    |  What application settings are included                               | <p></p><p><code>db</code>: DroneBridge</p>                                                                                                                                                             |
-|  **id**          | Random 4 digit ID to identify request and response                    | `0000-9999`                                                                                                                                                                                            |
-|  **origin**      | The origin/sender of the message                                      | <ul><li><code>drone</code></li><li><code>ground station</code></li></ul>                                                                                                                               |
-|  **change**      | What application settings shall be changed                            | <p></p><p><code>db</code>: DroneBridge</p>                                                                                                                                                             |
-|  **settings**    | JSON Object with all settings inside. Same keys as inside config file |                                                                                                                                                                                                        |
-|  **HID**         |  Hardware ID                                                          | <ul><li><code>0</code>: DroneBridge for RPi, </li><li><code>1</code>: DroneBridge for ESP32 (WiFi mode)</li></ul>                                                                                      |
-|  **FID**         |  Firmware version                                                     | Software version number of the release                                                                                                                                                                 |
+| JSON Key        | Description                                                           | Possible values                                                                                                                                                                                        |
+| --------------- | --------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| **destination** | What device is supposed to process the message                        | <ul><li><code>1</code>: ground station only</li><li><code>2</code>: ground station &#x26; UAV</li><li><code>3</code>: GoPro</li><li><code>4</code>: App/GCS</li><li><code>5</code>: UAV only</li></ul> |
+| **request**     | What application settings are requested?                              | `db`: DroneBridge                                                                                                                                                                                      |
+| **response**    | What application settings are included                                | `db`: DroneBridge                                                                                                                                                                                      |
+| **id**          | Random 4 digit ID to identify request and response                    | `0000-9999`                                                                                                                                                                                            |
+| **origin**      | The origin/sender of the message                                      | <ul><li><code>drone</code></li><li><code>ground station</code></li></ul>                                                                                                                               |
+| **change**      | What application settings shall be changed                            | `db`: DroneBridge                                                                                                                                                                                      |
+| **settings**    | JSON Object with all settings inside. Same keys as inside config file |                                                                                                                                                                                                        |
+| **HID**         | Hardware ID                                                           | <ul><li><code>0</code>: DroneBridge for RPi,</li><li><code>1</code>: DroneBridge for ESP32 (WiFi mode)</li></ul>                                                                                       |
+| **FID**         | Firmware version                                                      | Software version number of the release                                                                                                                                                                 |
 
 ## CRC32
 
-&#x20;CRC32 of the entire JSON as implemented by the Python package `binascii`
+CRC32 of the entire JSON as implemented by the Python package `binascii`
 
-&#x20;`binascii.crc32('my payload JSON')`
+`binascii.crc32('my payload JSON')`
 
 ## Sequence Diagramms
 
-![Settings request & response between app, ground station & UAS](../.gitbook/assets/Comm_Sequence_SettingsRequest.jpg)
+![Settings request & response between app, ground station & UAS](../.gitbook/assets/comm_sequence_settingsrequest.jpg)
 
 ## Adding a custom message to the communication module
 
 The communication module can transport messages of all kind. If a known message is received it does something. What it does is totally up to the users implementation. Often a user wants to send some sort of trigger to the UAV or ground station. Back in the days it was common to use one of the RC channels to trigger all sorts of actions. This is not very efficient since the RC sends all channels about 100 times/second even if you do not need that high update rates for your action. A simple camera ON/OFF switch would be an example.
 
-&#x20;So let's say you want to change some setting of a camera connected to your AirPi. To do that you need to execute a command like `mycam -- shuterspeed 500` on the AirPi. What you do to implement this into DroneBridge is the following:
+So let's say you want to change some setting of a camera connected to your AirPi. To do that you need to execute a command like `mycam -- shuterspeed 500` on the AirPi. What you do to implement this into DroneBridge is the following:
 
-1.  **Define a custom message that follows the specification of the communication protocol.** Just like [the new adjustrc message](https://github.com/seeul8er/DroneBridge/wiki/DroneBridge-communication-protocol#calibrate-rcjoystick). You can put as many parameters in there as you need. Your message could look like this:&#x20;
+1.  **Define a custom message that follows the specification of the communication protocol.** Just like [the new adjustrc message](https://github.com/seeul8er/DroneBridge/wiki/DroneBridge-communication-protocol#calibrate-rcjoystick). You can put as many parameters in there as you need. Your message could look like this:
 
     ```javascript
     { "destination": 5,
