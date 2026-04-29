@@ -10,9 +10,9 @@ description: How to flash the DLSE firmware to your ESP32 module.
 
 ## What You Will Flash
 
-The DLSE firmware is distributed as a set of binary files — one set per supported chip (C3, C5, C6). Each set contains all the firmware partitions needed to fully program the ESP32.
+The DLSE firmware is distributed as a set of binary files - one set per supported chip (C3, C5, C6). Each set contains all the firmware partitions needed to fully program the ESP32.
 
-By default, a freshly flashed ESP32 starts in **TRIAL** license mode, which cuts the MAVLink connection after 10 minutes. This is sufficient for initial setup and bench testing, but you will need to obtain a proper license before using the device in a show. See [License](license.md).
+By default, a freshly flashed ESP32 starts in **TRIAL** license mode, which cuts the MAVLink connection after 10 minutes. This is sufficient for initial setup and bench testing, but you will need to obtain a proper license before using the device in a show. Register at [drone-bridge.com/dlse](https://drone-bridge.com/dlse/), buy license credits, and then activate each ESP32 individually. See [License](license.md).
 
 ***
 
@@ -26,7 +26,7 @@ The online flasher runs in your browser and requires no software installation. I
 {% step %}
 #### Open the flasher
 
-Go to [https://drone-bridge.com/flasher/](https://drone-bridge.com/flasher/) in a **Chrome or Edge** browser (Web Serial API required — Firefox is not supported).
+Go to [https://drone-bridge.com/flasher/](https://drone-bridge.com/flasher/) in a **Chrome or Edge** browser (Web Serial API required - Firefox is not supported).
 {% endstep %}
 
 {% step %}
@@ -95,7 +95,7 @@ Plug the ESP32 into your computer via USB. Identify the serial port:
 {% step %}
 #### Flash the firmware
 
-Open `flashing_instructions.txt` and copy the command for your chip. It will look similar to this (your command may differ — always use the one from the instructions file):
+Open `flashing_instructions.txt` and copy the command for your chip. It will look similar to this (your command may differ - always use the one from the instructions file):
 
 ```bash
 esptool.py --chip esp32c6 --port /dev/ttyUSB0 --baud 460800 \
@@ -157,8 +157,10 @@ In the web interface, find the **License** section. It should show **TRIAL** as 
 {% endstep %}
 {% endstepper %}
 
+After confirming the device boots correctly in TRIAL mode, the next step is usually to register your DLSE account, purchase license credits, and activate the module before flight use.
+
 ***
 
 ## Next Steps
 
-<a href="safety-and-integration-guideline.md" class="button secondary">Read Safety &#x26; Integration Guideline</a> <a href="hardware-and-wiring.md" class="button secondary">Wire to Flight Controller</a> <a href="configuration.md" class="button primary">Configure the Firmware →</a>
+<a href="safety-and-integration-guideline.md" class="button secondary">Read Safety &#x26; Integration Guideline</a> <a href="hardware-and-wiring.md" class="button secondary">Wire to Flight Controller</a> <a href="configuration.md" class="button primary">Configure the Firmware -></a>
