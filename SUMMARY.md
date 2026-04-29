@@ -9,6 +9,7 @@
 * [Hardware & Wiring](dronebridge-for-esp32/hardware-and-wiring.md)
 * [Installation](dronebridge-for-esp32/installation.md)
 * [Configuration](dronebridge-for-esp32/configuration.md)
+* [Drone Swarm Control](dronebridge-for-esp32/drone-swarm-control.md)
 * [Safety & Integration](dronebridge-for-esp32/safety-and-integration.md)
 * [Hardware Setup Examples](dronebridge-for-esp32/hardware-setup-examples.md)
 * [Troubleshooting/Help](dronebridge-for-esp32/troubleshooting-help.md)
