@@ -77,6 +77,10 @@ DroneBridge for ESP32s\`custom ESP-NOW implementation using ESP-NOW broadcast pa
 Like with all LR modes it requires you to have ESP32 devices as AIR- and GND-Unit and a Serial-to-USB adapter to connect a GCS.\
 This is a more robust mode compared to the WiFi LR Mode since the ESP-NOW protocol is connectionless. The specified WiFi password is used for encryption.
 
+{% hint style="info" %}
+If you are planning a multi-drone deployment, also see [Drone Swarm Control](drone-swarm-control.md) for a concise comparison between WiFi-based swarm setups and ESP-NOW.
+{% endhint %}
+
 You will not be able to change the config once ESP-NOW mode is enabled since the web interface will be unavailable! Short press the boot button on the ESP32 to enable WiFi access point mode to be able to change settings.
 
 {% hint style="info" %}
