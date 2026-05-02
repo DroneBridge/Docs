@@ -30,6 +30,9 @@ Readers may have very different levels of technical experience, but they all hav
 - Call out project-specific differences explicitly, especially when readers could confuse Raspberry Pi, ESP32, and DLSE instructions.
 - If content applies only to the deprecated Raspberry Pi project, label it clearly as legacy or deprecated.
 
+## Safety
+Do not publish any API Keys, Private Keys or information that is not meant for the end-user.
+
 ## GitBook
 
 This project uses GitBook. Check the skill file for GitBook syntax and best practices from the local file `gitbook-skill.md`.

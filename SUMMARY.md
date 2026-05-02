@@ -6,6 +6,7 @@
 ## DroneBridge for ESP32
 
 * [Overview](dronebridge-for-esp32/untitled.md)
+* [Quick Start](dronebridge-for-esp32/quick-start.md)
 * [Hardware & Wiring](dronebridge-for-esp32/hardware-and-wiring.md)
 * [Installation](dronebridge-for-esp32/installation.md)
 * [Configuration](dronebridge-for-esp32/configuration.md)
