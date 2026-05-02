@@ -1,5 +1,7 @@
 ---
-description: Fastest way to get started with DroneBridge for ESP32, plus links to the detailed guides.
+description: >-
+  Fastest way to get started with DroneBridge for ESP32, plus links to the
+  detailed guides.
 icon: rocket
 ---
 
@@ -19,7 +21,7 @@ DroneBridge for ESP32 is a lightweight telemetry and data bridge for supported E
 
 You will typically need:
 
-* One supported ESP32 board
+* A supported ESP32 board
 * A USB cable for flashing and initial setup
 * Access to a flight controller UART
 * A Ground Control Station such as MissionPlanner or QGroundControl
@@ -38,15 +40,15 @@ For a first test, use a **single ESP32 in WiFi Access Point mode**. This is the 
 
 {% stepper %}
 {% step %}
-### 1. Choose a supported board
+#### 1. Choose a supported board
 
-Pick a supported ESP32 board and check whether it is an official board, a XIAO board, or a more generic development board.
+Pick a supported ESP32 board and check whether it is an official board, or a more generic development board.
 
 -> [Hardware & Wiring](hardware-and-wiring.md)
 {% endstep %}
 
 {% step %}
-### 2. Flash the firmware
+#### 2. Flash the firmware
 
 Use the online flashing tool if possible. It is the easiest option for a first installation and helps you pick the correct firmware flavour.
 
@@ -54,7 +56,7 @@ Use the online flashing tool if possible. It is the easiest option for a first i
 {% endstep %}
 
 {% step %}
-### 3. Wire the ESP32 to the flight controller
+#### 3. Wire the ESP32 to the flight controller
 
 Connect `5V`, `GND`, `TX`, and `RX`. If you are not using UART flow control, leave `RTS` and `CTS` disconnected and disabled.
 
@@ -62,7 +64,7 @@ Connect `5V`, `GND`, `TX`, and `RX`. If you are not using UART flow control, lea
 {% endstep %}
 
 {% step %}
-### 4. Open the web interface
+#### 4. Open the web interface
 
 Power the ESP32, connect to the Wi-Fi network `DroneBridge for ESP32` using the password `dronebridge`, and open `http://dronebridge.local` or `http://192.168.2.1`.
 
@@ -70,7 +72,7 @@ Power the ESP32, connect to the Wi-Fi network `DroneBridge for ESP32` using the 
 {% endstep %}
 
 {% step %}
-### 5. Configure the UART and mode
+#### 5. Configure the UART and mode
 
 Set the correct UART pins and baud rate for your hardware, then keep the device in **WiFi Access Point Mode** for the first test.
 
@@ -78,7 +80,7 @@ Set the correct UART pins and baud rate for your hardware, then keep the device 
 {% endstep %}
 
 {% step %}
-### 6. Connect your Ground Control Station
+#### 6. Connect your Ground Control Station
 
 Connect your GCS to the ESP32 link and verify that telemetry is arriving before trying more advanced modes.
 
@@ -101,44 +103,7 @@ Read the full mode details on [Configuration](configuration.md). If you are comp
 
 ## Detailed Guides
 
-<table data-view="cards">
-    <thead>
-        <tr>
-            <th>Guide</th>
-            <th data-card-target data-type="content-ref">Open</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td>Choose hardware and wiring</td>
-            <td><a href="hardware-and-wiring.md">Hardware &amp; Wiring</a></td>
-        </tr>
-        <tr>
-            <td>Flash the firmware</td>
-            <td><a href="installation.md">Installation</a></td>
-        </tr>
-        <tr>
-            <td>Configure modes and UART settings</td>
-            <td><a href="configuration.md">Configuration</a></td>
-        </tr>
-        <tr>
-            <td>See complete setup examples</td>
-            <td><a href="hardware-setup-examples.md">Hardware Setup Examples</a></td>
-        </tr>
-        <tr>
-            <td>Fix common problems</td>
-            <td><a href="troubleshooting-help.md">Troubleshooting/Help</a></td>
-        </tr>
-        <tr>
-            <td>Capture logs and debug startup issues</td>
-            <td><a href="logging-and-debugging.md">Logging &amp; Debugging</a></td>
-        </tr>
-        <tr>
-            <td>Build against the API or firmware</td>
-            <td><a href="developer-and-api-documentation.md">Developer &amp; API Documentation</a></td>
-        </tr>
-    </tbody>
-</table>
+<table data-view="cards"><thead><tr><th>Guide</th><th data-card-target data-type="content-ref">Open</th></tr></thead><tbody><tr><td>Choose hardware and wiring</td><td><a href="hardware-and-wiring.md">hardware-and-wiring.md</a></td></tr><tr><td>Flash the firmware</td><td><a href="installation.md">installation.md</a></td></tr><tr><td>Configure modes and UART settings</td><td><a href="configuration.md">configuration.md</a></td></tr><tr><td>See complete setup examples</td><td><a href="hardware-setup-examples.md">hardware-setup-examples.md</a></td></tr><tr><td>Fix common problems</td><td><a href="troubleshooting-help.md">troubleshooting-help.md</a></td></tr><tr><td>Capture logs and debug startup issues</td><td><a href="logging-and-debugging.md">logging-and-debugging.md</a></td></tr><tr><td>Build against the API or firmware</td><td><a href="developer-and-api-documentation.md">developer-and-api-documentation.md</a></td></tr></tbody></table>
 
 ## Common First-Run Problems
 
