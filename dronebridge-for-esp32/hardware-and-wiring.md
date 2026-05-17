@@ -12,11 +12,11 @@ The official boards are currently not publicly available for purchase. I am upda
 You can still request a quote via [drone-bridge.com](https://drone-bridge.com) or, in case you are based in Japan, order from [japandrones.com](https://japandrones.com/shopdetail/000000000203/).
 {% endhint %}
 
-The following boards are officially supported; only these boards will receive support from the main developer. \
+The following boards are officially supported; only these boards will receive support from the main developer.\
 These boards are very low-cost, have everything you need, and are very small. They are perfect for use on any drone. They support all possible modes and setup out of the box and are your fastest way to a working setup.\
 **Please consider supporting the project and doing yourself a favour by buying ready-to-use hardware!**
 
-<table data-full-width="false"><thead><tr><th>Official Board Option</th><th>Support for External Antenna</th><th>Ships with External Antenna</th><th>Ideal for</th></tr></thead><tbody><tr><td><del>Official HW v1.x <strong>ESP32C3</strong></del><br>(Discontinued - Use C6 with an external antenna)</td><td>✅</td><td>✅</td><td></td></tr><tr><td><a href="https://japandrones.com/shopdetail/000000000203/">Official Hardware from JapanDrones</a></td><td>✅</td><td>Depends on what you order</td><td>Long Range, ESP-NOW configuration</td></tr><tr><td>Official HW v1.x <strong>ESP32C6</strong><br><em>New shop launching soon. Use contact form on</em> <a href="https://drone-bridge.com"><em>drone-bridge.com</em></a> <em>for now.</em></td><td>✅</td><td>no (onboard antenna)</td><td>compact builds, Wi-Fi autopilot configuration interface. Optional external antenna.</td></tr><tr><td>DIY Hardware Builds<br></td><td>✅</td><td>depends on the choice of ESP32 - see the two options above</td><td>people living in places where there is no shipping option available.</td></tr></tbody></table>
+<table data-full-width="false"><thead><tr><th>Official Board Option</th><th>Support for External Antenna</th><th>Ships with External Antenna</th><th>Ideal for</th></tr></thead><tbody><tr><td>Official HW v1.x <strong>ESP32C6</strong><br>Official Shop:<br><a href="https://drone-bridge.com">drone-bridge.com</a></td><td>✅</td><td>no (onboard antenna)</td><td>Compact builds, Wi-Fi autopilot configuration interface. Optional external antenna.</td></tr><tr><td><a href="https://japandrones.com/shopdetail/000000000203/">Official Hardware from JapanDrones</a></td><td>✅</td><td>Depends on what you order</td><td>Long Range, ESP-NOW configuration</td></tr><tr><td>DIY Hardware Builds<br></td><td>✅</td><td>depends on the choice of ESP32 - see the two options above</td><td>people living in places where there is no shipping option available.</td></tr></tbody></table>
 
 ### Do It Yourself Build
 
@@ -28,7 +28,7 @@ These boards are very low-cost, have everything you need, and are very small. Th
 **I am updating the shop. You can request a quote for the design files via** [**drone-bridge.com**](https://drone-bridge.com)
 {% endhint %}
 
-This design is overall easier and more affordable to build compared to the SMD version. The downside is that it is a little bigger and does not feature the official Pixhawk standard connector, making it less reliable overall. \
+This design is overall easier and more affordable to build compared to the SMD version. The downside is that it is a little bigger and does not feature the official Pixhawk standard connector, making it less reliable overall.\
 The design features big solder pads for connections to the flight controller and simple through-hole mounts for the ESP32 chip. The ideal solution for hobbyists who want a fully supported board, and ordering the official ready-made board is not an option.
 
 <div><figure><img src="../.gitbook/assets/HW_v1_2_0.jpg" alt=""><figcaption><p>Backside of EasySolder PCB when ordered from PCB manufacturer.</p></figcaption></figure> <figure><img src="../.gitbook/assets/HW_v1_2_1.jpg" alt=""><figcaption><p>Top of EasySolder PCB when ordered from PCB manufacturer.</p></figcaption></figure> <figure><img src="../.gitbook/assets/HW_v1_2_8.jpg" alt=""><figcaption><p>EasySolder PCB wired up with optional RTS/CTS connections for UART flow control.</p></figcaption></figure> <figure><img src="../.gitbook/assets/HW_v1_2_9.jpg" alt=""><figcaption><p>EasySolder PCB wired up with optional RTS/CTS connections for UART flow control.</p></figcaption></figure> <figure><img src="../.gitbook/assets/HW_v1_2_10.jpg" alt=""><figcaption><p>EasySolder version with an ESP32C6 attached using simple through holes.</p></figcaption></figure></div>
@@ -47,8 +47,8 @@ Other boards that will likely work:
 * Seeed Studio XIAO ESP32C3
 * Seeed Studio XIAO ESP32C6
 
-Other ESP boards are very likely to work as well. You don't need any additional PSRAM, just make sure they come with flash memory installed (internal or external - very few boards come with no flash installed, so this is no issue most of the time). \
-If your ESP32 board does not come with a USB-to-Serial adapter or the USB is not connected to the internal JTAG-USB Interface (the case with some ESP32 C3 & ESP32 C6 boards), you will need one to flash the firmware. \
+Other ESP boards are very likely to work as well. You don't need any additional PSRAM, just make sure they come with flash memory installed (internal or external - very few boards come with no flash installed, so this is no issue most of the time).\
+If your ESP32 board does not come with a USB-to-Serial adapter or the USB is not connected to the internal JTAG-USB Interface (the case with some ESP32 C3 & ESP32 C6 boards), you will need one to flash the firmware.\
 When wiring the power supply lines, follow the instructions of the board manufacturer. Some modules do not like an external 5V power input connected in addition to a USB at the same time.
 
 The following ESP32 chips are supported:
@@ -66,7 +66,7 @@ Almost any board featuring one of these chips should work. See the wiring and fl
 ### Wiring to the Flight Controller
 
 {% hint style="warning" %}
-GND, 5V, TX & RX connections are mandatory! \
+GND, 5V, TX & RX connections are mandatory!\
 RTS & CTS connections are optional. Do not configure RTS & CTS pins in the web interface if you did not connect them to the flight controller. In that case, leave them both to set to 0 to disable UART flow control.
 {% endhint %}
 
@@ -86,7 +86,7 @@ In case you are not using the standard Pixhawk telemetry connector, see the refe
 
 #### Seeed Studio XIAO ESP32C3 & ESP32C6
 
-You can connect your flight controller using any available pins **except for the TX & RX labelled pins and the ones marked in the picture below**. \
+You can connect your flight controller using any available pins **except for the TX & RX labelled pins and the ones marked in the picture below**.\
 It is highly recommended to use GPIO4, GPIO5, GPIO6 & GPIO7 for the ESP32-C3 and GPIO2, GPIO21, GPIO22 & GPIO23 for the ESP32-C6.\
 The image below shows an **example of connecting** to the PX4 standard telemetry port.
 
@@ -116,7 +116,7 @@ Pins that do not work:
 
 ### Wiring for usage with a Ground Control Station (GCS)
 
-The ESP-NOW mode & the WiFi LR Mode require an ESP32 as a receiver on the ground (the other modes follow the plain wifi standard so you can use any WiFi adapter to connect). \
+The ESP-NOW mode & the WiFi LR Mode require an ESP32 as a receiver on the ground (the other modes follow the plain wifi standard so you can use any WiFi adapter to connect).\
 To use the ESP32 on the GND as a receiver you have the following wiring options:
 
 Official Hardware Boards can use an external USB-to-Serial adapter or the onboard USB-C connector. To use the official board's onboard USB-C connector, you must flash the firmware flavour "USBSerial" to the GND-ESP32.
@@ -153,7 +153,7 @@ Connect the USB-to-Serial adapter to the ESP32\`s GPIOs and configure the GPIO p
 
 For reference see:
 
-<figure><img src="../.gitbook/assets/HWv1_0_externalSerialtoUSB.jpg" alt=""><figcaption><p>DroneBridge for ESP32 with an external FTDI/USB-to-Serial adapter wired to the TELEM1 port for useage as a receiver on the Ground Control Station (GCS).  An external RP-SAM antenna gives more freedom regarding reception. Case is 3D printed using FFF.</p></figcaption></figure>
+<figure><img src="../.gitbook/assets/HWv1_0_externalSerialtoUSB.jpg" alt=""><figcaption><p>DroneBridge for ESP32 with an external FTDI/USB-to-Serial adapter wired to the TELEM1 port for useage as a receiver on the Ground Control Station (GCS). An external RP-SAM antenna gives more freedom regarding reception. Case is 3D printed using FFF.</p></figcaption></figure>
 
 ### UART Flow Control
 
