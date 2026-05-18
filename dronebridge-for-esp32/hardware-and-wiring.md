@@ -6,17 +6,11 @@ description: List of supported Hardware and the wiring instructions
 
 ## Officially Supported Boards
 
-{% hint style="info" %}
-The official boards are currently not publicly available for purchase. I am updating the shop.
-
-You can still request a quote via [drone-bridge.com](https://drone-bridge.com) or, in case you are based in Japan, order from [japandrones.com](https://japandrones.com/shopdetail/000000000203/).
-{% endhint %}
-
 The following boards are officially supported; only these boards will receive support from the main developer.\
 These boards are very low-cost, have everything you need, and are very small. They are perfect for use on any drone. They support all possible modes and setup out of the box and are your fastest way to a working setup.\
 **Please consider supporting the project and doing yourself a favour by buying ready-to-use hardware!**
 
-<table data-full-width="false"><thead><tr><th>Official Board Option</th><th>Support for External Antenna</th><th>Ships with External Antenna</th><th>Ideal for</th></tr></thead><tbody><tr><td>Official HW v1.x <strong>ESP32C6</strong><br>Official Shop:<br><a href="https://drone-bridge.com">drone-bridge.com</a></td><td>✅</td><td>no (onboard antenna)</td><td>Compact builds, Wi-Fi autopilot configuration interface. Optional external antenna.</td></tr><tr><td><a href="https://japandrones.com/shopdetail/000000000203/">Official Hardware from JapanDrones</a></td><td>✅</td><td>Depends on what you order</td><td>Long Range, ESP-NOW configuration</td></tr><tr><td>DIY Hardware Builds<br></td><td>✅</td><td>depends on the choice of ESP32 - see the two options above</td><td>people living in places where there is no shipping option available.</td></tr></tbody></table>
+<table data-full-width="false"><thead><tr><th>Official Board Option</th><th>Support for External Antenna</th><th>Ships with External Antenna</th><th>Ideal for</th></tr></thead><tbody><tr><td>Official HW v1.x <strong>ESP32C6</strong><br>Official Shop:<br><a href="https://drone-bridge.com">drone-bridge.com</a></td><td>✅</td><td>no (onboard antenna)</td><td>Compact builds, WiFi autopilot configuration interface. Optional external antenna.</td></tr><tr><td><a href="https://japandrones.com/shopdetail/000000000203/">Official Hardware from JapanDrones</a></td><td>✅</td><td>Depends on what you order</td><td>Long Range, ESP-NOW configuration</td></tr><tr><td>DIY Hardware Builds<br><em>Design files on request</em><br></td><td>✅</td><td>Depends on the choice of ESP32 - see the two options above</td><td>People living in places where there is no shipping option available.</td></tr></tbody></table>
 
 ### Do It Yourself Build
 
@@ -25,7 +19,7 @@ These boards are very low-cost, have everything you need, and are very small. Th
 **Easy-Solder DIY Version. No need to deal with SMD parts.**
 
 {% hint style="info" %}
-**I am updating the shop. You can request a quote for the design files via** [**drone-bridge.com**](https://drone-bridge.com)
+**You can request a quote for the design files via** [**drone-bridge.com**](https://drone-bridge.com)
 {% endhint %}
 
 This design is overall easier and more affordable to build compared to the SMD version. The downside is that it is a little bigger and does not feature the official Pixhawk standard connector, making it less reliable overall.\
