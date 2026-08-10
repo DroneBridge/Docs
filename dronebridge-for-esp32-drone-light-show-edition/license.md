@@ -14,27 +14,28 @@ To use DLSE in a real drone show deployment, you must register an account and ac
 
 {% stepper %}
 {% step %}
-#### Register at drone-bridge.com
+**Register at drone-bridge.com**
 
 Create your DLSE user account at [https://drone-bridge.com/dlse/](https://drone-bridge.com/dlse/).
 {% endstep %}
 
 {% step %}
-#### Buy license credits
+**Buy license credits**
 
 After registration, open the DLSE user dashboard and purchase the number of license credits you need. DLSE licenses are sold on a prepaid basis.
 {% endstep %}
 
 {% step %}
-#### Activate each ESP32
+**Activate each ESP32**
 
 Use the dashboard or a supported activation workflow to activate your DLSE firmware for a specific ESP32. One license credit activates one ESP32.
 {% endstep %}
 
 {% step %}
-#### License becomes bound to that hardware
+**License becomes bound to that hardware**
 
-After activation, the license is locked to that specific ESP32 hardware. The activated device can then run DLSE without the 10-minute TRIAL limitation.
+After activation, the license is locked to that specific ESP32 hardware. The activated device can then run DLSE without the 10-minute TRIAL limitation.\
+An activated license cannot be transferred to another ESP32 board. It cannot be revoked.
 {% endstep %}
 {% endstepper %}
 
