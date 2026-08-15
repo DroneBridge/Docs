@@ -3,7 +3,7 @@
 ![](https://raw.githubusercontent.com/DroneBridge/ESP32/master/wiki/DroneBridgeLogo_text.png)
 
 {% hint style="warning" %}
-### Looking for the Drone Light Show Edition?
+#### Looking for the Drone Light Show Edition?
 
 [Check the dedicated Wiki section on the Drone Light Show Edition!](../dronebridge-for-esp32-drone-light-show-edition/overview-drone-light-show-edition.md)
 {% endhint %}

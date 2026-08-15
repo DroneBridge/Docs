@@ -12,7 +12,7 @@ description: Configuration Options for DroneBridge for ESP32
 
 <figure><img src="../.gitbook/assets/dbesp32_webinterface (1).png" alt=""><figcaption></figcaption></figure>
 
-## UART Parameters&#x20;
+## UART Parameters
 
 For the Official DroneBridge for ESP32 Board HW v1.0, HW v1.1 & HW v1.2.\
 This configuration is only valid for the official boards! If you did not connect the flow control lines, set RTS and CTS pins to 0 to disable flow control. Check the [Flow Control section](hardware-and-wiring.md#uart-flow-control) for more details.
@@ -23,7 +23,7 @@ This configuration is only valid for the official boards! If you did not connect
 
 DroneBridge for ESP32 supports the following modes:
 
-<table data-full-width="true"><thead><tr><th width="124">SYS_ESP32_MODE</th><th>DroneBridge for ESP32 Mode</th><th width="91">Encryption</th><th>Description</th><th>Notes</th></tr></thead><tbody><tr><td>1</td><td>WiFi Access Point Mode</td><td>WPA2 PSK</td><td>ESP32 launches classic WiFi access point using 802.11b rates</td><td>Any WiFi device can connect. Can manage up to 10 WiFi stations/clients.</td></tr><tr><td>2</td><td>WiFi Client Mode</td><td>min. WEP</td><td>ESP32 connects to an existing WiFi access point. LR Mode supported</td><td>Encryption defined by access point. Multiple drones can connect to one AP and GCS. 802.11b rates</td></tr><tr><td>3</td><td>WiFi Access Point Mode LR</td><td>WPA2 PSK</td><td>ESP32 launches WiFi access point mode using espressifs LR mode</td><td>Only ESP32 LR Mode enabled devices can detect and connect to the access point. Data rate is reduced to 0.25Mbit. Range is greatly increased.</td></tr><tr><td>4</td><td>ESP-NOW LR Mode AIR</td><td>AES256-GCM</td><td>ESP32 is able to receive ESP-NOW broadcast packets from any GCS in the area and forwards them to the UART. Broadcasts to all GND stations in the area.</td><td>Connectionless protocol. Data reate is reduced to 0.25Mbit. Range is greatly increased compared to WiFi modes. Custom encryption mode for ESP-NOW broadcasts and protocol.</td></tr><tr><td>5</td><td>ESP-NOW LR Mode GND</td><td>AES256-GCM</td><td>ESP32 is able to receive ESP-NOW broadcast packets from any drone in the area and forwards them to the UART. Broadcasts to all AIR stations in the area.</td><td>Connectionless protocol. Data rate is reduced to 0.25Mbit. Range greatly increased compared to WiFi modes. Custom encrpytion mode for ESP-NOW broadcasts and protocol.</td></tr><tr><td>6</td><td>Bluetooth LE</td><td>TBD</td><td>Bluetooth LE (BLE) connection to your device. <br></td><td><p>The application (GCS) must explicitly support BLE connections.<br>So far this is not the case. They only support Bluetooth Classic SPP which is NOT BLE.</p><p>Use the DroneBridge BLE Bridge application to connect to your GCS.</p></td></tr></tbody></table>
+<table data-full-width="true"><thead><tr><th width="124">SYS_ESP32_MODE</th><th>DroneBridge for ESP32 Mode</th><th width="91">Encryption</th><th>Description</th><th>Notes</th></tr></thead><tbody><tr><td>1</td><td>WiFi Access Point Mode</td><td>WPA2 PSK</td><td>ESP32 launches classic WiFi access point using 802.11b rates</td><td>Any WiFi device can connect. Can manage up to 10 WiFi stations/clients.</td></tr><tr><td>2</td><td>WiFi Client Mode</td><td>min. WEP</td><td>ESP32 connects to an existing WiFi access point. LR Mode supported</td><td>Encryption defined by access point. Multiple drones can connect to one AP and GCS. 802.11b rates</td></tr><tr><td>3</td><td>WiFi Access Point Mode LR</td><td>WPA2 PSK</td><td>ESP32 launches WiFi access point mode using espressifs LR mode</td><td>Only ESP32 LR Mode enabled devices can detect and connect to the access point. Data rate is reduced to 0.25Mbit. Range is greatly increased.</td></tr><tr><td>4</td><td>ESP-NOW LR Mode AIR</td><td>AES256-GCM</td><td>ESP32 is able to receive ESP-NOW broadcast packets from any GCS in the area and forwards them to the UART. Broadcasts to all GND stations in the area.</td><td>Connectionless protocol. Data reate is reduced to 0.25Mbit. Range is greatly increased compared to WiFi modes. Custom encryption mode for ESP-NOW broadcasts and protocol.</td></tr><tr><td>5</td><td>ESP-NOW LR Mode GND</td><td>AES256-GCM</td><td>ESP32 is able to receive ESP-NOW broadcast packets from any drone in the area and forwards them to the UART. Broadcasts to all AIR stations in the area.</td><td>Connectionless protocol. Data rate is reduced to 0.25Mbit. Range greatly increased compared to WiFi modes. Custom encrpytion mode for ESP-NOW broadcasts and protocol.</td></tr><tr><td>6</td><td>Bluetooth LE</td><td>TBD</td><td>Bluetooth LE (BLE) connection to your device.<br></td><td><p>The application (GCS) must explicitly support BLE connections.<br>So far this is not the case. They only support Bluetooth Classic SPP which is NOT BLE.</p><p>Use the DroneBridge BLE Bridge application to connect to your GCS.</p></td></tr></tbody></table>
 
 ### WiFi Access Point Mode
 
@@ -63,7 +63,7 @@ Alternatively, you can manually add a UDP target via the web interface using the
 
 <figure><img src="https://raw.githubusercontent.com/DroneBridge/ESP32/master/wiki/modes/DB_ESP32_Mode_WiFi_LR.png" alt=""><figcaption><p>DroneBridge for ESP32 Concept for ESP32 WiFi Long Range Mode. Requires all parterns to use an ESP32 with LR mode enabled.</p></figcaption></figure>
 
-The same as the WiFi Access Point Mode only with espressifs' own LR mode enabled. \
+The same as the WiFi Access Point Mode only with espressifs' own LR mode enabled.\
 This means that only other DroneBridge for ESP32 devices can see and connect to the access point (the access point is invisible to laptops and phones etc.). Thanks to LR mode the data rate is reduced and the max. possible range greatly increased. [Read more about it here!](https://docs.espressif.com/projects/esp-idf/en/stable/esp32/api-guides/wifi.html#long-range-lr)
 
 An additional serial-to-USB adapter that connects to the configured UART of the GND ESP32 is necessary on the ground. Or use the `USBSerial` or `noUARTConsole` firmware flavour to use the onboard USB connector.\
@@ -84,18 +84,51 @@ If you are planning a multi-drone deployment, also see [Drone Swarm Control](dro
 You will not be able to change the config once ESP-NOW mode is enabled since the web interface will be unavailable! Short press the boot button on the ESP32 to enable WiFi access point mode to be able to change settings.
 
 {% hint style="info" %}
-**Notes on security:** \
+**Notes on security:**\
 The AES-GCM encryption uses random IVs. If an attacker can listen to all of the traffic (encrypted using the same password), he has a 50% chance of decrypting/cracking your password after 2^48 packets.\
 For you, this means you should change your password from time to time to be on the secure side. Generally, changing the password every 2^32 packets is advised to reduce the probability of a successful decryption attack to 1 in 4 billion.\
-Since telemetry is not generating a massive amount of packets/second you should be fine :)
+**Since telemetry is not generating a massive amount of packets/second you should be fine :)**
 {% endhint %}
 
 #### **Configuration**
 
 Configure the ESP32 devices the following way depending on their role.\
-**Recommendation: the web interface will not be available in ESP-NOW mode. It is recommended that the serial configuration be first tested using `WiFi Client Mode` or `WiFi Access Point Mode`. So first make sure you have a working setup when using a standalone ESP32 in Client or AP mode, then add the second ESP32 and configure both in ESP-NOW mode.**
+**Recommendation: the web interface will not be available in ESP-NOW mode.** \
+**It is recommended that the serial configuration be first tested using `WiFi Client Mode` or `WiFi Access Point Mode`.** \
+**So first make sure you have a working setup when using a standalone ESP32 in Client or AP mode, then add the second ESP32 and configure both in ESP-NOW mode.**
 
-#### **Drone Configuration**
+#### ESP-NOW Auto-Binding
+
+Starting with DroneBridge for ESP32 v2.3.x you can use the boot button on the ESP32 boards to init an auto-binding of two ESP32 devices running DroneBridge. No manual configuration necessary.
+
+**User Steps**
+
+1. Decide which device is the ground station and which device is the air unit.
+2. Configure the preferred ESP-NOW channel on the device intended to become GND. The AIR unit will automatically receive this channel during binding.
+3. **Double-click** the boot button on **GND**.
+4. Within 90 seconds, **triple-click** the boot button on **AIR**.
+5. Wait for both devices to restart. No password or channel needs to be entered on AIR.
+
+**LED Feedback on Official ESP32-C6 Boards**
+
+<table><thead><tr><th width="209">LED pattern</th><th>Meaning</th></tr></thead><tbody><tr><td>Slow pulse</td><td>Waiting for the other device or scanning channels</td></tr><tr><td>Fast pulse</td><td>Pairing and saving configuration</td></tr><tr><td>Solid briefly</td><td>Binding succeeded and the device will restart</td></tr><tr><td>Repeated flashes</td><td>Binding failed or timed out</td></tr></tbody></table>
+
+**What binding configures**
+
+Binding automatically creates and stores:
+
+* A new random ESP-NOW link secret
+* The selected GND channel on both devices
+* ESP-NOW GND mode on the double-clicked device
+* ESP-NOW AIR mode on the triple-clicked device
+
+The normal Wi-Fi password is not changed. Existing manual ESP-NOW pairs continue using the old Wi-Fi password until they are successfully rebound.
+
+**Important Note**
+
+Perform binding in a trusted radio environment. The exchanged link secret is encrypted against passive listeners, but button-only binding does not protect against an active nearby attacker interfering during the 90-second setup window.
+
+#### **Manual Drone Configuration**
 
 * Mode: `ESP-NOW LR Mode AIR`
 * Define a secure password - SSID is ignored (all ESP32s must share the same password)
@@ -105,7 +138,7 @@ Configure the ESP32 devices the following way depending on their role.\
 
 Save the settings and trigger a reboot!
 
-#### **Ground Configuration**
+#### **Manual Ground Configuration**
 
 * Mode: `ESP-NOW LR Mode GND`
 * Define a secure password - SSID is ignored (all ESP32s must share the same password)
@@ -144,11 +177,11 @@ Download the Windows application. Requires .NET 8 and Windows 10 or newer
 
 <figure><img src="../.gitbook/assets/grafik (1).png" alt=""><figcaption><p>DroneBridge Bluetooth LE Bridge to connect ESP32 in Bluetooth LE Mode to ground control stations.</p></figcaption></figure>
 
-Both applications search for the ESP32 in BLE mode, connect to it and create a BLE-UDP bridge. \
+Both applications search for the ESP32 in BLE mode, connect to it and create a BLE-UDP bridge.\
 Your GCS can connect by listening on UDP 14550. They do this by default, so your GCS should connect automatically.
 
-The Windows GUI application also opens a WebSocket. \
-It can be used to connect to Betaflight Configurator or MissionPlanner.&#x20;
+The Windows GUI application also opens a WebSocket.\
+It can be used to connect to Betaflight Configurator or MissionPlanner.
 
 <figure><img src="../.gitbook/assets/grafik.png" alt=""><figcaption><p>Betaflight BLE connection using DroneBridge Bluetooth Low Energy Bridge</p></figcaption></figure>
 
@@ -165,7 +198,7 @@ If you made a configuration error and want to reset the settings of the ESP32 yo
 
 ## MissionPlanner Configuration
 
-MissionPlanner supports TCP, UDP and serial connections to the ESP32. \
+MissionPlanner supports TCP, UDP and serial connections to the ESP32.\
 To use UDP with the ESP32 in Wi-Fi Client mode you must choose UDPCI as a connection protocol. That way you can specify the ESP32's IP and port. The ESP32's IP address is displayed in the web interface.
 
 {% hint style="info" %}

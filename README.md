@@ -12,7 +12,7 @@ description: >-
 {% hint style="info" %}
 This documentation focuses mainly on the **DroneBridge for Raspberry Pi** Project! DroneBridge for Raspberry Pi is functional, however it is currently not maintained.\
 \
-[**DroneBridge for ESP32**](/broken/pages/-LPVorA35QR71MQLdwhA) is a more recent branch of the project that focuses on a telemetry link using broadly available hardware. It is much more mature, robust and easy to setup. It currently does not offer video transmission support.
+[**DroneBridge for ESP32**](https://app.gitbook.com/s/-LPVg85APCswA0wXCdDW/dronebridge-for-esp32) is a more recent branch of the project that focuses on a telemetry link using broadly available hardware. It is much more mature, robust and easy to setup. It currently does not offer video transmission support.
 {% endhint %}
 
 DroneBridge for Raspberry Pi is a system based on the WifiBroadcast approach. A bidirectional digital radio link between two endpoints is established using standard WiFi hardware and a custom protocol. DroneBridge is optimized for use in UAV/UAS applications and is a complete system. It is intended to be a real alternative to other similar systems, such as DJI Lightbridge or OcuSync.

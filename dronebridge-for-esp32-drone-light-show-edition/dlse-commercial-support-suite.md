@@ -60,7 +60,7 @@ Each script contains configuration variables near the top (such as `MY_SECRET_TO
 
 {% stepper %}
 {% step %}
-#### Configure one reference ESP32
+**Configure one reference ESP32**
 
 Set up a single ESP32 exactly as you want all drones in your fleet to be configured.
 
@@ -73,13 +73,13 @@ Set up a single ESP32 exactly as you want all drones in your fleet to be configu
 {% endstep %}
 
 {% step %}
-#### Prepare the suite
+**Prepare the suite**
 
 Download the latest DLSE release binaries from [drone-bridge.com/dlse](https://drone-bridge.com/dlse/) and extract them **into the `DLSECommercialSupportSuite` folder**. The folder name (e.g., `DroneBridge_ESP32DLSE_BETA3`) is used as the `--release-folder` argument.
 {% endstep %}
 
 {% step %}
-#### Run the batch script
+**Run the batch script**
 
 ```bash
 python batch_install_dlse_allinone.py \
@@ -102,7 +102,7 @@ The `--start-index` parameter allows automatic per-device differentiation. With 
 {% endstep %}
 
 {% step %}
-#### Plug in ESP32s one by one
+**Plug in ESP32s one by one**
 
 With the script running, simply connect your ESP32 modules to the computer via USB one at a time. The script detects each new device, flashes it, configures it, and activates it — then waits for the next one. The whole process per device takes under a minute.
 

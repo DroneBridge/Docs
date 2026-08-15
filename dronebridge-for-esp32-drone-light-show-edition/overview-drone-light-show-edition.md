@@ -68,42 +68,42 @@ Follow the pages in this section in order:
 
 {% stepper %}
 {% step %}
-#### Choose and source your hardware
+**Choose and source your hardware**
 
 Learn which ESP32 chip is right for your fleet and what physical module to buy.\
 -> [Hardware & Wiring](hardware-and-wiring.md)
 {% endstep %}
 
 {% step %}
-#### Install the DLSE firmware
+**Install the DLSE firmware**
 
 Flash the DLSE firmware to each ESP32 using esptool or the online flasher.\
 -> [Installation](installation.md)
 {% endstep %}
 
 {% step %}
-#### Read the Safety & Integration Guideline
+**Read the Safety & Integration Guideline**
 
 Before wiring or flying anything, understand the safety requirements and constraints.\
 -> [Safety & Integration Guideline](safety-and-integration-guideline.md)
 {% endstep %}
 
 {% step %}
-#### Wire the ESP32 to your flight controller
+**Wire the ESP32 to your flight controller**
 
 Connect the ESP32 to the flight controller UART port and to the power management board.\
 -> [Hardware & Wiring - Wiring](hardware-and-wiring.md#wiring)
 {% endstep %}
 
 {% step %}
-#### Configure the firmware
+**Configure the firmware**
 
 Set up Wi-Fi credentials, UART pins, MAVLink parameters, and power management via the web interface or REST API.\
 -> [Configuration](configuration.md)
 {% endstep %}
 
 {% step %}
-#### Obtain and activate a license
+**Obtain and activate a license**
 
 Register at `drone-bridge.com/dlse`, buy license credits, and activate an EVALUATION or ACTIVATED license for each ESP32 in your fleet.\
 -> [License](license.md)

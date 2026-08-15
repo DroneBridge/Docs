@@ -15,7 +15,8 @@
 * [Hardware Setup Examples](dronebridge-for-esp32/hardware-setup-examples.md)
 * [Troubleshooting/Help](dronebridge-for-esp32/troubleshooting-help.md)
 * [Logging & Debugging](dronebridge-for-esp32/logging-and-debugging.md)
-* [Developer & API Documentation](dronebridge-for-esp32/developer-and-api-documentation.md)
+* [Developer & API Documentation](dronebridge-for-esp32/developer-and-api-documentation/README.md)
+  * [ESP-NOW Protocol](dronebridge-for-esp32/developer-and-api-documentation/esp-now-protocol.md)
 
 ## DroneBridge for ESP32 Drone Light Show Edition
 
