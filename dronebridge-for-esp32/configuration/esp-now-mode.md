@@ -6,35 +6,23 @@ description: Configuration Instructions for DroneBridge for ESP32 Long Range ESP
 
 ### ESP-NOW LR Mode GND & ESP-NOW LR Mode AIR
 
+The ESP-NOW mode of DroneBridge for ESP32 offers significant more range than traditional Wi-Fi. It requires ESP32 running DroneBridge on the AIR and GND side.
+
+You will not be able to change the config once ESP-NOW mode is enabled since the web interface will be unavailable! \
+Short-press the boot button on the ESP32 to enable WiFi access point mode to be able to change settings.
+
 ![DroneBridge for ESP32 ESP-NOW Mode that can be used for drone swarms. Connectionless protocol with custom AES encryption. Requires ESP32s no UAV and ground.](https://raw.githubusercontent.com/DroneBridge/ESP32/master/wiki/modes/DB_ESP32_Mode_WiFi_ESPNOW.png)
-
-DroneBridge for ESP32s\` custom ESP-NOW implementation using ESP-NOW broadcast packets with an AES256-GCM encrypted payload.\
-Like all Long-Range (LR) modes, it requires you to have ESP32 devices as AIR- and GND-Unit and a Serial-to-USB adapter to connect a GCS.\
-This is a more robust mode than the WiFi LR Mode because the ESP-NOW protocol is connectionless. The specified WiFi password is used for encryption.
-
-{% hint style="info" %}
-If you are planning a multi-drone deployment, also see [Drone Swarm Control](../drone-swarm-control.md) for a concise comparison between WiFi-based swarm setups and ESP-NOW.
-{% endhint %}
-
-You will not be able to change the config once ESP-NOW mode is enabled since the web interface will be unavailable! Short-press the boot button on the ESP32 to enable WiFi access point mode to be able to change settings.
-
-{% hint style="info" %}
-**Notes on security:**\
-The AES-GCM encryption uses random IVs. If an attacker can listen to all of the traffic (encrypted using the same password), he has a 50% chance of decrypting/cracking your password after 2^48 packets.\
-For you, this means you should change your password from time to time to be on the secure side. Generally, changing the password every 2^32 packets is advised to reduce the probability of a successful decryption attack to 1 in 4 billion.\
-**Since telemetry is not generating a massive amount of packets/second you should be fine :)**
-{% endhint %}
 
 #### **Configuration**
 
-Configure the ESP32 devices the following way depending on their role.\
+Configure the ESP32 devices depending on their role.\
 **Recommendation: the web interface will not be available in ESP-NOW mode.**\
 **It is recommended that the serial configuration be first tested using `WiFi Client Mode` or `WiFi Access Point Mode`.**\
 **So first make sure you have a working setup when using a standalone ESP32 in Client or AP mode, then add the second ESP32 and configure both in ESP-NOW mode.**
 
 #### ESP-NOW Auto-Binding
 
-Auto-binding configures the channel, device roles, and shared ESP-NOW secret. One GND can bind multiple AIR units.
+Auto-binding configures the channel, device roles, and shared ESP-NOW secret. One GND can bind multiple AIR units. These bound units form a group.
 
 {% hint style="info" %}
 After every reboot, wait at least **2 seconds** before pressing the **BOOT/Fn button** again. On an official ESP32-C6 board, you can continue when the LED starts pulsing.
@@ -103,3 +91,20 @@ If the ESP-NOW link secret is empty, the firmware uses the normal Wi-Fi password
 {% endhint %}
 
 After every reboot, wait at least 2 seconds—or wait for the LED to indicate the next state—before using the BOOT/Fn button.
+
+### Additional Notes
+
+DroneBridge for ESP32s\` custom ESP-NOW implementation using ESP-NOW broadcast packets with an AES256-GCM encrypted payload.\
+Like all Long-Range (LR) modes, it requires you to have ESP32 devices as AIR- and GND-Unit and a Serial-to-USB adapter to connect a GCS.\
+This is a more robust mode than the WiFi LR Mode because the ESP-NOW protocol is connectionless. The specified WiFi password is used for encryption.
+
+{% hint style="info" %}
+If you are planning a multi-drone deployment, also see [Drone Swarm Control](../drone-swarm-control.md) for a concise comparison between WiFi-based swarm setups and ESP-NOW.
+{% endhint %}
+
+{% hint style="info" %}
+**Notes on security:**\
+The AES-GCM encryption uses random IVs. If an attacker can listen to all of the traffic (encrypted using the same password), he has a 50% chance of decrypting/cracking your password after 2^48 packets.\
+For you, this means you should change your password from time to time to be on the secure side. Generally, changing the password every 2^32 packets is advised to reduce the probability of a successful decryption attack to 1 in 4 billion.\
+**Since telemetry is not generating a massive amount of packets/second you should be fine :)**
+{% endhint %}
