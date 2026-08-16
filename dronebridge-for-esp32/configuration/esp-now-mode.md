@@ -28,60 +28,78 @@ For you, this means you should change your password from time to time to be on t
 #### **Configuration**
 
 Configure the ESP32 devices the following way depending on their role.\
-**Recommendation: the web interface will not be available in ESP-NOW mode.** \
-**It is recommended that the serial configuration be first tested using `WiFi Client Mode` or `WiFi Access Point Mode`.** \
+**Recommendation: the web interface will not be available in ESP-NOW mode.**\
+**It is recommended that the serial configuration be first tested using `WiFi Client Mode` or `WiFi Access Point Mode`.**\
 **So first make sure you have a working setup when using a standalone ESP32 in Client or AP mode, then add the second ESP32 and configure both in ESP-NOW mode.**
 
 #### ESP-NOW Auto-Binding
 
-Starting with DroneBridge for ESP32 v2.3.x you can use the boot button on the ESP32 boards to init an auto-binding of two ESP32 devices running DroneBridge. No manual configuration necessary.
+Auto-binding configures the channel, device roles, and shared ESP-NOW secret. One GND can bind multiple AIR units.
 
-**User Steps**
+{% hint style="info" %}
+After every reboot, wait at least **2 seconds** before pressing the **BOOT/Fn button** again. On an official ESP32-C6 board, you can continue when the LED starts pulsing.
+{% endhint %}
 
-1. Decide which device is the ground station and which device is the air unit.
-2. Configure the preferred ESP-NOW channel on the device intended to become GND. The AIR unit will automatically receive this channel during binding.
-3. **Double-click** the boot button on **GND**.
-4. Within 90 seconds, **triple-click** the boot button on **AIR**.
-5. Wait for both devices to restart. No password or channel needs to be entered on AIR.
+**Bind AIR units**
 
-**LED Feedback on Official ESP32-C6 Boards**
+1. Set the desired ESP-NOW channel on **GND**.
+2. **Double-click the BOOT/Fn button on GND.** It reboots and waits for AIR units.
+3. For each AIR unit:
+   1. Wait at least 2 seconds after boot.
+   2. **Triple-click the BOOT/Fn button on AIR.**
+   3. Wait for the success indication and automatic reboot.
+4. After adding the final AIR, **single-click the BOOT/Fn button on GND**. GND reboots into normal ESP-NOW operation.
 
-<table><thead><tr><th width="209">LED pattern</th><th>Meaning</th></tr></thead><tbody><tr><td>Slow pulse</td><td>Waiting for the other device or scanning channels</td></tr><tr><td>Fast pulse</td><td>Pairing and saving configuration</td></tr><tr><td>Solid briefly</td><td>Binding succeeded and the device will restart</td></tr><tr><td>Repeated flashes</td><td>Binding failed or timed out</td></tr></tbody></table>
+GND reuses its existing group secret. If no secret exists, it creates one automatically. AIR scans channels 1–13 for up to 90 seconds and receives the GND channel and secret automatically.
 
-**What binding configures**
+**Start a new group**
 
-Binding automatically creates and stores:
+**Four-click the BOOT/Fn button on GND** instead of double-clicking it. This creates a new secret and disconnects all previously bound AIR units. Bind every required AIR again, then single-click the BOOT/Fn button on GND to finish.
 
-* A new random ESP-NOW link secret
-* The selected GND channel on both devices
-* ESP-NOW GND mode on the double-clicked device
-* ESP-NOW AIR mode on the triple-clicked device
+The **Rotate secret** button in the web interface also creates a new secret, but does not start binding automatically.
 
-The normal Wi-Fi password is not changed. Existing manual ESP-NOW pairs continue using the old Wi-Fi password until they are successfully rebound.
+**LED feedback on official ESP32-C6 boards**
 
-**Important Note**
+| LED           | Meaning                     |
+| ------------- | --------------------------- |
+| Slow pulse    | Waiting or scanning         |
+| Fast pulse    | Binding in progress         |
+| Solid briefly | AIR bound successfully      |
+| Three flashes | Binding failed or timed out |
 
-Perform binding in a trusted radio environment. The exchanged link secret is encrypted against passive listeners, but button-only binding does not protect against an active nearby attacker interfering during the 90-second setup window.
+Other supported boards use the same BOOT/Fn button sequence but may not provide LED feedback.
 
-#### **Manual AIR Configuration**
+{% hint style="warning" %}
+Bind only in a trusted radio environment. The secret is protected from passive listeners, but button-only binding does not protect against an active nearby attacker.
+{% endhint %}
 
-In case you do not want to use auto-bind, you can manually configure the devices using the web interface.
+#### Manual GND Configuration
 
-* Mode: `ESP-NOW LR Mode AIR`
-* Define a secure password - SSID is ignored (all ESP32s must share the same password). For releases v2.3.x or newer, you simply rotate the security key and copy the same key to all ESP32s you want to connect (AIR and GND).
-* Set the channel to a number between 1-11 (all ESP32s must share the same channel)
-* Set the TX & RX pins according to your configuration (official ESP32C3 board: TX=5, RX=4) and optionally the RTS & CTS pins if flow control shall be used
-* Set the serial protocol according to your needs. (For MAVLink, the max. packet size shall be >=64 bytes)
+Use the web interface if you prefer to configure the ESP-NOW link manually.
 
-Save the settings and trigger a reboot!
+1. Select `ESP-NOW LR Mode GND`.
+2. Select the ESP-NOW channel.
+3. Enter a 43-character ESP-NOW link secret, or click **Rotate secret** to generate one.
+4. Copy the complete secret. Every AIR unit must use exactly the same value.
+5. Configure the serial protocol, baud rate, and required pins.
+6. Click **Save Settings & Reboot**.
 
-#### **Manual GND Configuration**
+With the standard firmware, connect the GND through a UART-to-USB adapter using the configured TX and RX pins. The `USBSerial` firmware uses the board’s USB connection instead.
 
-* Mode: `ESP-NOW LR Mode GND`
-* Define a secure password - SSID is ignored (all ESP32s must share the same password). For releases v2.3.x or newer, you simply rotate the security key and copy the same key to all ESP32s you want to connect (AIR and GND).
-* Set the channel to a number between 1-11 (all ESP32s must share the same channel)
-* Set the TX & RX pins according to your configuration. With the default firmware, you need to connect a UART-to-USB adapter to the ESP32. Define the pins used for the connection here. \
-  If you are running the `USBSerial` firmware, you will not be able to see these options since all serial data is sent via the USB port.
-* Set the serial protocol according to your needs. (For MAVLink, the max. packet size shall be >=64 bytes)
+#### Manual AIR Configuration
 
-Save the settings and trigger a reboot!
+Configure every AIR unit with the same channel and secret as GND.
+
+1. Select `ESP-NOW LR Mode AIR`.
+2. Select the same ESP-NOW channel as GND.
+3. Paste the exact ESP-NOW link secret copied from GND.
+4. Configure the serial protocol, baud rate, and required pins.
+5. Click **Save Settings & Reboot**.
+
+The secret is saved to NVM and applied after reboot. Repeat these steps for every additional AIR unit.
+
+{% hint style="info" %}
+If the ESP-NOW link secret is empty, the firmware uses the normal Wi-Fi password as a legacy fallback. All manually configured devices must still use the same channel and encryption value.
+{% endhint %}
+
+After every reboot, wait at least 2 seconds—or wait for the LED to indicate the next state—before using the BOOT/Fn button.
