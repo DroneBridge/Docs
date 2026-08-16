@@ -1,7 +1,6 @@
 # Table of contents
 
 * [Introduction](README.md)
-* [Comparison](comparison.md)
 
 ## DroneBridge for ESP32
 
@@ -9,7 +8,12 @@
 * [Quick Start](dronebridge-for-esp32/quick-start.md)
 * [Hardware & Wiring](dronebridge-for-esp32/hardware-and-wiring.md)
 * [Installation](dronebridge-for-esp32/installation.md)
-* [Configuration](dronebridge-for-esp32/configuration.md)
+* [Configuration](dronebridge-for-esp32/configuration/README.md)
+  * [WiFi Modes](dronebridge-for-esp32/configuration/wifi-modes.md)
+  * [ESP-NOW Mode](dronebridge-for-esp32/configuration/esp-now-mode.md)
+  * [Bluetooth LE Mode](dronebridge-for-esp32/configuration/bluetooth-le-mode.md)
+  * [MissionPlanner Setup](dronebridge-for-esp32/configuration/missionplanner-setup.md)
+  * [QGroundControl Setup](dronebridge-for-esp32/configuration/qgroundcontrol-setup.md)
 * [Drone Swarm Control](dronebridge-for-esp32/drone-swarm-control.md)
 * [Safety & Integration](dronebridge-for-esp32/safety-and-integration.md)
 * [Hardware Setup Examples](dronebridge-for-esp32/hardware-setup-examples.md)
@@ -42,6 +46,7 @@
 
 ## DroneBridge for Raspberry Pi
 
+* [Comparison](dronebridge-for-raspberry-pi/comparison.md)
 * [Release Notes](dronebridge-for-raspberry-pi/release-notes.md)
 * [Getting started](dronebridge-for-raspberry-pi/getting-started.md)
 * [Supported hardware](dronebridge-for-raspberry-pi/supported-hardware.md)

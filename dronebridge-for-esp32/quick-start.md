@@ -68,7 +68,7 @@ Connect `5V`, `GND`, `TX`, and `RX`. If you are not using UART flow control, lea
 
 Power the ESP32, connect to the Wi-Fi network `DroneBridge for ESP32` using the password `dronebridge`, and open `http://dronebridge.local` or `http://192.168.2.1`.
 
--> [Configuration - Web Interface](configuration.md#web-interface)
+-> [Configuration - Web Interface](configuration/#web-interface)
 {% endstep %}
 
 {% step %}
@@ -76,7 +76,7 @@ Power the ESP32, connect to the Wi-Fi network `DroneBridge for ESP32` using the 
 
 Set the correct UART pins and baud rate for your hardware, then keep the device in **WiFi Access Point Mode** for the first test.
 
--> [Configuration](configuration.md)
+-> [Configuration](configuration/)
 {% endstep %}
 
 {% step %}
@@ -84,9 +84,9 @@ Set the correct UART pins and baud rate for your hardware, then keep the device 
 
 Connect your GCS to the ESP32 link and verify that telemetry is arriving before trying more advanced modes.
 
--> [Configuration - MissionPlanner Configuration](configuration.md#missionplanner-configuration)
+-> [Configuration - MissionPlanner Configuration](configuration/#missionplanner-configuration)
 
--> [Configuration - QGroundControl Configuration](configuration.md#qgroundcontrol-configuration)
+-> [Configuration - QGroundControl Configuration](configuration/#qgroundcontrol-configuration)
 {% endstep %}
 {% endstepper %}
 
@@ -99,11 +99,11 @@ Use the mode that matches your setup:
 * **WiFi LR or ESP-NOW LR**: Best when you want more range and can also use ESP32 hardware on the ground side
 * **Bluetooth LE**: Best for BLE-specific workflows and mobile-style setups, but it requires the BLE bridge application
 
-Read the full mode details on [Configuration](configuration.md). If you are comparing WiFi-based multi-drone setups with ESP-NOW, also see [Drone Swarm Control](drone-swarm-control.md).
+Read the full mode details on [Configuration](configuration/). If you are comparing WiFi-based multi-drone setups with ESP-NOW, also see [Drone Swarm Control](drone-swarm-control.md).
 
 ## Detailed Guides
 
-<table data-view="cards"><thead><tr><th>Guide</th><th data-card-target data-type="content-ref">Open</th></tr></thead><tbody><tr><td>Choose hardware and wiring</td><td><a href="hardware-and-wiring.md">hardware-and-wiring.md</a></td></tr><tr><td>Flash the firmware</td><td><a href="installation.md">installation.md</a></td></tr><tr><td>Configure modes and UART settings</td><td><a href="configuration.md">configuration.md</a></td></tr><tr><td>See complete setup examples</td><td><a href="hardware-setup-examples.md">hardware-setup-examples.md</a></td></tr><tr><td>Fix common problems</td><td><a href="troubleshooting-help.md">troubleshooting-help.md</a></td></tr><tr><td>Capture logs and debug startup issues</td><td><a href="logging-and-debugging.md">logging-and-debugging.md</a></td></tr><tr><td>Build against the API or firmware</td><td><a href="developer-and-api-documentation/">developer-and-api-documentation</a></td></tr></tbody></table>
+<table data-view="cards"><thead><tr><th>Guide</th><th data-card-target data-type="content-ref">Open</th></tr></thead><tbody><tr><td>Choose hardware and wiring</td><td><a href="hardware-and-wiring.md">hardware-and-wiring.md</a></td></tr><tr><td>Flash the firmware</td><td><a href="installation.md">installation.md</a></td></tr><tr><td>Configure modes and UART settings</td><td><a href="configuration/">configuration</a></td></tr><tr><td>See complete setup examples</td><td><a href="hardware-setup-examples.md">hardware-setup-examples.md</a></td></tr><tr><td>Fix common problems</td><td><a href="troubleshooting-help.md">troubleshooting-help.md</a></td></tr><tr><td>Capture logs and debug startup issues</td><td><a href="logging-and-debugging.md">logging-and-debugging.md</a></td></tr><tr><td>Build against the API or firmware</td><td><a href="developer-and-api-documentation/">developer-and-api-documentation</a></td></tr></tbody></table>
 
 ## Common First-Run Problems
 
