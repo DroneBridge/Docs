@@ -9,9 +9,11 @@ description: DroneBridge for ESP32 Bluetooth LE (BLE) configuration instruction.
 <figure><img src="../../.gitbook/assets/DB_ESP32_Docs_BLE_Black-08.png" alt=""><figcaption></figcaption></figure>
 
 {% hint style="info" %}
-At the moment, there is no support by QGC & MissionPlanner for Bluetooth LE (BLE). They only support Bluetooth Classic with the SPP profile, which is not compatible with DroneBridge for ESP32.
+At the moment, there is no support by MissionPlanner for Bluetooth LE (BLE). They only support Bluetooth Classic with the SPP profile, which is not compatible with DroneBridge for ESP32.
 
 Use the supplied "DroneBridge Bluetooth Low Energy Bridge" to connect anyway.
+
+QGroundControl supports BLE connections as of v5.1.3 (tested on android)
 {% endhint %}
 
 Bluetooth LE (BLE) offers the advantage that it does not block your Wi-Fi connection. You can connect to DroneBridge for ESP32 using BLE and remain connected to your local Wi-Fi (internet).
@@ -20,9 +22,17 @@ The BLE link is intended for use with a single ESP32 connected to the flight con
 
 The ESP32 will host a Wi-Fi access point in parallel, so you can use the web interface as usual to configure the ESP32. The SSID and password for the Wi-Fi AP are used from the Wi-Fi AP Mode.
 
+#### QGroundControl Configuration
+
+In the advanced BLE Connection Settings, configure the following values to connect to the ESP32 in BLE mode. On Android, this works fine; on Windows, it still seems buggy with the August release of QGC.
+
+* Service: `{0000db32-0000-1000-8000-00805f9b34fb}`
+* RX / read-notify: `{0000db34-0000-1000-8000-00805f9b34fb}`
+* TX / write: `{0000db33-0000-1000-8000-00805f9b34fb}`
+
 #### DroneBridge Bluetooth Low Energy Bridge
 
-This application is necessary because, as of June 2025, no GCS supports Bluetooth Low Energy (BLE) connections. \
+This application is necessary because, as of June 2026, MissionPlanner does not support Bluetooth Low Energy (BLE) connections. \
 This application translates and bridges a BLE connection to a UDP connection so your GCS can pick up the telemetry stream.
 
 There are two options:
