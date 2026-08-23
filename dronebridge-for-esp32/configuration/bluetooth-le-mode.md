@@ -24,11 +24,14 @@ The ESP32 will host a Wi-Fi access point in parallel, so you can use the web int
 
 #### QGroundControl Configuration
 
-In the advanced BLE Connection Settings, configure the following values to connect to the ESP32 in BLE mode. On Android, this works fine; on Windows, it still seems buggy with the August release of QGC.
+1. Add a new Bluetooth connection in QGC and select BLE as the Mode
+2. Click `Scan for Devices`  wait a few seconds and select DroneBridge from the list
+3. Check `Advanced BLE Configuration` and enter the following paramters (Service should be pre-filled).\
+   Service: `{0000db32-0000-1000-8000-00805f9b34fb}`\
+   RX / read-notify: `{0000db34-0000-1000-8000-00805f9b34fb}`\
+   TX / write: `{0000db33-0000-1000-8000-00805f9b34fb}`
 
-* Service: `{0000db32-0000-1000-8000-00805f9b34fb}`
-* RX / read-notify: `{0000db34-0000-1000-8000-00805f9b34fb}`
-* TX / write: `{0000db33-0000-1000-8000-00805f9b34fb}`
+On Android and Linux, this works fine; on Windows, it still seems buggy with the August 2026 release of QGC.
 
 #### DroneBridge Bluetooth Low Energy Bridge
 
