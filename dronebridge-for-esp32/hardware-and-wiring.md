@@ -144,12 +144,13 @@ There is no need for a Serial-to-USB/FTDI adapter in this case!
 
 <figure><img src="../.gitbook/assets/MissionPlannerSetupUSBSerialDBESP32.png" alt=""><figcaption></figcaption></figure>
 
-**QGroundControl** partially supports the USBSerial firmware flavour. Once QGroundControl disconnected or was closed you have to press the reset button of the GND ESP32 to reboot it. Otherwise, no new connection can be established to QGC.\
-The reason for that is that the DTS & RTS lane of the USB is set to low when the disconnect happens. This will set the ESP32 into download mode preventing a proper restart of the firmware. This could be fixed by the GCS however, it is not fixed yet.
+**QGroundControl v5.x.x** fully supports ESP-NOW mode over a serial connection to a GND-ESP32 running the `USBSerial` firmware.
+
+**ArduDeck** also supports ESP-NOW mode over a serial connection to a GND-ESP32. See the [ArduDeck documentation](https://ardudeck.com/docs/) for GCS setup details.
 
 #### Using an external Serial to USB adapter
 
-Connect the USB-to-Serial adapter to the ESP32\`s GPIOs and configure the GPIO pins via the web interface. Now connect the ESP32 via the USB-to-Serial adapter to the computer and open the GCS. Within the GCS connect to the USB-to-Serial adapter to receive the telemetry stream. This mode is supported by MissionPlanner & QGC. If you wire the RTS & CTS pins (not recommended for GND ESP32) of the Serial-to-USB adapter as well you might need to run into issues as described in the section for "onboard USB connectors".
+Connect the USB-to-Serial adapter to the ESP32\`s GPIOs and configure the GPIO pins via the web interface. Now connect the ESP32 via the USB-to-Serial adapter to the computer and open the GCS. Within the GCS connect to the USB-to-Serial adapter to receive the telemetry stream. This mode is supported by MissionPlanner, QGroundControl, and ArduDeck. If you wire the RTS & CTS pins (not recommended for GND ESP32) of the Serial-to-USB adapter as well you might need to run into issues as described in the section for "onboard USB connectors".
 
 For reference see:
 

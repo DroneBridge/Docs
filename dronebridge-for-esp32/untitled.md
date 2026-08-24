@@ -44,7 +44,7 @@ The range is also limited to \~1km using ESP-NOW.
 * Up to **1km of range** using ESP-NOW or Wi-Fi LR Mode - sender & receiver must be ESP32 with LR-Mode enabled
 * **Fully encrypted** in all modes, including ESP-NOW broadcasts secured using AES-GCM 256-bit!
 * Weight: <8 g
-* Supported by: QGroundControl, Mission Planner, mwptools, impload etc.
+* Supported by: QGroundControl v5.x.x, Mission Planner, ArduDeck, mwptools, impload etc.
 * Easy to set up: Power connection + UART connection to flight controller
 * Fully configurable through an easy-to-use web interface
 * Parsing of LTM & MSPv2 for a more reliable connection and less packet loss

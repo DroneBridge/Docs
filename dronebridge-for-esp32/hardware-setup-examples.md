@@ -41,7 +41,7 @@ This method always works and can be used with all boards. A recommended Serial-t
 Connect the adapter using any available pins (see [Hardware & Wiring instructions](hardware-and-wiring.md) for exceptions). \
 In general, it is not recommended to enable flow-control (only wire GND, VDD, TX & RX) since it may lead to unexpected issues and is usually not needed on the GND side.
 
-This setup is robust and works with MissionPlanner & QGroundControl out of the box.
+This setup is robust and works with MissionPlanner, QGroundControl v5.x.x, and ArduDeck out of the box.
 
 ### Interface via Onboard Serial-to-USB Chip
 

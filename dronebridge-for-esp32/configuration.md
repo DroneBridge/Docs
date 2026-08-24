@@ -74,7 +74,7 @@ The GCS then receives the data via that serial device (e.g. COMx on Windows).
 ![DroneBridge for ESP32 ESP-NOW Mode that can be used for drone swarms. Connectionless protocol with custom AES encryption. Requires ESP32s no UAV and ground.](https://raw.githubusercontent.com/DroneBridge/ESP32/master/wiki/modes/DB_ESP32_Mode_WiFi_ESPNOW.png)
 
 DroneBridge for ESP32s\`custom ESP-NOW implementation using ESP-NOW broadcast packets with an AES256-GCM encrypted payload.\
-Like with all LR modes it requires you to have ESP32 devices as AIR- and GND-Unit and a Serial-to-USB adapter to connect a GCS.\
+Like with all LR modes it requires you to have ESP32 devices as AIR- and GND-Unit and a serial connection from the GND-Unit to the GCS. You can use an external Serial-to-USB adapter, or the onboard USB connector with the `USBSerial` or `noUARTConsole` firmware flavour when supported by your board.\
 This is a more robust mode compared to the WiFi LR Mode since the ESP-NOW protocol is connectionless. The specified WiFi password is used for encryption.
 
 {% hint style="info" %}
@@ -188,15 +188,16 @@ You can also change some of the settings of the ESP32 via MissionPlanner. Select
 
 When the serial protocol of the ESP32 is configured to MAVLink, QGroundControl can detect the ESP32. That is because all ESP32s will register as a MAVLink device with the GCS.
 
+{% hint style="success" %}
+**QGroundControl v5.x.x** fully supports ESP-NOW mode over a serial connection to a GND-ESP32 running the `USBSerial` firmware.
+{% endhint %}
+
 {% hint style="warning" %}
-**Known Issues with QGroundControl**
-
-Regarding the use of QGroundControl with the `USBSerial` firmware:\
-The GND-Unit ESP32 must be reset after every disconnect of QGroundControl. Press the reset button on the board once, then reconnect.
-
 Regarding the use of QGroundControl with the `noUARTConsole` firmware:\
 The GND-Unit ESP32 must be **re-configured** after every disconnect of QGroundControl. QGroundControl is currently triggering a reset of the settings on reconnect.
 {% endhint %}
+
+**ArduDeck** also supports ESP-NOW mode over a serial connection to the GND-Unit. See the [ArduDeck documentation](https://ardudeck.com/docs/) for GCS setup details.
 
 The ESP32 will appear as Component 68.
 

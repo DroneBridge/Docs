@@ -10,12 +10,15 @@ DroneBridge for ESP32 offers various firmware flavours for every release. Depend
 
 <table data-full-width="true"><thead><tr><th>Firmware flavour</th><th>Indended Use-Case</th><th>Description</th></tr></thead><tbody><tr><td>ESP32(-XX)</td><td>ESP32s connected to the flight controller via UART.<br>ESP32s connected to a GCS via an external Serial-to-USB adapter</td><td>Generic standard firmware. <br>If in doubt use this one!</td></tr><tr><td>ESP32(-XX) Official HW</td><td>Like the standard firmware above.<br>For official hardware boards operating as AIR-Units.</td><td>Generic standard firmware. Pre-configured UART pins for the official hardware.</td></tr><tr><td>ESP32(-XX) <code>(USBSerial)</code></td><td>For official hardware boards operating as GND-Unit using the onboard USB connector.<br>ESP32s connected to a GCS via the onboard USB connector via the USB-JTAG interface of the ESP32.</td><td>Only some boards support this firmware. They must have the USB-JTAG interface available.<br>All telemetry is forwarded to the USB-JTAG interface instead of a UART.</td></tr><tr><td>ESP32(-XX) <code>(noUARTConsole)</code></td><td>For generic development boards with an onboard Serial-to-USB chip operating as GND-Unit.<br>E.g. ESP32-S2-DevKitM-1, ESP32-C3-DevKitM-1, ESP32-DevKitM-1<br>This firmware is not available for the ESP32 (Classic).</td><td>Debugging UART of the ESP32 is disabled. UART can now be configured by DroneBridge for telemetry output to a GCS via USB. This removes the need for an additional external Serial-to-USB adapter. Check the manufacturer's data sheet for the TX &#x26; RX PINs.<br>This firmware is not available for the ESP32 (Classic).</td></tr></tbody></table>
 
+{% hint style="success" %}
+**QGroundControl support**
+
+QGroundControl v5.x.x fully supports ESP-NOW over a serial connection when the GND-Unit runs the `USBSerial` firmware.
+
+ArduDeck also supports ESP-NOW over a serial connection to the GND-Unit.
+{% endhint %}
+
 {% hint style="warning" %}
-**Known Issues with QGroundControl**
-
-Regarding the use of QGroundControl with the `USBSerial` firmware:\
-The GND-Unit ESP32 must be reset after every disconnect of QGroundControl. Press the reset button on the board once, then reconnect.
-
 Regarding the use of QGroundControl with the `noUARTConsole` firmware:\
 The GND-Unit ESP32 must be **re-configured** after every disconnect of QGroundControl. QGroundControl is currently triggering a reset of the settings on reconnect.
 {% endhint %}
