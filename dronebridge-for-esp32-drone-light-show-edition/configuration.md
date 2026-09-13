@@ -76,7 +76,7 @@ The exact default values for some power-management parameters depend on the firm
 <table><thead><tr><th width="170">Parameter</th><th width="220">Purpose</th><th width="160">Default</th><th>Description / Notes</th></tr></thead><tbody><tr><td><code>show_pm_en</code></td><td>Enable ESP32 based Power Management</td><td>build dependent</td><td>Enables remote power-management behavior. In the current default DLSE build this is enabled, but treat it as hardware-profile dependent.</td></tr><tr><td><code>show_pm_gpio</code></td><td>Power Control GPIO</td><td>build dependent</td><td>GPIO used to drive the external power-control circuit.</td></tr><tr><td><code>show_pm_logic</code></td><td>Power Control Logic</td><td><code>0</code></td><td><code>0</code> = active low, <code>1</code> = active high.</td></tr><tr><td><code>show_pm_pulse_l</code></td><td>Power Control Pulse Length [ms]</td><td>build dependent</td><td>Set to <code>0</code> for a static level. Use a non-zero value if your hardware expects a pulse that toggles power.</td></tr><tr><td><code>show_pm_qu_gpio</code></td><td>Power State Query GPIO</td><td>build dependent</td><td>Optional GPIO used to detect whether the flight controller is powered. If set to <code>0</code>, DLSE can derive state from MAVLink traffic instead.</td></tr><tr><td><code>show_pm_en_emcy</code></td><td>Allow emergency power off</td><td><code>0</code></td><td>Disables the normal "is-armed" safety check before power-off. Only enable this if you fully understand the consequences.</td></tr></tbody></table>
 
 {% hint style="warning" %}
-**Emergency power-off can shut down a drone in flight.** If <code>show_pm_en_emcy</code> is enabled, DLSE may cut power regardless of the aircraft state. This is only appropriate when your overall system design explicitly accounts for that behavior.
+**Emergency power-off can shut down a drone in flight.** If `show_pm_en_emcy` is enabled, DLSE may cut power regardless of the aircraft state. This is only appropriate when your overall system design explicitly accounts for that behavior.
 {% endhint %}
 
 {% hint style="info" %}
@@ -90,8 +90,39 @@ The current DLSE UI can expose battery voltage and current measured by ESP32 ADC
 <table><thead><tr><th width="170">Parameter</th><th width="220">Purpose</th><th width="130">Default</th><th>Description / Notes</th></tr></thead><tbody><tr><td><code>adc_v_en</code></td><td>Monitor Battery Voltage</td><td><code>0</code></td><td>Enables voltage monitoring through an ADC-capable ESP32 pin.</td></tr><tr><td><code>adc_v_gpio</code></td><td>Battery Voltage Monitor GPIO</td><td><code>0</code></td><td>ADC-capable GPIO connected to the stepped-down battery voltage.</td></tr><tr><td><code>adc_v_multi</code></td><td>ADC Voltage Multiplier</td><td><code>110</code></td><td>Voltage calibration factor. The internal documentation describes this as a value scaled by 10, so <code>110</code> corresponds to a divider factor of 11. Match it to your hardware and to the flight-controller-side voltage calibration.</td></tr><tr><td><code>adc_a_en</code></td><td>Monitor Battery Current</td><td><code>0</code></td><td>Enables current monitoring through an ADC-capable ESP32 pin.</td></tr><tr><td><code>adc_a_gpio</code></td><td>Battery Current Monitor GPIO</td><td><code>0</code></td><td>ADC-capable GPIO used for current sensing.</td></tr><tr><td><code>adc_a_multi</code></td><td>ADC Current Multiplier [mA/V]</td><td><code>36364</code></td><td>Current calibration factor in mA per volt measured at the ESP32 ADC input. Align it with your current-sense circuit and the corresponding ArduPilot current calibration.</td></tr></tbody></table>
 
 {% hint style="info" %}
-Use the same calibration basis as your flight controller. For ArduPilot-based systems, the internal parameter notes explicitly point to <code>BATT_VOLT_MULT</code> and <code>BATT_AMP_PERVLT</code> as the matching reference values.
+Use the same calibration basis as your flight controller. For ArduPilot-based systems, the internal parameter notes explicitly point to `BATT_VOLT_MULT` and `BATT_AMP_PERVLT` as the matching reference values.
 {% endhint %}
+
+## LED Control
+
+This feature allows the ESP32 running DLSE to control the LED.
+
+### ESP32 Configuration
+
+The following LED controllers are supported:
+
+* 0: WS2812
+* 1: SK6812
+* 2: WS2811
+* 3: WS2816
+
+DLSE parameters explained:
+
+| Parameter       | Purpose                                         | Default | Description/Notes                                                                                  |
+| --------------- | ----------------------------------------------- | ------- | -------------------------------------------------------------------------------------------------- |
+| led\_cont\_en   | Enables/Disables LED control by the ESP32       | 0       | Set to `1` in order to activate LED control by the ESP32.                                          |
+| led\_cont\_gpio | GPIO used to control the LEDs                   | 0       | Set to the GPIO of the ESP32 connected to the LED controller.                                      |
+| led\_cont\_num  | Number of LEDs connected to the LED controller. | 0       |                                                                                                    |
+| led\_cont\_type | LED Controller chip                             | 0       | <p>Set to index as listed:<br></p><p>0: WS2812</p><p>1: SK6812</p><p>2: WS2811</p><p>3: WS2816</p> |
+
+### Flight Controller Configuration
+
+The ESP32 acts on MAVLink messages sent by the flight controller. More details on how to configure your flight controller are here: [https://docs.skybrush.io/public/skybrush-firmware-doc/latest/configuration/led.html#\_external\_led\_lights\_controlled\_by\_mavlink\_messages](https://docs.skybrush.io/public/skybrush-firmware-doc/latest/configuration/led.html#_external_led_lights_controlled_by_mavlink_messages)
+
+```
+SHOW_LED0_TYPE 1
+SHOW_LED0_CHAN <SERIAL Interface Index connected to ESP32 running DLSE>
+```
 
 ## Serial
 
