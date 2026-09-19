@@ -8,6 +8,7 @@ This page applies only to the **Drone Light Show Edition (DLSE)** of DroneBridge
 
 DLSE can currently be configured in three ways:
 
+* [**Commercial Support Suite Fleet Manager**](https://github.com/DroneBridge/DLSECommercialSupportSuite) **-** fleet-level configuration of your DLSE ESP32s
 * **Web interface** - the main and recommended way for setup, inspection, import/export, and day-to-day changes
 * **REST API / JSON** - useful for automation and fleet tooling, for example through the [Commercial Support Suite](https://github.com/DroneBridge/DLSECommercialSupportSuite)
 * **MAVLink parameter protocol** - useful from a GCS, but limited to non-string parameters
