@@ -17,12 +17,12 @@ Regardless of which chip you choose, the ESP32 module must have **at least 4 MB 
 <table data-full-width="false"><thead><tr><th>Chip</th><th>Wi-Fi Standard</th><th>Frequency Bands</th><th>Best For</th></tr></thead><tbody><tr><td><strong>ESP32-C5</strong></td><td>Wi-Fi 6 (802.11ax)</td><td>2.4 GHz &#x26; 5 GHz</td><td>New designs — dual-band gives full frequency flexibility for current and future deployments</td></tr><tr><td><strong>ESP32-C6</strong></td><td>Wi-Fi 6 (802.11ax)</td><td>2.4 GHz only</td><td>Existing designs or where C5 modules are unavailable</td></tr><tr><td><strong>ESP32-C3</strong></td><td>Wi-Fi 5 (802.11n)</td><td>2.4 GHz only</td><td>Lowest cost, but 2.4 GHz only and older Wi-Fi standard. Not recommended for large fleets of 200+ drones</td></tr></tbody></table>
 
 {% hint style="success" %}
-**Not sure which to pick?** Use the **ESP32-C5** for any new design. It is the only supported chip with dual-band Wi-Fi (2.4 GHz and 5 GHz), which gives you the option to move to the less congested 5 GHz band as your fleet grows or when operating at busy venues.
+**Not sure which to pick?** Use the **ESP32-C5** for any new design. It is the only supported chip with dual-band Wi-Fi (2.4 GHz and 5 GHz) and offers Wi-Fi 6, which gives you the option to move to the less congested 5 GHz band as your fleet grows or when operating at busy venues.
 {% endhint %}
 
 ## Choosing a Physical Module
 
-ESP32 chips come on many different ready-made modules. For drone use, you want something **small, lightweight, and with a reliable power supply input**. Below are recommended options, beware that only the XIAO ESP32 models are currently tested during development. Contact the manufacturer of the board before you order to check the compatibility of DLSE features with their hardware.
+ESP32 chips come on many different ready-made modules. For drone use, you want something **small, lightweight, and with a reliable power supply input**. Below are recommended options; beware that only the XIAO ESP32 models are currently tested during development. Contact the manufacturer of the board before you order to check the compatibility of DLSE features with their hardware.
 
 ### Module Options
 
@@ -101,7 +101,7 @@ The UART connection carries all MAVLink traffic between the flight controller an
 | TELEM RTS _(optional)_ | ESP32 **CTS** GPIO | Flow control — see note below    |
 
 {% hint style="info" %}
-**Flow control (RTS/CTS)** is optional. If your flight controller supports it and you are running high baud rates, enabling flow control reduces the chance of dropped bytes. If you do not wire RTS/CTS, set both `gpio_rts` and `gpio_cts` to `0` in the configuration to disable flow control. In general, it is recommended to have flow control. It helps speed up firmware updates of the flight controller.
+**Flow control (RTS/CTS)** is optional. If your flight controller supports it and you are running high baud rates, enabling flow control reduces the chance of dropped bytes. If you do not wire RTS/CTS, set both `gpio_rts` and `gpio_cts` to `0` in the configuration to disable flow control. In general, it is recommended to have flow control. It slightly speeds up firmware updates of the flight controller.
 {% endhint %}
 
 #### Which GPIO Pins to Use
@@ -210,8 +210,8 @@ Implement a hardware interlock on your power board — for example, inhibit the 
 For best performance:
 
 * Mount the ESP32 and its antenna **away from carbon fibre** structures, as carbon fibre is conductive and absorbs RF energy.
-* The antenna should have a **clear line of sight** toward the ground station direction.
-* If using a U.FL-connected external antenna, secure the U.FL connector with a small drop of cyanoacrylate glue (applied after the antenna is connected) to prevent it from loosening due to vibration.
+* The antenna should have a **clear line of sight** toward the direction of the access points on the ground.
+* If using a U.FL-connected external antenna, secure the U.FL connector with a small drop of cyanoacrylate glue (super glue applied after the antenna is connected) to prevent it from loosening due to vibration.
 * Avoid routing the antenna cable near ESCs or power wires.
 
 ***

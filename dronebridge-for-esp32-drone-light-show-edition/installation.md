@@ -19,6 +19,19 @@ By default, a freshly flashed ESP32 starts in **TRIAL** license mode, which cuts
 ## Flashing Methods
 
 {% tabs %}
+{% tab title="Flashing a Fleet" %}
+For deploying DLSE across many drones, use the open-source **Commercial Support Suite**:
+
+[DroneBridge DLSE Commercial Support Suite on GitHub](https://github.com/DroneBridge/DLSECommercialSupportSuite)
+
+The suite provides Python scripts for:
+
+* Bulk flashing, activation & configuration over USB
+* Bulk Over-The-Air Updates
+* Automated configuration via the REST API
+* License activation for multiple ESP32 devices
+{% endtab %}
+
 {% tab title="Online Flasher (Easiest)" %}
 The online flasher runs in your browser and requires no software installation. It works on Windows, macOS, and Linux.
 
@@ -114,19 +127,6 @@ Replace `/dev/ttyUSB0` with your actual serial port. Run the command and wait fo
 Once flashing is complete, unplug and re-plug the ESP32. It will boot into the DLSE firmware.
 {% endstep %}
 {% endstepper %}
-{% endtab %}
-
-{% tab title="Flashing a Fleet" %}
-For deploying DLSE across many drones, use the open-source **Commercial Support Suite**:
-
-[DroneBridge DLSE Commercial Support Suite on GitHub](https://github.com/DroneBridge/DLSECommercialSupportSuite)
-
-The suite provides Python scripts for:
-
-* Bulk flashing, activation & configuration over USB
-* Bulk Over-The-Air Updates
-* Automated configuration via the REST API
-* License activation for multiple ESP32 devices
 {% endtab %}
 {% endtabs %}
 
