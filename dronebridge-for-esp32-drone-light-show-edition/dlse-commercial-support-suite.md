@@ -6,7 +6,7 @@ description: >-
 
 # Support Suite
 
-<figure><img src="../.gitbook/assets/Gemini_Generated_Image_scabxascabxascab.png" alt="Hero showing an AI generated image of a flashing and activation process of the Drone Light Show Edition"><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/DLSE_UI1.png" alt="DLSE Fleet Manager showing DLSE ESP32 devices in a table that can be configured"><figcaption></figcaption></figure>
 
 The **DLSE Commercial Support Suite** is an open-source Python library and set of ready-to-use scripts that automate the most time-consuming parts of managing a large fleet of ESP32s. Instead of configuring, flashing, and licensing each drone one by one, you set up one reference device, export its configuration, and let the suite handle the rest.
 
@@ -30,17 +30,64 @@ The **DLSE Commercial Support Suite** is an open-source Python library and set o
 
 ## Installation
 
+Open a command line window like Powershell on Windows and run:
+
 ```bash
-git clone --recursive https://github.com/DroneBridge/DLSECommercialSupportSuite.git
-cd DLSECommercialSupportSuite
-pip install .
+python -m pip install pipx
+python -m pipx ensurepath
 ```
 
-Each script contains configuration variables near the top (such as `MY_SECRET_TOKEN`, `ESP_SERIAL_PORT`, or subnet addresses). Open the script you intend to use and update these before running.
+Open a new terminal and install.
+
+```shellscript
+pipx install https://github.com/DroneBridge/DLSECommercialSupportSuite/releases/download/v1.1.0/dlsecommercialsupportsuite-1.1.0-py3-none-any.whl
+```
+
+For newer releases, replace `v1.1.0` and the wheel filename with the version shown on the GitHub Releases page.
+
+Open a new terminal and verify the commands are available:
+
+```
+dlse-activate --help
+dlse-reboot --help
+dlse-update --help
+dlse-install --help
+dlse-ui
+```
+
+***
+
+## DLSE Fleet Manager
+
+The DroneBridge DLSE Fleet Manager allows you to manage the configuration of all your DLSE ESP32s. It offers a convenient user interface designed for fleet-level adjustments.
+
+<figure><img src="../.gitbook/assets/DLSE_UI2.png" alt="DLSE Fleet Manager table view with detected drones"><figcaption></figcaption></figure>
+
+### Quick Start
+
+Click `Scan for Devices` to start detecting your DLSE ESP32s on the network. Once all ESP32s are listed, click the button again to stop the network scan.
+
+You can connect to your UniFi Gateway + Access Points by providing the UniFi Gateway IP and access token in the settings.
+
+The buttons in the header (Reboot Devices, Manage Static IPs, Apply Settings, etc.) apply to all selected (via the checkbox in the table) devices.
+
+#### Change individual settings on one device
+
+Click on a table row (no selection via the checkbox required) to be able to change settings via the web interface of the dedicated settings tab on the right of the user interface.\
+You can download or upload all the settings as well.
+
+#### Change settings on multiple devices
+
+1. Select the desired devices via the checkbox in the table view
+2. Click `Apply Settings` in the header bar
+3. Select a `.csv` DLSE settings file. You can export them from a pre-configured DLSE device via the `Settings` tab in the Fleet Manager or via the web interface
+4. Follow the instructions in the user interface. Not all settings will be applied. IP, hostname and MAV SYS ID are incremented for every device.&#x20;
 
 ***
 
 ## Batch Serial Flash, Configure & Activate
+
+This function is not available through the graphical user interface yet.&#x20;
 
 ### Overview
 
@@ -116,7 +163,7 @@ All actions are logged to the `/logs` folder for your records.
 
 ***
 
-## Batch OTA Firmware Update
+## CLI: Batch OTA Firmware Update
 
 ### Overview
 
@@ -181,7 +228,7 @@ OTA update finished. 1 updated successfully. 0 failed.
 
 ***
 
-## Batch OTA License Activation
+## CLI: Batch OTA License Activation
 
 ### Overview
 
@@ -210,7 +257,7 @@ python batch_ota_license_activation.py \
 | `--esp32localbrcstport`  | Must match `udp_local_port` in each ESP32's configuration  |
 | `--esp32remotebrcstport` | Must match `wifi_brcst_port` in each ESP32's configuration |
 
-The script scans on a loop. As drones are powered on and appear on the network, they are discovered, their activation key is read, a license is requested from the DroneBridge license server, and the license is installed on the device. All licenses are also saved locally to `/received_licenses` as a backup.
+The script scans in a loop. As drones are powered on and appear on the network, they are discovered, their activation key is read, a license is requested from the DroneBridge license server, and the license is installed on the device. All licenses are also saved locally to `/received_licenses` as a backup.
 
 <details>
 
@@ -245,6 +292,16 @@ Beyond the batch scripts, the suite exposes a Python library (`DroneBridgeCommer
 | `example_esp32_download_log_MAVSDK.py` | Same, using MAVSDK                                        |
 
 ***
+
+## Installation for Developers
+
+```bash
+git clone --recursive https://github.com/DroneBridge/DLSECommercialSupportSuite.git
+cd DLSECommercialSupportSuite
+pip install .
+```
+
+Each script contains configuration variables near the top (such as `MY_SECRET_TOKEN`, `ESP_SERIAL_PORT`, or subnet addresses). Open the script you intend to use and update these before running.
 
 ## OpenAPI Definition
 
