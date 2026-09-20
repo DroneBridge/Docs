@@ -83,8 +83,6 @@ The buttons in the header (Reboot Devices, Manage Static IPs, Apply Settings, et
 
 <figure><img src="../.gitbook/assets/grafik (7).png" alt="DLSE Commercial Support Suite Fleet Manager Settings for ESP32 discovery scans on the network"><figcaption></figcaption></figure>
 
-### Fleet Manager settings
-
 These settings control how Fleet Manager discovers and monitors DLSE ESP32 devices on the local network. The default values work with the standard DLSE configuration.
 
 | **Setting**            | Description                                                                                                                                                                                                                                                                                                                                                                                      |
