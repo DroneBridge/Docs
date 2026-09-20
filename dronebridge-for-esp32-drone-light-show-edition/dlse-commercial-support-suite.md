@@ -37,10 +37,16 @@ python -m pip install pipx
 python -m pipx ensurepath
 ```
 
-Open a new terminal and install.
+Open a new terminal and install using:
 
 ```shellscript
 pipx install https://github.com/DroneBridge/DLSECommercialSupportSuite/releases/download/v1.1.0/dlsecommercialsupportsuite-1.1.0-py3-none-any.whl
+```
+
+For upgrades of an existing installation, you might need to run:
+
+```bash
+pipx install --force https://github.com/DroneBridge/DLSECommercialSupportSuite/releases/download/v1.1.0/dlsecommercialsupportsuite-1.1.0-py3-none-any.whl
 ```
 
 For newer releases, replace `v1.1.0` and the wheel filename with the version shown on the GitHub Releases page.
