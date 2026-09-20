@@ -77,21 +77,121 @@ You can connect to your UniFi Gateway + Access Points by providing the UniFi Gat
 
 The buttons in the header (Reboot Devices, Manage Static IPs, Apply Settings, etc.) apply to all selected (via the checkbox in the table) devices.
 
-#### Change individual settings on one device
+`Clear Fleet` **clears the table only**. All discovered ESP32s will be removed from the table and will have to be re-discovered by a scan. This does not change any setting or configuration.
+
+#### Fleet Manager Settings
+
+<figure><img src="../.gitbook/assets/grafik (7).png" alt="DLSE Commercial Support Suite Fleet Manager Settings for ESP32 discovery scans on the network"><figcaption></figcaption></figure>
+
+### Fleet Manager settings
+
+These settings control how Fleet Manager discovers and monitors DLSE ESP32 devices on the local network. The default values work with the standard DLSE configuration.
+
+| **Setting**            | Description                                                                                                                                                                                                                                                                                                                                                                                      |
+| ---------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| Discovery methods      | <p><strong>MAVLink broadcast</strong> is recommended and provides fast discovery. The DLSE UART/MAVLink interface must be configured. <br><strong>HTTP IP-range scan</strong> checks each address through <code>/api/system/info</code>; it is slower but can be used as a robust fallback.</p>                                                                                                  |
+| IPv4 subnet            | <p>Network range to scan, written in CIDR notation. Example: <code>192.168.1.0/24</code>. The subnet must include the computer and all DLSE devices. <br>This covers <code>192.168.1.0</code>–<code>192.168.1.255</code>; Fleet Manager scans usable host addresses <code>192.168.1.1</code>–<code>192.168.1.254</code> and uses <code>192.168.1.255</code> for MAVLink broadcast discovery.</p> |
+| ESP32 broadcast port   | UDP port on which the DLSE listens for discovery messages. Match this with `udp_local_port` in the DLSE web interface. Default: `14555`.                                                                                                                                                                                                                                                         |
+| Local receive port     | UDP port used by Fleet Manager to receive MAVLink responses. Match this with `wifi_brcst_port` in the DLSE web interface. Default: `14550`. The port must not be used by another application.                                                                                                                                                                                                    |
+| Discovery interval (s) | Time between automatic discovery scans. Default: `5` seconds.                                                                                                                                                                                                                                                                                                                                    |
+| HTTP timeout (s)       | Maximum wait time for each HTTP scan request. Default: `1` second.                                                                                                                                                                                                                                                                                                                               |
+| HTTP concurrency       | Number of IP addresses checked simultaneously during an HTTP scan. Default: `20`.                                                                                                                                                                                                                                                                                                                |
+
+#### UniFi AP observations
+
+Enable this section to display wireless client and access-point information from a UniFi Network gateway.
+
+* **Gateway URL**: UniFi gateway address, for example `https://192.168.1.1`.
+* **API token**: UniFi Network API token. It is stored in the local Fleet Manager settings.
+* **Site**: UniFi site name. Default: `default`.
+* **Verify certificate**: Enable this for a valid TLS certificate. Disable it only when using a trusted gateway with a self-signed certificate.
+
+If MAVLink discovery does not find devices, verify the subnet, confirm that both UDP ports match the DLSE web-interface settings, and ensure that no other application (Skybrush Server) is occupying the local receive port.
+
+#### System stats polling
+
+Fleet Manager can periodically query `/api/system/stats` for devices that have already been discovered.
+
+* **Background polling**: Enables or disables live DLSE statistics polling.
+* **Target interval (s)**: Time between polling rounds. Default: `2` seconds. Increase on large fleets.
+* **Request timeout (s)**: Maximum wait time per device. Default: `1` second. Increase on large fleets.
+* **HTTP concurrency**: Number of devices queried simultaneously. Default: `20`.
+* **Failures before offline**: Number of consecutive failed requests before a device is shown as offline. Default: `3`.
+
+### Change individual settings on one device
 
 Click on a table row (no selection via the checkbox required) to be able to change settings via the web interface of the dedicated settings tab on the right of the user interface.\
 You can download or upload all the settings as well.
 
-#### Change settings on multiple devices
+### Change settings on multiple devices
 
 1. Select the desired devices via the checkbox in the table view
 2. Click `Apply Settings` in the header bar
 3. Select a `.csv` DLSE settings file. You can export them from a pre-configured DLSE device via the `Settings` tab in the Fleet Manager or via the web interface
-4. Follow the instructions in the user interface. Not all settings will be applied. IP, hostname and MAV SYS ID are incremented for every device.&#x20;
+4. Follow the instructions in the user interface. Not all settings will be applied. IP, hostname and MAV SYS ID are incremented for every device.
+
+### OTA Firmware Upgrade
+
+You should activate/make visible the `Operation`  and `Progress` columns inside the table view to see the current state of the firmware upgrade.
+
+<figure><img src="../.gitbook/assets/grafik (8).png" alt="DLSE Commercial Support Suite Over-The-Air firmware upgrade dialog where the user has to enter his secret token to get his releases. Settings to upgrade only specific devices."><figcaption></figcaption></figure>
+
+Use this dialogue to update the DLSE firmware of selected or visible ESP32 devices over HTTP. Device settings and licenses are preserved.
+
+For each device, Fleet Manager:
+
+1. Checks the device and identifies its chip type.
+2. Uploads `www.bin` to update the web interface.
+3. Waits two seconds.
+4. Uploads `db_esp32.bin` and reboots the device.
+
+#### Options
+
+* **DroneBridge account release**: Enter a license-server token, load available releases, and select a release. Cached releases can also be used.
+* **Validated release folder**: Select a local DLSE release folder. Fleet Manager automatically uses the binaries matching each device’s chip.
+* **Explicit WWW and application binaries**: Select both `www.bin` and `db_esp32.bin` manually.
+* **Target firmware version**: Optional exact version filter. Only devices running this version are updated. Leave empty to update all targets.
+* **Parallel updates**: Number of devices updated simultaneously. The default is `20`.
+* **Targets**: Choose either the selected devices or all devices currently visible in the Fleet Manager table.
+
+Cancelling stops queued updates; uploads already in progress are allowed to finish.
+
+### Align SYS IDs
+
+Align SYS IDs synchronises the MAVLink system ID of the DLSE and its connected flight controller.
+
+Only explicitly selected devices with **Evaluation** or **Activated** licenses are processed.
+
+#### Options
+
+* **Based on DLSE IP address**\
+  Sets the flight-controller SYS ID to the last octet of the DLSE IP address. For example, `192.168.1.42` results in SYS ID `42`. It also enables the DLSE web-interface option `show_en_syid_ip`.
+* **Based on FC SYS ID**\
+  Reads the current flight-controller SYS ID and writes it as the DLSE manual SYS ID (`show_man_sysid`). The flight-controller SYS ID is not changed.
+* **Based on manual DLSE SYS ID**\
+  Uses the current DLSE manual SYS ID and writes the same value to the flight controller. IP-based SYS ID assignment is disabled.
+
+The modes that change the flight-controller SYS ID write a MAVLink parameter and reboot the flight controller. The DLSE settings are then updated.
+
+### Manage Static IPs
+
+This dialogue assigns sequential static IP addresses to visible, selected devices with **Evaluation** or **Activated** licenses. Selected devices hidden by the current table filter are excluded.
+
+#### Assign Static IPs
+
+* **Starting static IP**: First address to assign. Further addresses are allocated in the current table order. For example, starting at `192.168.20.1` assigns `.1`, `.2`, `.3`, and so on.
+* **Subnet mask**: Network mask used by the devices, for example `255.255.255.0`.
+* **Gateway IP**: Network gateway. It must be a usable address within the selected subnet and must not conflict with an assigned device address.
+
+The values correspond to the DLSE web-interface settings `ip_sta`, `ip_sta_netmsk`, and `ip_sta_gw`. Each device reboots and stops responding at its old IP address after the change.
+
+#### Clear All Static IPs
+
+Clears the static IP, subnet mask, and gateway settings. Each device reboots and uses DHCP after reconnecting.
 
 ***
 
-## Batch Serial Flash, Configure & Activate
+## CLI: Batch Serial Flash, Configure & Activate
 
 This function is not available through the graphical user interface yet.&#x20;
 
